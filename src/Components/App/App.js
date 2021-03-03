@@ -23,8 +23,10 @@ class App extends Component {
     return (
       <main>
         <Nav />
-        <h1>Welcome to Crypto Watch</h1>
-        <h2>Watch the revolutionary cryptocurrency movement</h2>
+        <h1 className="mainPageText">Welcome to Crypto Watch</h1>
+        <h2 className="mainPageText">
+          Watch the revolutionary cryptocurrency movement
+        </h2>
         <Cryptocurrencies cryptocurrencies={this.state.cryptocurrencies} />
       </main>
     );

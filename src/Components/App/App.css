@@ -8,6 +8,10 @@ body {
   'sans-serif';
 }
 
+.mainPageText {
+  margin: 1rem;
+}
+
 @font-face {
   font-family: 'gothamBold';
   src: url('gothamBold.otf');
