@@ -8,6 +8,15 @@ class App extends Component {
       cryptocurrencies: []
     }
   }
+
+  componentDidMount() {
+    fetch("https://api.coinpaprika.com/v1/coins")
+    .then(response => response.json())
+    .then(cryptocurrencies => this.setState({
+      cryptocurrencies: cryptocurrencies
+    }))
+  }
+
   render() {
     return (
       <h1>Hello World</h1>
