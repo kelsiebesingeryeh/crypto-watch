@@ -1,7 +1,7 @@
 .cryptocurrencyContainer {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    width: 1200px;
+    grid-gap: 1rem;
+    padding: 1rem;
     margin: auto;
-    justify-items: center;
 }
