@@ -2,6 +2,7 @@ import './App.css'
 import React, {Component} from 'react'
 import Cryptocurrencies from '../Cryptocurrencies/Cryptocurrencies'
 import Nav from '../Nav/Nav'
+import { getAllCoins } from '../../apiCalls'
 
 class App extends Component {
   constructor() {
@@ -12,11 +13,12 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch("https://api.coinpaprika.com/v1/coins")
-    .then(response => response.json())
-    .then(cryptocurrencies => this.setState({
-      cryptocurrencies: cryptocurrencies
-    }))
+    getAllCoins()
+    .then((cryptocurrencies) =>
+      this.setState({
+        cryptocurrencies: cryptocurrencies,
+      })
+    );
   }
 
   render() {
