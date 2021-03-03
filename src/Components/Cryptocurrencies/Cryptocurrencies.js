@@ -1,5 +1,6 @@
 import React from 'react'
 import CryptocurrenciesCard from "../CryptocurrenciesCard/CryptocurrenciesCard"
+import './Cryptocurrencies.css'
 
 const Cryptocurrencies = ({cryptocurrencies}) => {
     const cryptocurrenciesOnDisplay = () => {

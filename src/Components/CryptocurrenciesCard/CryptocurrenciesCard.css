@@ -1,0 +1,18 @@
+.cryptoCards {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    border: 1px solid white;
+    height: 10rem;
+    justify-content: flex-start;
+    padding: 1rem;
+}
+
+.cardStyling {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cardInfo {
+    margin: 0;
+}
