@@ -1,6 +1,7 @@
 import './App.css'
 import React, {Component} from 'react'
 import Cryptocurrencies from '../Cryptocurrencies/Cryptocurrencies'
+import Nav from '../Nav/Nav'
 
 class App extends Component {
   constructor() {
@@ -21,11 +22,12 @@ class App extends Component {
   render() {
     return (
       <main>
-        <Cryptocurrencies
-        cryptocurrencies={this.state.cryptocurrencies} 
-        />
+        <Nav />
+        <h1>Welcome to Crypto Watch</h1>
+        <h2>Watch the revolutionary cryptocurrency movement</h2>
+        <Cryptocurrencies cryptocurrencies={this.state.cryptocurrencies} />
       </main>
-    )
+    );
 
   }
 }

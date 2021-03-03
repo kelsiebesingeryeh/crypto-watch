@@ -1,0 +1,19 @@
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'gothamBold', 'sans-serif';
+}
+
+.leftNav {
+    padding: 1rem;
+}
+
+.rightNav {
+    display: flex;
+    padding-right: 1rem;
+}
+
+.rightNavItems {
+    margin-left: 1rem;
+}
