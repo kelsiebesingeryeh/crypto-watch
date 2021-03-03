@@ -1,0 +1,6 @@
+.cryptocurrencyContainer {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    width: 1200px;
+    margin: auto;
+}
