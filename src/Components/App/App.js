@@ -1,5 +1,6 @@
 import './App.css'
 import React, {Component} from 'react'
+import Cryptocurrencies from '../Cryptocurrencies/Cryptocurrencies'
 
 class App extends Component {
   constructor() {
@@ -19,7 +20,11 @@ class App extends Component {
 
   render() {
     return (
-      <h1>Hello World</h1>
+      <main>
+        <Cryptocurrencies
+        cryptocurrencies={this.state.cryptocurrencies} 
+        />
+      </main>
     )
 
   }
