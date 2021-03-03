@@ -3,21 +3,24 @@ import CryptocurrenciesCard from "../CryptocurrenciesCard/CryptocurrenciesCard"
 
 const Cryptocurrencies = ({cryptocurrencies}) => {
     const cryptocurrenciesOnDisplay = () => {
-       return cryptocurrencies.map(crypto => {
-            return <CryptocurrenciesCard 
-            id={crypto.id}
-            key={crypto.id}
-            name={crypto.name}
-            symbol={crypto.symbol}
-            rank={crypto.rank} 
-            />;
-        })
+    const top100Coins = cryptocurrencies.filter(crypto => crypto.rank > 0 && crypto.rank <= 100)
+       return top100Coins.map((crypto) => {
+         return (
+           <CryptocurrenciesCard
+             id={crypto.id}
+             key={crypto.id}
+             name={crypto.name}
+             symbol={crypto.symbol}
+             rank={crypto.rank}
+           />
+         );
+       });
     }
     return (
       <div className="cryptocurrencyContainer">
-        {cryptocurrenciesOnDisplay}
+        {cryptocurrenciesOnDisplay()}
       </div>
-    );
+    )
 }
 
 export default Cryptocurrencies
