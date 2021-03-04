@@ -15,26 +15,14 @@ const Cryptocurrencies = ({cryptocurrencies}) => {
              rank={crypto.rank}
              price={crypto.quotes.USD.price}
              marketCap={crypto.quotes.USD["market_cap"]}
-             percentChange={crypto.quotes.USD["percent_change_24h"]}
-             circulatingSupply={crypto["circulating_supply"]}
-             volume={crypto.quotes.USD["volume_24h"]}
            />
          );
        });
     }
     return (
-      <table className="cryptoTable">
-        <thead>
-          <th>Rank</th>
-          <th>Name</th>
-          <th>Price</th>
-          <th>24hr</th>
-          <th>Market Cap</th>
-          <th>Volume</th>
-          <th>Circulating Supply</th>
-        </thead>
+      <div className='cryptocurrencyContainer'>
         {cryptocurrenciesOnDisplay()}
-      </table>
+      </div>
     );
 }
 

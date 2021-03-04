@@ -1,11 +1,13 @@
 .cryptoCards {
     display: flex;
     flex-direction: column;
-    width: 300px;
-    border: 1px solid white;
-    height: 10rem;
+    margin-top: 1rem;
+    border: 1px solid black;
+    height: 8rem;
     justify-content: flex-start;
     padding: 1rem;
+    background: white;
+    color: black;
 }
 
 .cardStyling {
