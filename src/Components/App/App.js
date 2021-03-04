@@ -28,7 +28,13 @@ class App extends Component {
       <main>
         <Nav />
         <Route exact path="/" component={Home} />
-        {/* <Cryptocurrencies cryptocurrencies={this.state.cryptocurrencies} /> */}
+        <Route path="/:page"
+        render={({ match }) => {
+          if (match.params.page === 'cryptoMarkets') {
+            return <Cryptocurrencies cryptocurrencies={this.state.cryptocurrencies} />
+          }
+        }}
+      />
       </main>
     );
 
