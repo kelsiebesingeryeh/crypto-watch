@@ -15,5 +15,12 @@
 
 .cardInfo {
     margin: 0;
-    border: 1px solid white;
+}
+
+.rank {
+    border: 1px solid black;
+    padding: .5rem;
+    background: #F7C836;
+    color: black;
+    font-weight: bold;
 }
