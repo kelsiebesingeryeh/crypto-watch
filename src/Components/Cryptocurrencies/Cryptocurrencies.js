@@ -20,9 +20,12 @@ const Cryptocurrencies = ({cryptocurrencies}) => {
        });
     }
     return (
+      <>
+      <h2 className='topFive'>Top 5 Trending Cryptocurrencies</h2>
       <div className='cryptocurrencyContainer'>
         {cryptocurrenciesOnDisplay()}
       </div>
+      </>
     );
 }
 
