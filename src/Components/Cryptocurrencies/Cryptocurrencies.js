@@ -4,7 +4,7 @@ import './Cryptocurrencies.css'
 
 const Cryptocurrencies = ({cryptocurrencies}) => {
     const cryptocurrenciesOnDisplay = () => {
-    const top100Coins = cryptocurrencies.filter(crypto => crypto.rank > 0 && crypto.rank <= 100)
+    const top100Coins = cryptocurrencies.filter(crypto => crypto.rank > 0 && crypto.rank <= 100).sort((a,b) => a.rank - b.rank)
        return top100Coins.map((crypto) => {
          return (
            <CryptocurrenciesCard
