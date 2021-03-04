@@ -1,33 +1,8 @@
-import './App.css'
-import React, {Component} from 'react'
-import Cryptocurrencies from '../Cryptocurrencies/Cryptocurrencies'
-import Nav from '../Nav/Nav'
-import { getAllCoins } from '../../apiCalls'
-import {Route} from 'react-router-dom'
-import Home from '../Home/Home'
+import React from 'react'
 
-class App extends Component {
-  constructor() {
-    super()
-    this.state = {
-      cryptocurrencies: []
-    }
-  }
-
-  componentDidMount() {
-    getAllCoins()
-    .then((cryptocurrencies) =>
-      this.setState({
-        cryptocurrencies: cryptocurrencies,
-      })
-    );
-  }
-
-  render() {
+const Home = () => {
     return (
-      <main>
-        <Nav />
-        <Route exact path="/" component={Home} />
+        <>
         <article className="aboutSection">
           <h1 className="mainPageText header">CryptoWatch</h1>
           <h2 className="mainPageText">
@@ -46,12 +21,8 @@ class App extends Component {
             <p className='cardText'>I'm going to invest in crypto. I'm looking for a exchange that can help me buy crypto.</p>
           </article>
         </div>
-
-        {/* <Cryptocurrencies cryptocurrencies={this.state.cryptocurrencies} /> */}
-      </main>
-    );
-
-  }
+        </>
+    )
 }
 
-export default App;
+export default Home
