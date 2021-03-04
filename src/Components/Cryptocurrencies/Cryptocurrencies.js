@@ -4,7 +4,7 @@ import './Cryptocurrencies.css'
 
 const Cryptocurrencies = ({cryptocurrencies}) => {
     const cryptocurrenciesOnDisplay = () => {
-    const top100Coins = cryptocurrencies.filter(crypto => crypto.rank > 0 && crypto.rank <= 100)
+    const top100Coins = cryptocurrencies.filter(crypto => crypto.rank > 0 && crypto.rank <= 100).sort((a,b) => a.rank - b.rank)
        return top100Coins.map((crypto) => {
          return (
            <CryptocurrenciesCard
@@ -13,15 +13,20 @@ const Cryptocurrencies = ({cryptocurrencies}) => {
              name={crypto.name}
              symbol={crypto.symbol}
              rank={crypto.rank}
+             price={crypto.quotes.USD.price}
+             marketCap={crypto.quotes.USD["market_cap"]}
            />
          );
        });
     }
     return (
-      <div className="cryptocurrencyContainer">
+      <>
+      <h2 className='topFive'>Top 5 Trending Cryptocurrencies</h2>
+      <div className='cryptocurrencyContainer'>
         {cryptocurrenciesOnDisplay()}
       </div>
-    )
+      </>
+    );
 }
 
 export default Cryptocurrencies

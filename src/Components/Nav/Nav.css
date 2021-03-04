@@ -3,6 +3,7 @@ nav {
     justify-content: space-between;
     align-items: center;
     font-family: 'gothamBold', 'sans-serif';
+    background: #5642D9;
 }
 
 .leftNav {

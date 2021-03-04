@@ -2,11 +2,73 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background: #17205C;
+  background: white;
   color: white;
   font-family: "gothamBookRegular",
   'sans-serif';
 }
+
+.mainPageText {
+  margin: 1rem;
+  color: black;
+}
+
+.header {
+  color: white;
+  font-size: 2rem;
+  font-family: 'gothamBold', 'sans-serif';
+}
+
+.aboutSection {
+      background: #5642D9;
+      width: 100%;
+      height: 20rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+}
+
+.sectionContainer {
+      display: flex;
+      /* display: flex; */
+      /* border: 1px solid white; */
+      justify-content: space-evenly;
+      /* margin-top: 13%; */
+      padding: 1rem;
+      /* width: 1200px; */
+      /* height: 270px; */
+      margin: auto;
+      padding-top: 9%;
+}
+
+.mainSection {
+  width: 215px;
+  height: 270px;
+  border-radius: 10px;
+  display: flex;
+  /* align-items: center; */
+  font-weight: bold;
+  padding: 1rem;
+  background: #0D0C52;
+  font-size: 1.25rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.mainPageText {
+  color: white;
+}
+
+.curiousSection {
+  background-color: #530CC8;
+}
+
+.buySection {
+  background-color: #FF8B8B;
+}
+
+/* .cardText {
+  font-size: 2rem;
+} */
 
 @font-face {
   font-family: 'gothamBold';
