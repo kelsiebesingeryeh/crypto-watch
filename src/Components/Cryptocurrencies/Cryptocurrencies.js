@@ -1,25 +1,12 @@
-import React, {Component} from 'react'
+import React from 'react'
 import CryptocurrenciesCard from "../CryptocurrenciesCard/CryptocurrenciesCard"
 import './Cryptocurrencies.css'
-import { getAllCoins } from '../../apiCalls'
 
 
-class Cryptocurrencies extends Component {
-  constructor() {
-    super();
-    this.state = {
-      cryptocurrencies: [],
-    }
-  }
-
-  componentDidMount() {
-    getAllCoins().then((cryptocurrencies) =>
-      this.setState({ cryptocurrencies })
-    )
-  }
-
-  cryptocurrenciesOnDisplay() {
-      const {cryptocurrencies} = this.state
+const Cryptocurrencies = ({cryptocurrencies}) => {
+  
+  
+  const cryptocurrenciesOnDisplay = () => {
       const top100Coins = cryptocurrencies.filter(crypto => crypto.rank > 0 && crypto.rank <= 100).sort((a,b) => a.rank - b.rank)
          return top100Coins.map((crypto) => {
            const {id, name, symbol, rank, quotes} = crypto
@@ -38,7 +25,6 @@ class Cryptocurrencies extends Component {
          })
       }
 
-  render() {
     return (
       <div className='cryptoTableContainer'>
         <p className='cryptoTableHeading'>Cryptocurrency prices for 100 assets</p>
@@ -50,12 +36,11 @@ class Cryptocurrencies extends Component {
               <th>Price</th>
               <th>24HR%Chg</th>
               <th>Market Cap</th>
-            {this.cryptocurrenciesOnDisplay()}
+            {cryptocurrenciesOnDisplay()}
             </tbody>
           </table>
       </div>
     )
-  }
 }
     
 export default Cryptocurrencies

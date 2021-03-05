@@ -5,6 +5,7 @@ import Nav from '../Nav/Nav'
 import {Route} from 'react-router-dom'
 import Home from '../Home/Home'
 import CryptocurrencyDetails from '../CryptocurrencyDetails/CryptocurrencyDetails'
+import { getAllCoins } from "../../apiCalls"
 
 const App = () => {
     return (
@@ -31,3 +32,9 @@ const App = () => {
   }
 
 export default App;
+
+// componentDidMount() {
+//     getAllCoins().then((cryptocurrencies) =>
+//       this.setState({ cryptocurrencies })
+//     )
+//   }
