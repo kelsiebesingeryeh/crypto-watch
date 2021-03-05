@@ -20,26 +20,11 @@ const CryptocurrenciesCard = ({
       <td>{rank}</td>
       <td>{name}</td>
       <td>{symbol}</td>
-      <td>{price}</td>
+      <td>${stylePrice}</td>
       <td>{marketCap}</td>
       <td>{percentChange}</td>
     </tr>
-    // <div className="cryptoCards">
-    //   <span className="cardStyling">
-    //     <p className="cardInfo rank">{rank}</p>
-    //     <p className="cardInfo">
-    //       {name} <strong>({symbol})</strong>
-    //     </p>
-    //   </span>
-    //   <span className="pricingStyling">
-    //     <p>
-    //       <strong>${stylePrice}</strong>
-    //     </p>
-    //     <p>{percentChange}%</p>
-    //     <p>{marketCap}</p>
-    //   </span>
-    // </div>
-  );
-};
+  )
+}
 
 export default CryptocurrenciesCard
