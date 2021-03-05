@@ -26,7 +26,7 @@ class App extends Component {
         <main>
           <Nav />
           <Route exact path="/" component={Home} />
-          <Route path="/cryptocurrencies" component={() => <Cryptocurrencies cryptocurrencies={this.state.cryptocurrencies}/>} />
+          <Route exact path="/cryptocurrencies" component={() => <Cryptocurrencies cryptocurrencies={this.state.cryptocurrencies}/>} />
           <Route
             exact
             path={"/cryptocurrencies/:id"}
@@ -34,7 +34,7 @@ class App extends Component {
               const id = parseInt(match.params.id)
               return (
                 <div className='cryptocurrencyDetailsContainer'>
-                  <CryptocurrencyDetails id={id}/>
+                  <CryptocurrencyDetails id={id} cryptocurrencies={this.state.cryptocurrencies}/>
                 </div>
               )
             }
