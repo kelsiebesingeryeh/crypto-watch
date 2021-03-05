@@ -1,8 +1,16 @@
-import { render } from '@testing-library/react';
+import { render } from '@testing-library/react'
 import React, {Component} from 'react'
 import CryptocurrenciesCard from "../CryptocurrenciesCard/CryptocurrenciesCard"
 import './Cryptocurrencies.css'
 import { getAllCoins } from '../../apiCalls'
+import { makeStyles } from "@material-ui/core/styles"
+import Table from "@material-ui/core/Table"
+import TableBody from "@material-ui/core/TableBody"
+import TableCell from "@material-ui/core/TableCell"
+import TableContainer from "@material-ui/core/TableContainer"
+import TableHead from "@material-ui/core/TableHead"
+import TableRow from "@material-ui/core/TableRow"
+import Paper from "@material-ui/core/Paper"
 
 class Cryptocurrencies extends Component {
     constructor() {
@@ -42,20 +50,11 @@ class Cryptocurrencies extends Component {
     render() {
       return (
         <>
-          <div className="cryptocurrencyContainer">
-            <div className='headingContainer'>
-              <span className="crytpoHeadingsLeft">
-                <p className="marketHeadingLeft">#</p>
-                <p className="marketHeadingLeft">Cryptocurrency</p>
-              </span>
-              <span className="crytpoHeadingsRight">
-                <p className="marketHeadingRight">Price</p>
-                <p className="marketHeadingRight">24H%Chg</p>
-                <p className="marketHeadingRight">Market Cap</p>
-              </span>
-            </div>
+          <table>
+            <tbody>
             {this.cryptocurrenciesOnDisplay()}
-          </div>
+            </tbody>
+          </table>
         </>
       );
     }
