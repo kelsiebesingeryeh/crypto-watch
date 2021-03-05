@@ -12,6 +12,7 @@ const Home = () => {
           </h2>
           <h3 className="mainPageText">Mission Statement</h3>
         </article>
+
         <div className="sectionContainer">
           <Link to="cryptopedia">
             <article className="beginnerSection mainSection">
@@ -21,6 +22,7 @@ const Home = () => {
               </p>
             </article>
           </Link>
+
           <Link to="cryptoMarkets">
             <article className="curiousSection mainSection">
               <p className="cardText">
@@ -29,6 +31,7 @@ const Home = () => {
               </p>
             </article>
           </Link>
+
           <Link to="cryptoExchanges">
             <article className="buySection mainSection">
               <p className="cardText">
@@ -37,6 +40,7 @@ const Home = () => {
               </p>
             </article>
           </Link>
+          
         </div>
       </>
     );
