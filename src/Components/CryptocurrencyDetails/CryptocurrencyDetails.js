@@ -19,7 +19,7 @@ class CryptocurrencyDetails extends Component {
     linkItems() {
       return this.state.currentCoin.links.explorer.map(coin => {  
         return (
-          <ul>
+          <ul className='itemList'>
             <li>
               <a href={coin}></a>
               {coin}
@@ -32,7 +32,7 @@ class CryptocurrencyDetails extends Component {
     tagItems() {
         return this.state.currentCoin.tags.map(coin => {
             return (
-              <ul>
+              <ul className='itemList'>
                 <li>{coin.name}</li>
               </ul>
             )
@@ -42,7 +42,7 @@ class CryptocurrencyDetails extends Component {
     teamItems() {
         return this.state.currentCoin.team.map(coin => {
             return (
-              <ul>
+              <ul className='itemList'>
                 <li>
                   {coin.name}, {coin.position}
                 </li>

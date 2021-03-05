@@ -1,3 +1,7 @@
+.coinDetails {
+    padding: 2rem;
+}
+
 .listItemWrapper {
     display: flex;
     flex-direction: column;
@@ -5,4 +9,10 @@
 
 .listContainer {
     display: flex;
+}
+
+.itemList {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
