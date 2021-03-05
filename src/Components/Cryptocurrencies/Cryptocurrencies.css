@@ -30,4 +30,23 @@
 
 .cryptoTable {
     color: black;
+    margin: 0;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table,
+th,
+td {
+    border: 1px solid grey;
+    padding: 1rem;
+    text-align: left;
+    line-height: 2rem;
+}
+
+.cryptoTableContainer {
+    padding: 2rem;
 }
