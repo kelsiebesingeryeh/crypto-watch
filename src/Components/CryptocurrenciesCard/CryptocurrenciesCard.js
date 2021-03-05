@@ -1,5 +1,6 @@
 import React from 'react'
 import "./CryptocurrenciesCard.css"
+import { Link } from 'react-router-dom'
 
 const CryptocurrenciesCard = ({
   id,
@@ -18,7 +19,9 @@ const CryptocurrenciesCard = ({
   return (
     <tr>
       <td>{rank}</td>
-      <td>{name}</td>
+      <Link to={`/cryptocurrencies/${id}`} className='cryptoName'>
+        <td id={id}>{name}</td>
+      </Link>
       <td>{symbol}</td>
       <td>${stylePrice}</td>
       <td>{marketCap}</td>

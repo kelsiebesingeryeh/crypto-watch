@@ -17,17 +17,15 @@ const Home = () => {
           <Link to="cryptopedia">
             <article className="beginnerSection mainSection">
               <p className="cardText">
-                I'm new to crypto. I need some explanation on how everything
-                works.
+                I'm new to crypto. I'd like to learn more about how everything works.
               </p>
             </article>
           </Link>
 
-          <Link to="cryptoMarkets">
+          <Link to="cryptocurrencies">
             <article className="curiousSection mainSection">
               <p className="cardText">
-                I'm curious about crypto. I would like to view live prices and
-                how the market is moving.
+                I'm curious about crypto. I'd like to learn more about pricing and how the markets look.
               </p>
             </article>
           </Link>
@@ -35,12 +33,10 @@ const Home = () => {
           <Link to="cryptoExchanges">
             <article className="buySection mainSection">
               <p className="cardText">
-                I'm going to invest in crypto. I'm looking for a exchange that
-                can help me buy crypto.
+                I'm investing in crypto. I'm like to learn more about exchanges and how to buy crypto.
               </p>
             </article>
           </Link>
-          
         </div>
       </>
     );

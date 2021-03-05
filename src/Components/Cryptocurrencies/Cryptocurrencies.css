@@ -51,5 +51,8 @@ td {
     color: black;
     font-weight: bold;
     font-size: 1.5rem;
-    padding: 1rem;
+}
+
+.cryptoTableContainer {
+    padding: 2rem;
 }
