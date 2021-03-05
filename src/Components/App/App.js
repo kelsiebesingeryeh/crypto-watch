@@ -4,13 +4,27 @@ import Cryptocurrencies from '../Cryptocurrencies/Cryptocurrencies'
 import Nav from '../Nav/Nav'
 import {Route} from 'react-router-dom'
 import Home from '../Home/Home'
+import CryptocurrencyDetails from '../CryptocurrencyDetails/CryptocurrencyDetails'
 
 const App = () => {
     return (
       <main>
         <Nav />
         <Route exact path="/" component={Home} />
-        <Route path="/cryptoMarkets" component={Cryptocurrencies} />
+        <Route path="/cryptocurrencies" component={Cryptocurrencies} />
+        <Route
+          exact
+          path={"/cryptocurrencies/:id"}
+          render={({ match }) => {
+            const id = parseInt(match.params.id)
+            return (
+              <div className='cryptocurrencyDetailsContainer'>
+                <CryptocurrencyDetails id={id}/>
+              </div>
+            )
+          }
+        }
+        />
       </main>
     );
 

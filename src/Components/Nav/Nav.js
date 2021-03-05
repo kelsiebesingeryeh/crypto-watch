@@ -8,19 +8,19 @@ const Nav = () => {
     return (
       <nav className="navContainer">
         <div className="leftNav">
-            <Link to='/'>
-                <img src={home} alt="chain" className="navIcon"></img>
-            </Link>
+          <Link to="/">
+            <img src={home} alt="chain" className="navIcon"></img>
+          </Link>
           <img src={search} alt="search" className="navIcon"></img>
         </div>
         <div className="rightNav">
           <Link to="cryptopedia">
             <p className="rightNavItems">Cryptopedia</p>
           </Link>
-          <Link to="cryptoMarkets">
+          <Link to="cryptocurrencies">
             <p className="rightNavItems">Markets</p>
           </Link>
-          <Link to='cryptoExchanges'>
+          <Link to="cryptoExchanges">
             <p className="rightNavItems">Exchanges</p>
           </Link>
           <p className="rightNavItems">My Watch List</p>

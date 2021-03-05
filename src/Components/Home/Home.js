@@ -23,7 +23,7 @@ const Home = () => {
             </article>
           </Link>
 
-          <Link to="cryptoMarkets">
+          <Link to="cryptocurrencies">
             <article className="curiousSection mainSection">
               <p className="cardText">
                 I'm curious about crypto. I would like to view live prices and
@@ -40,7 +40,6 @@ const Home = () => {
               </p>
             </article>
           </Link>
-          
         </div>
       </>
     );
