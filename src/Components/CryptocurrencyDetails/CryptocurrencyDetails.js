@@ -12,12 +12,15 @@ class CryptocurrencyDetails extends Component {
 
     componentDidMount() {
      getACoin(this.state.id)
+     .then(currentCoin => this.setState({currentCoin}))
     }
 
     render() {
         return (
-            <h1>Hi</h1>
-        )
+          <section className="coinDetails">
+            {this.state.currentCoin && <p>{this.state.currentCoin.name}</p>}
+          </section>
+        );
 
     }
 }

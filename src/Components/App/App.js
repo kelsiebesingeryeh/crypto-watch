@@ -34,7 +34,7 @@ class App extends Component {
               const id = match.params.id
               return (
                 <div className='cryptocurrencyDetailsContainer'>
-                  <CryptocurrencyDetails id={id} cryptocurrencies={this.state.cryptocurrencies}/>
+                  <CryptocurrencyDetails id={id}/>
                 </div>
               )
             }
