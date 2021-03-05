@@ -1,29 +1,11 @@
 import './App.css'
-import React, {Component} from 'react'
+import React from 'react'
 import Cryptocurrencies from '../Cryptocurrencies/Cryptocurrencies'
 import Nav from '../Nav/Nav'
-
 import {Route} from 'react-router-dom'
 import Home from '../Home/Home'
 
-class App extends Component {
-  // constructor() {
-  //   super()
-  //   this.state = {
-  //     cryptocurrencies: []
-  //   }
-  // }
-
-  // componentDidMount() {
-  //   getAllCoins()
-  //   .then((cryptocurrencies) =>
-  //     this.setState({
-  //       cryptocurrencies: cryptocurrencies,
-  //     })
-  //   );
-  // }
-
-  render() {
+const App = () => {
     return (
       <main>
         <Nav />
@@ -33,6 +15,5 @@ class App extends Component {
     );
 
   }
-}
 
 export default App;
