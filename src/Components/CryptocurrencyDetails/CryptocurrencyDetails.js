@@ -19,10 +19,9 @@ class CryptocurrencyDetails extends Component {
     linkItems() {
       return this.state.currentCoin.links.explorer.map(coin => {  
         return (
-          <ul className='itemList'>
+          <ul className="itemList">
             <li>
-              <a href={coin}></a>
-              {coin}
+              <a href={coin} target='_blank' className='coinLinks'>{coin}</a>
             </li>
           </ul>
         );
@@ -58,7 +57,7 @@ class CryptocurrencyDetails extends Component {
               <section className="coinDetails">
                 <h1>{this.state.currentCoin.name}</h1>
                 <h2>Price</h2>
-                <p>{this.state.currentCoin.description}</p>
+                <p className='coinDescription'>{this.state.currentCoin.description}</p>
                 <div className='listContainer'>
                     <div className="listItemWrapper">
                     <p>Helpful Links</p>
