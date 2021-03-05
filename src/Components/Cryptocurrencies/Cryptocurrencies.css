@@ -27,3 +27,7 @@
 .headingContainer {
     display: flex;
 }
+
+.cryptoTable {
+    color: black;
+}
