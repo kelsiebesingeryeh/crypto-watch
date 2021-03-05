@@ -2,7 +2,7 @@ import './App.css'
 import React, { Component } from 'react'
 import Cryptocurrencies from '../Cryptocurrencies/Cryptocurrencies'
 import Nav from '../Nav/Nav'
-import {Route} from 'react-router-dom'
+import {Route, Redirect} from 'react-router-dom'
 import Home from '../Home/Home'
 import CryptocurrencyDetails from '../CryptocurrencyDetails/CryptocurrencyDetails'
 import { getAllCoins } from "../../apiCalls"
@@ -28,7 +28,17 @@ class App extends Component {
       return (
         <main>
           <Nav />
-          <Route exact path="/" component={Home} />
+          <Route exact path='/error' render={() => <Error />}/>
+          
+          <Route exact path="/" 
+          render={() => {
+            if (!this.state.cryptocurrencies.length && this.state.error) {
+              return <Redirect to='/error'/>
+            } else {
+              return <Home />
+            }
+          }}
+          />
           <Route exact path="/cryptocurrencies" component={() => <Cryptocurrencies cryptocurrencies={this.state.cryptocurrencies}/>} />
           <Route
             exact

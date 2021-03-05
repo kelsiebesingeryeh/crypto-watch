@@ -1,6 +1,6 @@
 export const getAllCoins = () => {
     return (
-        fetch("https://api.coinpaprika.com/v1/tickers")
+        fetch("https://api.coinpaprika.com/v1/tick")
         .then(response => response.json())
     )
 }
