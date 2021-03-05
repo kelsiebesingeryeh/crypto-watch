@@ -6,12 +6,14 @@ import {Route} from 'react-router-dom'
 import Home from '../Home/Home'
 import CryptocurrencyDetails from '../CryptocurrencyDetails/CryptocurrencyDetails'
 import { getAllCoins } from "../../apiCalls"
+import Error from '../Error/Error'
 
 class App extends Component {
   constructor() {
     super()
     this.state = {
-      cryptocurrencies: []
+      cryptocurrencies: [],
+      error: false
     }
   }
 
@@ -19,6 +21,7 @@ class App extends Component {
       getAllCoins().then((cryptocurrencies) =>
         this.setState({ cryptocurrencies })
       )
+      .catch(error => this.setState({error: true}))
     }
 
     render() {
