@@ -8,9 +8,12 @@ const CryptocurrenciesCard = ({
   rank,
   price,
   marketCap,
+  percentChange,
 }) => {
-  const stylePrice = price.toFixed(2).replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
-  const styleMarketCap = Math.abs(Number(marketCap)) >= 1.0e9;
+  const stylePrice = price
+    .toFixed(2)
+    .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")
+  const styleMarketCap = Math.abs(Number(marketCap)) >= 1.0e9
 
   return (
     <div className="cryptoCards">
@@ -20,10 +23,13 @@ const CryptocurrenciesCard = ({
           {name} <strong>({symbol})</strong>
         </p>
       </span>
-      <p className="price">
-        <strong>${stylePrice}</strong>
-      </p>
-      <p>Market Cap: {styleMarketCap}</p>
+      <span className="pricingStyling">
+        <p>
+          <strong>${stylePrice}</strong>
+        </p>
+        <p>{percentChange}%</p>
+        <p>{marketCap}</p>
+      </span>
     </div>
   );
 };
