@@ -31,7 +31,7 @@ class App extends Component {
             exact
             path={"/cryptocurrencies/:id"}
             render={({ match }) => {
-              const id = parseInt(match.params.id)
+              const id = match.params.id
               return (
                 <div className='cryptocurrencyDetailsContainer'>
                   <CryptocurrencyDetails id={id} cryptocurrencies={this.state.cryptocurrencies}/>

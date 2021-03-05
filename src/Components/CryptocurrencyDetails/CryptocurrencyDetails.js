@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { getACoin } from '../../apiCalls'
 
 class CryptocurrencyDetails extends Component {
     constructor(props) {
@@ -7,6 +8,10 @@ class CryptocurrencyDetails extends Component {
             currentCoin: null,
             id: this.props.id,
         }
+    }
+
+    componentDidMount() {
+     getACoin(this.state.id)
     }
 
     render() {

@@ -5,3 +5,8 @@ export const getAllCoins = () => {
     )
 }
 
+export const getACoin = (id) => {
+    return fetch(`https://api.coinpaprika.com/v1/coins/${id}`)
+    .then(response => response.json())
+}
+
