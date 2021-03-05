@@ -1,0 +1,8 @@
+.listItemWrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.listContainer {
+    display: flex;
+}
