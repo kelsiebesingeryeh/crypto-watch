@@ -1,10 +1,29 @@
 .cryptocurrencyContainer {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 2fr));
-    grid-gap: 2rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.crytpoHeadingsLeft {
+    color: black;
+    display: flex;
     padding: 1rem;
 }
 
-.topFive {
-    margin: 1rem;
+.marketHeadingLeft {
+    margin-right: 1rem;
+}
+
+.crytpoHeadingsRight {
+    color: black;
+    display: flex;
+    padding: 1rem;
+}
+
+.marketHeadingRight {
+    margin-left: 1rem;
+}
+
+.headingContainer {
+    display: flex;
 }

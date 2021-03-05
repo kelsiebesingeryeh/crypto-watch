@@ -1,18 +1,15 @@
 .cryptoCards {
     display: flex;
-    flex-direction: column;
-    border: 1px solid white;
-    justify-content: flex-start;
+    /* flex-direction: column; */
+    border-bottom: 1px solid black;
+    /* justify-content: flex-start; */
     padding: 1rem;
     background: white;
     color: black;
-    border-radius: 1rem;
-    box-shadow: 10px 10px #444C7D;
 }
 
 .cardStyling {
     display: flex;
-    align-items: center;
 }
 
 .cardInfo {
@@ -20,15 +17,8 @@
     margin-right: 1rem;
 }
 
-.rank {
-    border: 1px solid black;
-    padding: .5rem;
-    background: #F7C836;
-    color: black;
-    font-weight: bold;
-}
-
-.price {
+.pricingStyling {
+    display: flex;
     font-size: 1.5rem;
 }
 
