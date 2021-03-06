@@ -10,3 +10,10 @@ export const getACoin = (id) => {
     .then(response => response.json())
 }
 
+export const getAllExchanges = () => {
+   return (
+    fetch("https://api.coinpaprika.com/v1/exchanges")
+    .then(response => response.json())
+   ) 
+}
+

@@ -30,7 +30,7 @@ const Home = () => {
             </article>
           </Link>
 
-          <Link to="cryptoExchanges">
+          <Link to="exchanges">
             <article className="buySection mainSection">
               <p className="cardText">
                 I'm investing in crypto. I'm like to learn more about exchanges and how to buy crypto.

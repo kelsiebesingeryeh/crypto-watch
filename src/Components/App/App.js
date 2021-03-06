@@ -7,6 +7,7 @@ import Home from '../Home/Home'
 import CryptocurrencyDetails from '../CryptocurrencyDetails/CryptocurrencyDetails'
 import { getAllCoins } from "../../apiCalls"
 import Error from '../Error/Error'
+import Exchanges from '../Exchanges/Exchanges'
 
 class App extends Component {
   constructor() {
@@ -64,9 +65,10 @@ class App extends Component {
                     isLoading={this.state.isLoading}
                   />
                 </div>
-              );
+              )
             }}
           />
+          <Route exact path='/exchanges' component={Exchanges}/>
         </main>
       );
     }

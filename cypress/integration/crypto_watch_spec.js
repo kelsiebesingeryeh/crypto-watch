@@ -45,6 +45,14 @@ it('Should be able to click into a section and be taken to another page', () => 
       .location("pathname")
       .should("eq", "/cryptocurrencies");
 })
+
+it('Should be able to click into a section and be taken to another page', () => {
+    cy.visit(baseURL)
+    .get('.buySection')
+    .click()
+    .location('pathname')
+    .should('eq', '/exchanges')
+})
 //do one for buy and beginner
 })
 
@@ -84,7 +92,7 @@ describe('Cryptocurrencies', () => {
     })
 })
 
-describe.only("CryptocurrencyDetails", () => {
+describe("CryptocurrencyDetails", () => {
   const baseURL = "http://localhost:3000";
 
   it("should be able to click into a cryptocurrency name and be taken to a details page", () => {
@@ -98,7 +106,7 @@ describe.only("CryptocurrencyDetails", () => {
       .click()
   })
 
-  it.only("should be able to view a coins details", () => {
+  it("should be able to view a coins details", () => {
     cy.fixture("testCryptoData.json").then((cryptoData) => {
       cy.intercept("GET", "https://api.coinpaprika.com/v1/tickers", cryptoData)
     })
@@ -114,6 +122,39 @@ describe.only("CryptocurrencyDetails", () => {
       .get(".coinDescription")
       .should("be.visible")
       .get(".listItemWrapper").should('be.visible')
+  })
+})
+
+describe.only("Exchanges", () => {
+  const baseURL = "http://localhost:3000"
+
+  it("should be able to view a list of all exchanges", () => {
+    cy.fixture("testExchangeData.json").then((exchangeData) => {
+      cy.intercept(
+        "GET",
+        "https://api.coinpaprika.com/v1/exchanges",
+        exchangeData
+      );
+    });
+    cy.visit(baseURL)
+      .get(".buySection")
+      .click()
+      .get(".cryptoTableHeading")
+      .should("contain", "Cryptocurrency Exchanges")
+      .get(".cryptoTable")
+      .should("be.visible")
+      .get(".cryptoTable, tbody, th")
+      .should(
+        "contain",
+        "Exchange Name",
+        "Exchange Score",
+        "Volume(24H)",
+        "# Markets",
+        "# Coins",
+        "Fiats Supported"
+      )
+      .get(".cryptoTable, tbody, td")
+      .should("be.visible");
   })
 })
 
