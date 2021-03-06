@@ -45,67 +45,23 @@ class Exchanges extends Component {
       <>
         {this.state.isLoading && <Loading />}
         {this.state.error && <Error />}
-        <h1>Exchanges</h1>
-        {this.exchangesOnDisplay()}
+        <div className="cryptoTableContainer">
+          <p className="cryptoTableHeading">Cryptocurrency Exchanges</p>
+          <table className="cryptoTable">
+            <tbody>
+              <th>Cryptocurrency</th>
+              <th>Exchange Score</th>
+              <th>Volume(24H)</th>
+              <th># Markets</th>
+              <th># Coins</th>
+              <th>Fiats Supported</th>
+              {this.exchangesOnDisplay()}
+            </tbody>
+          </table>
+        </div>
       </>
-    );
+    )
   }
 }
 
 export default Exchanges
-
-// import React from "react";
-// import CryptocurrenciesCard from "../CryptocurrenciesCard/CryptocurrenciesCard";
-// import "./Cryptocurrencies.css";
-// import Error from "../Error/Error";
-// import Loading from "../Loading/Loading";
-
-// const Cryptocurrencies = ({ cryptocurrencies, isLoading }) => {
-//   const cryptocurrenciesOnDisplay = () => {
-//     const top100Coins = cryptocurrencies
-//       .filter((crypto) => crypto.rank > 0 && crypto.rank <= 100)
-//       .sort((a, b) => a.rank - b.rank);
-//     return top100Coins.map((crypto) => {
-//       const { id, name, symbol, rank, quotes } = crypto;
-//       return (
-//         <CryptocurrenciesCard
-//           id={id}
-//           key={id}
-//           name={name}
-//           symbol={symbol}
-//           rank={rank}
-//           price={quotes.USD.price}
-//           marketCap={quotes.USD["market_cap"]}
-//           percentChange={quotes.USD["percent_change_24h"]}
-//         />
-//       );
-//     });
-//   };
-
-//   if (isLoading && !cryptocurrencies.length) {
-//     return <Loading />;
-//   } else if (!cryptocurrencies.length) {
-//     return <Error />;
-//   } else if (cryptocurrencies.length) {
-//     return (
-//       <div className="cryptoTableContainer">
-//         <p className="cryptoTableHeading">
-//           Cryptocurrency prices for 100 assets
-//         </p>
-//         <table className="cryptoTable">
-//           <tbody>
-//             <th>Rank</th>
-//             <th>Cryptocurrency</th>
-//             <th>Symbol</th>
-//             <th>Price</th>
-//             <th>24HR%Chg</th>
-//             <th>Market Cap</th>
-//             {cryptocurrenciesOnDisplay()}
-//           </tbody>
-//         </table>
-//       </div>
-//     );
-//   }
-// };
-
-// export default Cryptocurrencies;
