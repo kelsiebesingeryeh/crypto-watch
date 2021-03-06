@@ -1,0 +1,101 @@
+[
+    {
+        "id": "btc-bitcoin",
+        "name": "Bitcoin",
+        "symbol": "BTC",
+        "rank": 1,
+        "circulating_supply": 18646544,
+        "total_supply": 18646544,
+        "max_supply": 21000000,
+        "beta_value": 1.02413,
+        "first_data_at": "2010-07-17T00:00:00Z",
+        "last_updated": "2021-03-06T17:51:45Z",
+        "quotes": {
+            "USD": {
+                "price": 48043.98038308,
+                "volume_24h": 34563070118.059,
+                "volume_24h_change_24h": -31.15,
+                "market_cap": 895854194148,
+                "market_cap_change_24h": -0.21,
+                "percent_change_15m": -0.39,
+                "percent_change_30m": 0.44,
+                "percent_change_1h": 0.55,
+                "percent_change_6h": -0.34,
+                "percent_change_12h": -1.01,
+                "percent_change_24h": -0.21,
+                "percent_change_7d": 2.15,
+                "percent_change_30d": 31.13,
+                "percent_change_1y": 430.92,
+                "ath_price": 58278.65277964,
+                "ath_date": "2021-02-21T19:12:21Z",
+                "percent_from_price_ath": -17.56
+            }
+        }
+    },
+    {
+        "id": "miota-iota",
+        "name": "IOTA",
+        "symbol": "MIOTA",
+        "rank": 20,
+        "circulating_supply": 2779530283,
+        "total_supply": 2779530283,
+        "max_supply": 2779530283,
+        "beta_value": 1.09969,
+        "first_data_at": "2017-06-13T00:00:00Z",
+        "last_updated": "2021-03-06T17:51:45Z",
+        "quotes": {
+            "USD": {
+                "price": 1.31365647,
+                "volume_24h": 167711191.96145,
+                "volume_24h_change_24h": -66.65,
+                "market_cap": 3651347939,
+                "market_cap_change_24h": -3.78,
+                "percent_change_15m": -0.18,
+                "percent_change_30m": 0.15,
+                "percent_change_1h": 0.37,
+                "percent_change_6h": -0.95,
+                "percent_change_12h": 0.98,
+                "percent_change_24h": -3.78,
+                "percent_change_7d": 10.4,
+                "percent_change_30d": 203.07,
+                "percent_change_1y": 468.32,
+                "ath_price": 5.69002,
+                "ath_date": "2017-12-19T20:09:00Z",
+                "percent_from_price_ath": -76.91
+            }
+        }
+    },
+    {
+        "id": "eos-eos",
+        "name": "EOS",
+        "symbol": "EOS",
+        "rank": 24,
+        "circulating_supply": 953381093,
+        "total_supply": 1027602811,
+        "max_supply": 0,
+        "beta_value": 1.00295,
+        "first_data_at": "2017-07-01T00:00:00Z",
+        "last_updated": "2021-03-06T17:51:45Z",
+        "quotes": {
+            "USD": {
+                "price": 3.67343634,
+                "volume_24h": 1485071341.7509,
+                "volume_24h_change_24h": -29.82,
+                "market_cap": 3502184752,
+                "market_cap_change_24h": -0.59,
+                "percent_change_15m": -0.22,
+                "percent_change_30m": 0.01,
+                "percent_change_1h": 0.03,
+                "percent_change_6h": -0.95,
+                "percent_change_12h": -1.38,
+                "percent_change_24h": -0.6,
+                "percent_change_7d": -3.13,
+                "percent_change_30d": 20.92,
+                "percent_change_1y": -2.39,
+                "ath_price": 22.8904,
+                "ath_date": "2018-04-29T07:41:03Z",
+                "percent_from_price_ath": -83.95
+            }
+        }
+    }
+]

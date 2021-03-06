@@ -36,6 +36,58 @@ it('Should see three cards display with text on the homepage', () => {
       .should("be.visible")
       .get(".cardText")
       .should("be.visible");
+    })
+
+it('Should be able to click into a section and be taken to another page', () => {
+    cy.visit(baseURL)
+      .get(".curiousSection")
+      .click()
+      .location("pathname")
+      .should("eq", "/cryptocurrencies");
+})
+//do one for buy and beginner
 })
 
+describe.only('Cryptocurrencies', () => {
+    const baseURL = "http://localhost:3000/cryptocurrencies/"
+
+    it ('should see a subheading on the cryptocurrencies page', () => {
+        cy.fixture('testCryptoData.json')
+        .then((cryptoData) => {
+            cy.intercept(
+              "GET",
+              "https://api.coinpaprika.com/v1/tickers",
+              cryptoData
+            )
+        })
+        cy.visit("http://localhost:3000")
+          .get(".curiousSection")
+          .click()
+          .location("pathname")
+          .should("eq", "/cryptocurrencies")
+          .get(".cryptoTableHeading").should('contain', 'Cryptocurrency prices for 100 assets')
+    })
+
+    it("should see a table with data on the cryptocurrencies page", () => {
+      cy.fixture("testCryptoData.json").then((cryptoData) => {
+        cy.intercept(
+          "GET",
+          "https://api.coinpaprika.com/v1/tickers",
+          cryptoData
+        );
+      });
+      cy.visit("http://localhost:3000")
+        .get(".curiousSection")
+        .click()
+        .get(".cryptoTable, tbody, th")
+        .should("contain", "Rank", "Cryptocurrency", "Symbol", "Price", "24HR%Chg", "Market Cap")
+        .get('.cryptoTable, tbody, td')
+        .should('be.visible')
+    });
 })
+
+
+
+
+
+// add clickable elements in nav bar
