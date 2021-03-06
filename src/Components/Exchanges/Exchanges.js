@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { getAllExchanges } from '../../apiCalls'
 import ExchangeDetails from '../ExchangeDetails/ExchangeDetails'
+import Loading from '../Loading/Loading'
 
 class Exchanges extends Component {
     constructor() {
@@ -13,7 +14,7 @@ class Exchanges extends Component {
     }
 
     componentDidMount() {
-        getAllExchanges().then(exchanges => this.setState({exchanges}))
+        getAllExchanges().then(exchanges => this.setState({exchanges, isLoading: false}))
     }
 
     exchangesOnDisplay() {
@@ -36,7 +37,8 @@ class Exchanges extends Component {
 
     render() {
         return (
-          <>
+            <>
+            {this.state.isLoading && <Loading />}
             <h1>Exchanges</h1>
             {this.exchangesOnDisplay()}
           </>
@@ -46,9 +48,6 @@ class Exchanges extends Component {
 
 export default Exchanges
 
-// {
-//   this.state.isLoading && <Loading />;
-// }
 // {
 //   this.state.error && <Error />;
 // }
