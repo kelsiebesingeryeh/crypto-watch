@@ -48,8 +48,8 @@ it('Should be able to click into a section and be taken to another page', () => 
 //do one for buy and beginner
 })
 
-describe.only('Cryptocurrencies', () => {
-    const baseURL = "http://localhost:3000/cryptocurrencies/"
+describe('Cryptocurrencies', () => {
+    const baseURL = "http://localhost:3000"
 
     it ('should see a subheading on the cryptocurrencies page', () => {
         cy.fixture('testCryptoData.json')
@@ -60,11 +60,9 @@ describe.only('Cryptocurrencies', () => {
               cryptoData
             )
         })
-        cy.visit("http://localhost:3000")
+        cy.visit(baseURL)
           .get(".curiousSection")
           .click()
-          .location("pathname")
-          .should("eq", "/cryptocurrencies")
           .get(".cryptoTableHeading").should('contain', 'Cryptocurrency prices for 100 assets')
     })
 
@@ -74,16 +72,49 @@ describe.only('Cryptocurrencies', () => {
           "GET",
           "https://api.coinpaprika.com/v1/tickers",
           cryptoData
-        );
-      });
-      cy.visit("http://localhost:3000")
+        )
+      })
+      cy.visit(baseURL)
         .get(".curiousSection")
         .click()
         .get(".cryptoTable, tbody, th")
         .should("contain", "Rank", "Cryptocurrency", "Symbol", "Price", "24HR%Chg", "Market Cap")
         .get('.cryptoTable, tbody, td')
         .should('be.visible')
-    });
+    })
+})
+
+describe.only("CryptocurrencyDetails", () => {
+  const baseURL = "http://localhost:3000";
+
+  it("should be able to click into a cryptocurrency name and be taken to a details page", () => {
+    cy.fixture("testCryptoData.json").then((cryptoData) => {
+      cy.intercept("GET", "https://api.coinpaprika.com/v1/tickers", cryptoData)
+    })
+    cy.visit(baseURL)
+      .get(".curiousSection")
+      .click()
+      .get("#btc-bitcoin")
+      .click()
+  })
+
+  it.only("should be able to view a coins details", () => {
+    cy.fixture("testCryptoData.json").then((cryptoData) => {
+      cy.intercept("GET", "https://api.coinpaprika.com/v1/tickers", cryptoData)
+    })
+    cy.visit(baseURL)
+      .get(".curiousSection")
+      .click()
+      .get("#btc-bitcoin")
+      .click()
+      .get("h1")
+      .should("contain", "Bitcoin")
+      .get("h2")
+      .should("be.visible")
+      .get(".coinDescription")
+      .should("be.visible")
+      .get(".listItemWrapper").should('be.visible')
+  })
 })
 
 
@@ -91,3 +122,6 @@ describe.only('Cryptocurrencies', () => {
 
 
 // add clickable elements in nav bar
+// maybe get a little more detailed with the list items
+// test loading component
+// test error component
