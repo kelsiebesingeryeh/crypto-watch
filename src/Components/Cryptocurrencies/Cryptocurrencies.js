@@ -1,10 +1,10 @@
 import React from 'react'
 import CryptocurrenciesCard from "../CryptocurrenciesCard/CryptocurrenciesCard"
 import './Cryptocurrencies.css'
+import Error from '../Error/Error'
 
 
 const Cryptocurrencies = ({cryptocurrencies}) => {
-  
   
   const cryptocurrenciesOnDisplay = () => {
       const top100Coins = cryptocurrencies.filter(crypto => crypto.rank > 0 && crypto.rank <= 100).sort((a,b) => a.rank - b.rank)
@@ -25,22 +25,28 @@ const Cryptocurrencies = ({cryptocurrencies}) => {
          })
       }
 
-    return (
-      <div className='cryptoTableContainer'>
-        <p className='cryptoTableHeading'>Cryptocurrency prices for 100 assets</p>
-          <table className='cryptoTable'>
-            <tbody>
-              <th>Rank</th>
-              <th>Cryptocurrency</th>
-              <th>Symbol</th>
-              <th>Price</th>
-              <th>24HR%Chg</th>
-              <th>Market Cap</th>
-            {cryptocurrenciesOnDisplay()}
-            </tbody>
-          </table>
-      </div>
-    )
+  
+      if (!cryptocurrencies.length) {
+        return <Error />
+      } else if (cryptocurrencies.length) {
+        return (
+        <div className='cryptoTableContainer'>
+          <p className='cryptoTableHeading'>Cryptocurrency prices for 100 assets</p>
+            <table className='cryptoTable'>
+              <tbody>
+                <th>Rank</th>
+                <th>Cryptocurrency</th>
+                <th>Symbol</th>
+                <th>Price</th>
+                <th>24HR%Chg</th>
+                <th>Market Cap</th>
+              {cryptocurrenciesOnDisplay()}
+              </tbody>
+            </table>
+        </div>
+
+        )
+      }
 }
     
 export default Cryptocurrencies

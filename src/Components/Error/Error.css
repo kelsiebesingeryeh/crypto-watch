@@ -1,0 +1,9 @@
+.errorSection {
+    right: 50%;
+    bottom: 50%;
+    transform: translate(50%, 50%);
+    position: absolute;
+    border: 1px solid #5642D9;
+    padding: 1rem;
+    text-align: center;
+}
