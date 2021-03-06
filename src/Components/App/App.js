@@ -13,48 +13,62 @@ class App extends Component {
     super()
     this.state = {
       cryptocurrencies: [],
-      error: false
+      error: false,
+      isLoading: true,
     }
   }
 
   componentDidMount() {
       getAllCoins().then((cryptocurrencies) =>
-        this.setState({ cryptocurrencies })
+        this.setState({ cryptocurrencies, isLoading: false})
       )
-      .catch(error => this.setState({error: true}))
+      .catch(error => this.setState({error: true, isLoading: false}))
     }
 
     render() {
       return (
         <main>
           <Nav />
-          <Route exact path='/error' render={() => <Error />}/>
-          
-          <Route exact path="/" 
-          render={() => {
-            if (!this.state.cryptocurrencies.length && this.state.error) {
-              return <Redirect to='/error'/>
-            } else {
-              return <Home />
-            }
-          }}
+          <Route exact path="/error" render={() => <Error />} />
+
+          <Route
+            exact
+            path="/"
+            render={() => {
+              if (!this.state.cryptocurrencies.length && this.state.error) {
+                return <Redirect to="/error" />;
+              } else {
+                return <Home />;
+              }
+            }}
           />
-          <Route exact path="/cryptocurrencies" component={() => <Cryptocurrencies cryptocurrencies={this.state.cryptocurrencies}/>} />
+          <Route
+            exact
+            path="/cryptocurrencies"
+            component={() => (
+              <Cryptocurrencies
+                cryptocurrencies={this.state.cryptocurrencies}
+                isLoading={this.state.isLoading}
+              />
+            )}
+          />
           <Route
             exact
             path={"/cryptocurrencies/:id"}
             render={({ match }) => {
-              const id = match.params.id
+              const id = match.params.id;
               return (
-                <div className='cryptocurrencyDetailsContainer'>
-                  <CryptocurrencyDetails id={id}/>
+                <div className="cryptocurrencyDetailsContainer">
+                  <CryptocurrencyDetails
+                    id={id}
+                    isLoading={this.state.isLoading}
+                  />
                 </div>
-              )
-            }
-          }
+              );
+            }}
           />
         </main>
-      )
+      );
     }
   }
 
