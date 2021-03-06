@@ -11,4 +11,9 @@ it('Should see menu items in the nav bar when a user visits the homepage', () =>
     .get(".rightNavItems").should('contain', 'Cryptopedia', 'Markets', 'Exchanges', 'My Watch List')
 })
 
+it('Should have a header on the homepage', () => {
+    cy.visit(baseURL)
+    .get('.header, h1').should('contain', 'CryptoWatch')
+})
+
 })
