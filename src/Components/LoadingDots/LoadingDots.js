@@ -3,7 +3,7 @@ import './LoadingDots.css'
 
 const LoadingDots = () => {
    return (
-     <p class="loading">
+     <p className="loading">
        Loading<span>.</span>
        <span>.</span>
        <span>.</span>

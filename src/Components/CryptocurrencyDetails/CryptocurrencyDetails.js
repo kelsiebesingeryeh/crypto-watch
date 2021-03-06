@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { getACoin } from '../../apiCalls'
 import './CryptocurrencyDetails.css'
 import Loading from '../Loading/Loading'
+import Error from '../Error/Error'
 
 class CryptocurrencyDetails extends Component {
     constructor(props) {
@@ -24,7 +25,7 @@ class CryptocurrencyDetails extends Component {
       return this.state.currentCoin.links.explorer.map(coin => {  
         return (
           <ul className="itemList">
-            <li>
+            <li key={coin}>
               <a href={coin} target='_blank' className='coinLinks'>{coin}</a>
             </li>
           </ul>
@@ -36,7 +37,7 @@ class CryptocurrencyDetails extends Component {
         return this.state.currentCoin.tags.map(coin => {
             return (
               <ul className='itemList'>
-                <li>{coin.name}</li>
+                <li key={coin.name}>{coin.name}</li>
               </ul>
             )
         })
@@ -46,7 +47,7 @@ class CryptocurrencyDetails extends Component {
         return this.state.currentCoin.team.map(coin => {
             return (
               <ul className='itemList'>
-                <li>
+                <li key={coin.name}>
                   {coin.name}, {coin.position}
                 </li>
               </ul>
@@ -58,6 +59,7 @@ class CryptocurrencyDetails extends Component {
         return (
           <>
             {this.state.isLoading && <Loading />}
+            {this.state.error && <Error />}
             {this.state.currentCoin && (
               <section className="coinDetails">
                 <h1>{this.state.currentCoin.name}</h1>
