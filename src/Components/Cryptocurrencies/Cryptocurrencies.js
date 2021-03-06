@@ -28,7 +28,8 @@ const Cryptocurrencies = ({cryptocurrencies}) => {
   
       if (!cryptocurrencies.length) {
         return <Error />
-      } else {
+      } else if (cryptocurrencies.length) {
+        return (
         <div className='cryptoTableContainer'>
           <p className='cryptoTableHeading'>Cryptocurrency prices for 100 assets</p>
             <table className='cryptoTable'>
@@ -43,6 +44,8 @@ const Cryptocurrencies = ({cryptocurrencies}) => {
               </tbody>
             </table>
         </div>
+
+        )
       }
 }
     
