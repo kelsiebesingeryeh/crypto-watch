@@ -16,4 +16,14 @@ it('Should have a header on the homepage', () => {
     .get('.header, h1').should('contain', 'CryptoWatch')
 })
 
+it('Should have a subheading on the homepage', () => {
+    cy.visit(baseURL)
+      .get("h2")
+      .should("contain", "Your crypto exploration and learning platform.")
+})
+it('Should have a mission statement on the homepage', () => {
+    cy.visit(baseURL)
+    .get('h3').should('be.visible')
+})
+
 })
