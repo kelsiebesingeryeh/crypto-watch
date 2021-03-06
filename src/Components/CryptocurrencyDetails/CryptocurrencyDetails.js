@@ -9,13 +9,15 @@ class CryptocurrencyDetails extends Component {
         this.state = {
             currentCoin: null,
             id: this.props.id,
-            isLoading: true
+            isLoading: true,
+            error: false
         }
     }
 
     componentDidMount() {
      getACoin(this.state.id)
-     .then(currentCoin => this.setState({currentCoin, isLoading: false}))
+       .then((currentCoin) => this.setState({ currentCoin, isLoading: false }))
+       .catch((error) => this.setState({ error: true, isLoading: false }));
     }
 
     linkItems() {
