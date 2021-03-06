@@ -72,11 +72,11 @@ class CryptocurrencyDetails extends Component {
                     <p>Helpful Links</p>
                     {this.linkItems()}
                   </div>
-                  <div className="listWrapper">
+                  <div className="listItemWrapper">
                     <p>Tags</p>
                     {this.tagItems()}
                   </div>
-                  <div className="listWrapper">
+                  <div className="listItemWrapper">
                     <p>Team</p>
                     {this.teamItems()}
                   </div>
