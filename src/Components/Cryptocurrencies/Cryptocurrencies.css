@@ -56,3 +56,9 @@ td {
 .cryptoTableContainer {
     padding: 2rem;
 }
+
+.cryptoStyling {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+}

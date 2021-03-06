@@ -34,7 +34,7 @@ const Cryptocurrencies = ({ cryptocurrencies, isLoading }) => {
       } else if (cryptocurrencies.length) {
         return (
         <div className='cryptoTableContainer'>
-          <span>
+          <span className='cryptoStyling'>
             <p className='cryptoTableHeading'>Cryptocurrency prices for 100 assets</p>
             <Form />
           </span>

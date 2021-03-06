@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import './Form.css'
 
 class Form extends Component {
     constructor() {
@@ -9,7 +10,7 @@ class Form extends Component {
     }
     render() {
         return (
-        <form>
+        <form className='searchResultForm'>
             <input 
             type='text'
             name='searchInput'
