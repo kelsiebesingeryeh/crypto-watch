@@ -2,9 +2,10 @@ import React from 'react'
 import CryptocurrenciesCard from "../CryptocurrenciesCard/CryptocurrenciesCard"
 import './Cryptocurrencies.css'
 import Error from '../Error/Error'
+import Loading from '../Loading/Loading'
 
 
-const Cryptocurrencies = ({cryptocurrencies}) => {
+const Cryptocurrencies = ({ cryptocurrencies, isLoading }) => {
   
   const cryptocurrenciesOnDisplay = () => {
       const top100Coins = cryptocurrencies.filter(crypto => crypto.rank > 0 && crypto.rank <= 100).sort((a,b) => a.rank - b.rank)
@@ -25,8 +26,9 @@ const Cryptocurrencies = ({cryptocurrencies}) => {
          })
       }
 
-  
-      if (!cryptocurrencies.length) {
+      if (isLoading && !cryptocurrencies.length) {
+        return <Loading />
+      } else if (!cryptocurrencies.length) {
         return <Error />
       } else if (cryptocurrencies.length) {
         return (
