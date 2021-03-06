@@ -26,4 +26,16 @@ it('Should have a mission statement on the homepage', () => {
     .get('h3').should('be.visible')
 })
 
+it('Should see three cards display with text on the homepage', () => {
+    cy.visit(baseURL)
+      .get(".beginnerSection")
+      .should("be.visible")
+      .get(".curiousSection")
+      .should("be.visible")
+      .get(".buySection")
+      .should("be.visible")
+      .get(".cardText")
+      .should("be.visible");
+})
+
 })
