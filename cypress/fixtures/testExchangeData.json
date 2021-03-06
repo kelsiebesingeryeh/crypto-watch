@@ -1,0 +1,121 @@
+[
+    {
+        "id": "coinmate",
+        "name": "CoinMate",
+        "description": "CoinMate is a cryptocurrency exchange based in London, founded in 2014. The main fiat currencies are EUR and CZK. ",
+        "active": true,
+        "website_status": true,
+        "api_status": true,
+        "message": null,
+        "links": {
+            "website": [
+                "https://coinmate.io"
+            ]
+        },
+        "markets_data_fetched": true,
+        "adjusted_rank": 191,
+        "reported_rank": 201,
+        "currencies": 6,
+        "markets": 17,
+        "fiats": [
+            {
+                "name": "Euro",
+                "symbol": "EUR"
+            },
+            {
+                "name": "Czech Koruna",
+                "symbol": "CZK"
+            }
+        ],
+        "quotes": {
+            "USD": {
+                "reported_volume_24h": 1098471.19448089,
+                "adjusted_volume_24h": 1098471.19448089,
+                "reported_volume_7d": 9844571.39428797,
+                "adjusted_volume_7d": 9844571.39428797,
+                "reported_volume_30d": 82705544.42292851,
+                "adjusted_volume_30d": 82705544.42292851
+            }
+        },
+        "last_updated": "2021-03-06T18:48:48Z",
+        "sessions_per_month": 250000,
+        "confidence_score": 0.47766
+    },
+    {
+        "id": "btse",
+        "name": "BTSE",
+        "description": "An Innovative Platform for Futures and Spot Trading, which settle profits in any currency or coin that maximize your capital with up to 100x leverage. Post margin with multiple currencies and coins simultaneously. Easily add and remove multiple collateralized assets on the fly that benefits from volatile markets without being susceptible to the volatility of cryptocurrencies. Better liquidity with all currencies sharing the same liquidity pool via one order book.",
+        "active": true,
+        "website_status": true,
+        "api_status": true,
+        "message": null,
+        "links": {
+            "twitter": [
+                "https://twitter.com/btsecom"
+            ],
+            "website": [
+                "https://www.btse.com/en/home"
+            ]
+        },
+        "markets_data_fetched": true,
+        "adjusted_rank": 64,
+        "reported_rank": 72,
+        "currencies": 8,
+        "markets": 26,
+        "fiats": [
+            {
+                "name": "US Dollars",
+                "symbol": "USD"
+            }
+        ],
+        "quotes": {
+            "USD": {
+                "reported_volume_24h": 194708836.5198364,
+                "adjusted_volume_24h": 194708836.5198364,
+                "reported_volume_7d": 1368562145.0876799,
+                "adjusted_volume_7d": 1368562145.0876799,
+                "reported_volume_30d": 5170453757.768223,
+                "adjusted_volume_30d": 5170453757.768223
+            }
+        },
+        "last_updated": "2021-03-06T18:48:48Z",
+        "sessions_per_month": 400000,
+        "confidence_score": 0.750214
+    },
+    {
+        "id": "lbank",
+        "name": "Lbank",
+        "description": "Founded in October 2016, LBank is a digital asset trading platform for global users to provide professional asset management solutions. At present, LBank offers BTC to BTC, ETH, ZEC, QTUM, VEN's digital asset exchange service and have over 2.6 million of registered users.",
+        "active": true,
+        "website_status": true,
+        "api_status": true,
+        "message": null,
+        "links": {
+            "twitter": [
+                "https://twitter.com/LBank_Exchange"
+            ],
+            "website": [
+                "https://www.lbank.info/"
+            ]
+        },
+        "markets_data_fetched": true,
+        "adjusted_rank": 85,
+        "reported_rank": 94,
+        "currencies": 33,
+        "markets": 33,
+        "fiats": [],
+        "quotes": {
+            "USD": {
+                "reported_volume_24h": 103099879.90798308,
+                "adjusted_volume_24h": 103099879.90798308,
+                "reported_volume_7d": 2060812476.7906096,
+                "adjusted_volume_7d": 2060812476.7906096,
+                "reported_volume_30d": 16567984969.690472,
+                "adjusted_volume_30d": 16567984969.690472
+            }
+        },
+        "last_updated": "2021-03-06T18:48:48Z",
+        "sessions_per_month": 13500000,
+        "confidence_score": 0.562811
+    }
+]
