@@ -20,7 +20,7 @@ const Nav = () => {
           <Link to="cryptocurrencies">
             <p className="rightNavItems">Markets</p>
           </Link>
-          <Link to="cryptoExchanges">
+          <Link to="exchanges">
             <p className="rightNavItems">Exchanges</p>
           </Link>
           <p className="rightNavItems">My Watch List</p>

@@ -9,7 +9,9 @@ class Exchanges extends Component {
     }
 
     render() {
-        <h1>Exchanges</h1>
+        return (
+         <h1>Exchanges</h1>
+        )
     }
 }
 
