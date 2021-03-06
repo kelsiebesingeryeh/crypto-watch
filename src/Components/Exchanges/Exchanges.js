@@ -2,55 +2,57 @@ import React, { Component } from 'react'
 import { getAllExchanges } from '../../apiCalls'
 import ExchangeDetails from '../ExchangeDetails/ExchangeDetails'
 import Loading from '../Loading/Loading'
+import Error from '../Error/Error'
 
 class Exchanges extends Component {
-    constructor() {
-        super()
-        this.state = {
-            exchanges: [],
-            isLoading: true,
-            error: false
-        }
-    }
+  constructor() {
+    super();
+    this.state = {
+      exchanges: [],
+      isLoading: true,
+      error: false,
+    };
+  }
 
-    componentDidMount() {
-        getAllExchanges().then(exchanges => this.setState({exchanges, isLoading: false}))
-    }
+  componentDidMount() {
+    getAllExchanges()
+    .then((exchanges) =>
+      this.setState({ exchanges, isLoading: false })
+    )
+    .catch((error) =>this.setState({ error: true }))
+  }
 
-    exchangesOnDisplay() {
-        return this.state.exchanges.map(exchange => {
-            return (
-              <ExchangeDetails
-                key={exchange.id}
-                id={exchange.id}
-                name={exchange.name}
-                links={exchange.links}
-                currencies={exchange.currencies}
-                markets={exchange.markets}
-                fiats={exchange.fiats}
-                volume={exchange.quotes.USD["reported_volume_24h"]}
-                confidenceScore={exchange["confidence_score"]}
-              />
-            )
-        })
-    }
+  exchangesOnDisplay() {
+    return this.state.exchanges.map((exchange) => {
+      return (
+        <ExchangeDetails
+          key={exchange.id}
+          id={exchange.id}
+          name={exchange.name}
+          links={exchange.links}
+          currencies={exchange.currencies}
+          markets={exchange.markets}
+          fiats={exchange.fiats}
+          volume={exchange.quotes.USD["reported_volume_24h"]}
+          confidenceScore={exchange["confidence_score"]}
+        />
+      );
+    });
+  }
 
-    render() {
-        return (
-            <>
-            {this.state.isLoading && <Loading />}
-            <h1>Exchanges</h1>
-            {this.exchangesOnDisplay()}
-          </>
-        )
-    }
+  render() {
+    return (
+      <>
+        {this.state.isLoading && <Loading />}
+        {this.state.error && <Error />}
+        <h1>Exchanges</h1>
+        {this.exchangesOnDisplay()}
+      </>
+    );
+  }
 }
 
 export default Exchanges
-
-// {
-//   this.state.error && <Error />;
-// }
 
 // import React from "react";
 // import CryptocurrenciesCard from "../CryptocurrenciesCard/CryptocurrenciesCard";
