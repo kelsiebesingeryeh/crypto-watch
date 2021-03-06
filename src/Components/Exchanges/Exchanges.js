@@ -22,8 +22,9 @@ class Exchanges extends Component {
     .catch((error) =>this.setState({ error: true }))
   }
 
-  exchangesOnDisplay() {
-    return this.state.exchanges.map((exchange) => {
+exchangesOnDisplay() {
+     const sortedExchange = this.state.exchanges.sort((a, b) => b['confidence_score'] - a['confidence_score'])
+    return sortedExchange.map((exchange) => {
       return (
         <ExchangeDetails
           key={exchange.id}
@@ -48,13 +49,17 @@ class Exchanges extends Component {
         <div className="cryptoTableContainer">
           <p className="cryptoTableHeading">Cryptocurrency Exchanges</p>
           <table className="cryptoTable">
+              <thead>
+                  <tr>
+                    <th>Exchange Name</th>
+                    <th>Exchange Score</th>
+                    <th>Volume(24H)</th>
+                    <th># Markets</th>
+                    <th># Coins</th>
+                    <th>Fiats Supported</th>
+                  </tr>
+              </thead>
             <tbody>
-              <th>Cryptocurrency</th>
-              <th>Exchange Score</th>
-              <th>Volume(24H)</th>
-              <th># Markets</th>
-              <th># Coins</th>
-              <th>Fiats Supported</th>
               {this.exchangesOnDisplay()}
             </tbody>
           </table>
