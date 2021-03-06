@@ -4,6 +4,7 @@ import './Cryptocurrencies.css'
 import Error from '../Error/Error'
 import Loading from '../Loading/Loading'
 import Form from '../Form/Form'
+import search from '../../assets/search.png'
 
 
 const Cryptocurrencies = ({ cryptocurrencies, isLoading }) => {
@@ -33,25 +34,31 @@ const Cryptocurrencies = ({ cryptocurrencies, isLoading }) => {
         return <Error />
       } else if (cryptocurrencies.length) {
         return (
-        <div className='cryptoTableContainer'>
-          <span className='cryptoStyling'>
-            <p className='cryptoTableHeading'>Cryptocurrency prices for 100 assets</p>
-            <Form />
-          </span>
-            <table className='cryptoTable'>
-              <tbody>
-                <th>Rank</th>
-                <th>Cryptocurrency</th>
-                <th>Symbol</th>
-                <th>Price</th>
-                <th>24HR%Chg</th>
-                <th>Market Cap</th>
-              {cryptocurrenciesOnDisplay()}
-              </tbody>
+          <div className="cryptoTableContainer">
+            <span className="cryptoStyling">
+              <p className="cryptoTableHeading">
+                Cryptocurrency prices for 100 assets
+              </p>
+              <span className='searchStyling'>
+                <img src={search} alt="search" className='searchIcon'></img>
+                <Form />
+              </span>
+            </span>
+            <table className="cryptoTable">
+              <thead>
+                <tr>
+                  <th>Rank</th>
+                  <th>Cryptocurrency</th>
+                  <th>Symbol</th>
+                  <th>Price</th>
+                  <th>24HR%Chg</th>
+                  <th>Market Cap</th>
+                </tr>
+              </thead>
+              <tbody>{cryptocurrenciesOnDisplay()}</tbody>
             </table>
-        </div>
-
-        )
+          </div>
+        );
       }
 }
     

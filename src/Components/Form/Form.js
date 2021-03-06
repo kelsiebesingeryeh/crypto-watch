@@ -8,6 +8,13 @@ class Form extends Component {
             searchInput: ''
         }
     }
+
+    handleChange = (event) => {
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+    }
+
     render() {
         return (
         <form className='searchResultForm'>
@@ -16,6 +23,7 @@ class Form extends Component {
             name='searchInput'
             value={this.state.searchInput}
             placeholder='Search by coin name or symbol'
+            onChange={this.handleChange}
             />
         </form>
         )
