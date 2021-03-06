@@ -1,11 +1,12 @@
 import React from 'react'
 import './Loading.css'
+import LoadingDots from '../LoadingDots/LoadingDots'
 
 const Loading = () => {
     return (
-        <div className='loading'>
-            <h2>Loading...</h2>
-        </div>
+        <>
+            <LoadingDots />
+        </>
     )
 }
 

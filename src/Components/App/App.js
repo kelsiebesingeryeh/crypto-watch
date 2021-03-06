@@ -7,27 +7,30 @@ import Home from '../Home/Home'
 import CryptocurrencyDetails from '../CryptocurrencyDetails/CryptocurrencyDetails'
 import { getAllCoins } from "../../apiCalls"
 import Error from '../Error/Error'
+import Loading from '../Loading/Loading'
 
 class App extends Component {
   constructor() {
     super()
     this.state = {
       cryptocurrencies: [],
-      error: false
+      error: false,
+      isLoading: true,
     }
   }
 
   componentDidMount() {
       getAllCoins().then((cryptocurrencies) =>
-        this.setState({ cryptocurrencies })
+        this.setState({ cryptocurrencies, isLoading: false })
       )
-      .catch(error => this.setState({error: true}))
+      .catch(error => this.setState({error: true, isLoading: false}))
     }
 
     render() {
       return (
         <main>
           <Nav />
+          {this.state.isLoading && <Loading />}
           <Route exact path='/error' render={() => <Error />}/>
           
           <Route exact path="/" 
