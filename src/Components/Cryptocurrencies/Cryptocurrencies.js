@@ -3,6 +3,7 @@ import CryptocurrenciesCard from "../CryptocurrenciesCard/CryptocurrenciesCard"
 import './Cryptocurrencies.css'
 import Error from '../Error/Error'
 import Loading from '../Loading/Loading'
+import Form from '../Form/Form'
 
 
 const Cryptocurrencies = ({ cryptocurrencies, isLoading }) => {
@@ -33,7 +34,10 @@ const Cryptocurrencies = ({ cryptocurrencies, isLoading }) => {
       } else if (cryptocurrencies.length) {
         return (
         <div className='cryptoTableContainer'>
-          <p className='cryptoTableHeading'>Cryptocurrency prices for 100 assets</p>
+          <span>
+            <p className='cryptoTableHeading'>Cryptocurrency prices for 100 assets</p>
+            <Form />
+          </span>
             <table className='cryptoTable'>
               <tbody>
                 <th>Rank</th>
