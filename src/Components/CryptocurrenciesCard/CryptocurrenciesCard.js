@@ -1,6 +1,7 @@
 import React from 'react'
 import "./CryptocurrenciesCard.css"
 import { Link } from 'react-router-dom'
+import star from '../../assets/star.png'
 
 const CryptocurrenciesCard = ({
   id,
@@ -25,6 +26,7 @@ const CryptocurrenciesCard = ({
 
   return (
     <tr>
+      <td><img src={star} alt='star'></img></td>
       <td>{rank}</td>
       <td id={id}>
         <Link to={`/cryptocurrencies/${id}`} className="cryptoName">

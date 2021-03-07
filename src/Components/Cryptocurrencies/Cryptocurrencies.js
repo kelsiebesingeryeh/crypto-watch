@@ -15,6 +15,7 @@ const Cryptocurrencies = ({
   searchResults,
   clearSearchResults
 }) => {
+
   const cryptocurrenciesOnDisplay = () => {
     const top100Coins = cryptocurrencies
       .filter((crypto) => crypto.rank > 0 && crypto.rank <= 100)
@@ -55,9 +56,9 @@ const Cryptocurrencies = ({
   };
 
   if (isLoading && !cryptocurrencies.length) {
-    return <Loading />;
+    return <Loading />
   } else if (!cryptocurrencies.length) {
-    return <Error />;
+    return <Error />
   } else if (cryptocurrencies.length) {
     return (
       <div className="cryptoTableContainer">
@@ -79,6 +80,7 @@ const Cryptocurrencies = ({
         <table className="cryptoTable">
           <thead>
             <tr>
+              <th>Favorites</th>
               <th>Rank</th>
               <th>Cryptocurrency</th>
               <th>Symbol</th>
@@ -94,7 +96,7 @@ const Cryptocurrencies = ({
           </tbody>
         </table>
       </div>
-    );
+    )
   }  
 }
     
