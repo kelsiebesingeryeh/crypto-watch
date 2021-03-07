@@ -14,13 +14,13 @@ const Nav = () => {
           {/* <img src={search} alt="search" className="navIcon"></img> */}
         </div>
         <div className="rightNav">
-          <Link to="cryptopedia">
+          <Link to="/cryptopedia">
             <p className="rightNavItems">Cryptopedia</p>
           </Link>
-          <Link to="cryptocurrencies">
+          <Link to="/cryptocurrencies">
             <p className="rightNavItems">Markets</p>
           </Link>
-          <Link to="exchanges">
+          <Link to="/exchanges">
             <p className="rightNavItems">Exchanges</p>
           </Link>
           <p className="rightNavItems">My Watch List</p>

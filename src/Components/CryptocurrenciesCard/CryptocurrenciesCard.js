@@ -19,15 +19,17 @@ const CryptocurrenciesCard = ({
   return (
     <tr>
       <td>{rank}</td>
-      <Link to={`/cryptocurrencies/${id}`} className='cryptoName'>
-        <td id={id}>{name}</td>
-      </Link>
+      <td id={id}>
+        <Link to={`/cryptocurrencies/${id}`} className="cryptoName">
+          {name}
+        </Link>
+      </td>
       <td>{symbol}</td>
       <td>${stylePrice}</td>
       <td>{marketCap}</td>
       <td>{percentChange}</td>
     </tr>
-  )
+  );
 }
 
 export default CryptocurrenciesCard

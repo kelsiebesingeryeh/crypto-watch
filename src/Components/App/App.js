@@ -16,6 +16,7 @@ class App extends Component {
       cryptocurrencies: [],
       error: false,
       isLoading: true,
+      searchResults: []
     }
   }
 
@@ -24,6 +25,21 @@ class App extends Component {
         this.setState({ cryptocurrencies, isLoading: false})
       )
       .catch(error => this.setState({error: true, isLoading: false}))
+    }
+
+    filterSearchResults = (userInput) => {
+      const searchResultsToDisplay = this.state.cryptocurrencies.filter(crypto => {
+        return crypto.name.toLowerCase()=== userInput || crypto.symbol.toLowerCase() === userInput
+      })
+      this.setState({
+        searchResults: searchResultsToDisplay
+      })
+    }
+
+    clearSearchResults = () => {
+      this.setState({
+        searchResults: []
+      })
     }
 
     render() {
@@ -50,6 +66,9 @@ class App extends Component {
               <Cryptocurrencies
                 cryptocurrencies={this.state.cryptocurrencies}
                 isLoading={this.state.isLoading}
+                filterSearchResults={this.filterSearchResults}
+                searchResults={this.state.searchResults}
+                clearSearchResults={this.clearSearchResults}
               />
             )}
           />
@@ -65,10 +84,10 @@ class App extends Component {
                     isLoading={this.state.isLoading}
                   />
                 </div>
-              )
+              );
             }}
           />
-          <Route exact path='/exchanges' component={Exchanges}/>
+          <Route exact path="/exchanges" component={Exchanges} />
         </main>
       );
     }

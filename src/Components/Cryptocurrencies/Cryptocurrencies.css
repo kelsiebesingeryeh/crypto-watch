@@ -56,3 +56,23 @@ td {
 .cryptoTableContainer {
     padding: 2rem;
 }
+
+.cryptoStyling {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+}
+
+.searchStyling {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.searchIcon {
+    object-fit: contain;
+    margin-right: 0.5rem;
+}
+
+.xIcon{
+    object-fit: contain;
+}

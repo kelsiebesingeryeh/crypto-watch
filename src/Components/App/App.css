@@ -21,34 +21,31 @@ body {
 
 .aboutSection {
       background: #5642D9;
-      width: 100%;
-      height: 20rem;
       display: flex;
+      height: 20rem;
       flex-direction: column;
       justify-content: center;
+      width: 100%;
 }
 
 .sectionContainer {
       display: flex;
       justify-content: center;
-      padding: 1rem;
-      margin: auto;
-      align-items: center;
-      width: 1200px;
+      padding-top: 1rem;
       padding-top: 5%;
-}
+  }
 
 .mainSection {
-  width: 215px;
-  height: 270px;
-  border-radius: 10px;
-  display: flex;
-  font-weight: bold;
-  padding: 1rem;
-  background: #0D0C52;
-  font-size: 1.25rem;
-  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
-  margin-left: 2rem;
+    width: 215px;
+    height: 270px;
+    border-radius: 10px;
+    display: flex;
+    font-weight: bold;
+    padding: 1rem;
+    background: #0D0C52;
+    font-size: 1.25rem;
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+    margin-left: 2rem;
 }
 
 .curiousSection {
@@ -56,12 +53,8 @@ body {
 }
 
 .buySection {
-  background-color: #FF8B8B;
+  background-color: #C96565;
 }
-
-/* .cardText {
-  font-size: 2rem;
-} */
 
 @font-face {
   font-family: 'gothamBold';
