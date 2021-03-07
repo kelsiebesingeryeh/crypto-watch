@@ -5,6 +5,7 @@ import Error from '../Error/Error'
 import Loading from '../Loading/Loading'
 import Form from '../Form/Form'
 import search from '../../assets/search.png'
+import x from '../../assets/x.png'
 
 
 const Cryptocurrencies = ({
@@ -12,6 +13,7 @@ const Cryptocurrencies = ({
   isLoading,
   filterSearchResults,
   searchResults,
+  clearSearchResults
 }) => {
   const cryptocurrenciesOnDisplay = () => {
     const top100Coins = cryptocurrencies
@@ -66,6 +68,12 @@ const Cryptocurrencies = ({
           <span className="searchStyling">
             <img src={search} alt="search" className="searchIcon"></img>
             <Form filterSearchResults={filterSearchResults} />
+            <img
+              src={x}
+              alt="x"
+              className="xIcon"
+              onClick={() => clearSearchResults()}
+            ></img>
           </span>
         </span>
         <table className="cryptoTable">
@@ -79,13 +87,14 @@ const Cryptocurrencies = ({
               <th>Market Cap</th>
             </tr>
           </thead>
-          <tbody>{searchResults.length > 0 ?
-          searchResultsOnDisplay() : 
-          cryptocurrenciesOnDisplay()  
-          }</tbody>
+          <tbody>
+            {searchResults.length > 0
+              ? searchResultsOnDisplay()
+              : cryptocurrenciesOnDisplay()}
+          </tbody>
         </table>
       </div>
-    )
+    );
   }  
 }
     

@@ -41,7 +41,7 @@ class App extends Component {
         searchResults: []
       })
     }
-    
+
     render() {
       return (
         <main>
@@ -53,9 +53,9 @@ class App extends Component {
             path="/"
             render={() => {
               if (!this.state.cryptocurrencies.length && this.state.error) {
-                return <Redirect to="/error" />
+                return <Redirect to="/error" />;
               } else {
-                return <Home />
+                return <Home />;
               }
             }}
           />
@@ -68,6 +68,7 @@ class App extends Component {
                 isLoading={this.state.isLoading}
                 filterSearchResults={this.filterSearchResults}
                 searchResults={this.state.searchResults}
+                clearSearchResults={this.clearSearchResults}
               />
             )}
           />
@@ -75,7 +76,7 @@ class App extends Component {
             exact
             path={"/cryptocurrencies/:id"}
             render={({ match }) => {
-              const id = match.params.id
+              const id = match.params.id;
               return (
                 <div className="cryptocurrencyDetailsContainer">
                   <CryptocurrencyDetails
@@ -83,12 +84,12 @@ class App extends Component {
                     isLoading={this.state.isLoading}
                   />
                 </div>
-              )
+              );
             }}
           />
           <Route exact path="/exchanges" component={Exchanges} />
         </main>
-      )
+      );
     }
   }
 
