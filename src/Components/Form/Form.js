@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import './Form.css'
 
 class Form extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             searchInput: ''
         }
@@ -11,7 +11,13 @@ class Form extends Component {
 
     handleChange = (event) => {
         this.setState({
-            [event.target.name]: event.target.value
+          [event.target.name]: event.target.value.toLowerCase()
+        });
+    }
+
+    clearInputs = () => {
+        this.setState({
+            searchInput: ''
         })
     }
 
@@ -24,6 +30,13 @@ class Form extends Component {
             value={this.state.searchInput}
             placeholder='Search by coin name or symbol'
             onChange={this.handleChange}
+            onKeyPress={event => {
+                if (event.key === 'Enter') {
+                    event.preventDefault()
+                    this.props.filterSearchResults(this.state.searchInput)
+                    this.clearInputs()
+                }
+            }}
             />
         </form>
         )

@@ -16,6 +16,7 @@ class App extends Component {
       cryptocurrencies: [],
       error: false,
       isLoading: true,
+      searchResults: []
     }
   }
 
@@ -25,6 +26,17 @@ class App extends Component {
       )
       .catch(error => this.setState({error: true, isLoading: false}))
     }
+
+    filterSearchResults = (userInput) => {
+      const searchResultsToDisplay = this.state.cryptocurrencies.filter(crypto => {
+        return crypto.name.toLowerCase()=== userInput
+      })
+      this.setState({
+        searchResults: searchResultsToDisplay
+      })
+    }
+
+    // || crypto.symbol.toLowerCase().includes(userInput)
 
     render() {
       return (
@@ -37,9 +49,9 @@ class App extends Component {
             path="/"
             render={() => {
               if (!this.state.cryptocurrencies.length && this.state.error) {
-                return <Redirect to="/error" />;
+                return <Redirect to="/error" />
               } else {
-                return <Home />;
+                return <Home />
               }
             }}
           />
@@ -50,6 +62,8 @@ class App extends Component {
               <Cryptocurrencies
                 cryptocurrencies={this.state.cryptocurrencies}
                 isLoading={this.state.isLoading}
+                filterSearchResults={this.filterSearchResults}
+                searchResults={this.state.searchResults}
               />
             )}
           />
@@ -57,7 +71,7 @@ class App extends Component {
             exact
             path={"/cryptocurrencies/:id"}
             render={({ match }) => {
-              const id = match.params.id;
+              const id = match.params.id
               return (
                 <div className="cryptocurrencyDetailsContainer">
                   <CryptocurrencyDetails
@@ -68,9 +82,9 @@ class App extends Component {
               )
             }}
           />
-          <Route exact path='/exchanges' component={Exchanges}/>
+          <Route exact path="/exchanges" component={Exchanges} />
         </main>
-      );
+      )
     }
   }
 
