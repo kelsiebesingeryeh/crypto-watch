@@ -23,9 +23,6 @@ const Nav = () => {
           <Link to="/exchanges">
             <p className="rightNavItems">Exchanges</p>
           </Link>
-          <Link to='/favorites'>
-            <p className="rightNavItems">My Favorites</p>
-          </Link>
         </div>
       </nav>
     );

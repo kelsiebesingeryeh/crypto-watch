@@ -24,5 +24,9 @@
     color: black;
 }
 
+.hidden {
+    display: none;
+}
+
 
 /* shadow color 444C7D */

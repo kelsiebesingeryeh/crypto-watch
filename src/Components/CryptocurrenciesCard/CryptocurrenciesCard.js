@@ -2,6 +2,7 @@ import React from 'react'
 import "./CryptocurrenciesCard.css"
 import { Link } from 'react-router-dom'
 import star from '../../assets/star.png'
+import filledStar from '../../assets/filledStar.png'
 
 const CryptocurrenciesCard = ({
   id,
@@ -11,7 +12,9 @@ const CryptocurrenciesCard = ({
   price,
   marketCap,
   percentChange,
-  addFavoriteCrypto
+  addFavoriteCrypto,
+  removeFromFavorites,
+  favorites,
 }) => {
   const stylePrice = price
     .toFixed(2)
@@ -25,18 +28,22 @@ const CryptocurrenciesCard = ({
     } else {
       return (
         <td style={{ color: "red", fontWeight: "bold" }}>{percentChange}</td>
-      );
+      )
     }
-  };
+  }
+
+  const handleClick = () => {
+    if (!favorites.length) {
+      addFavoriteCrypto(id)
+    } else {
+      removeFromFavorites(id)
+    }
+  }
 
   return (
     <tr>
       <td>
-        <img
-          src={star}
-          alt="star"
-          onClick={() => addFavoriteCrypto(id)}
-        ></img>
+        <img src={star} alt="star" onClick={handleClick} style={{background: (favorites.includes(id) && 'red')}}></img>
       </td>
       <td>{rank}</td>
       <td id={id}>

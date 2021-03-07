@@ -14,7 +14,9 @@ const Cryptocurrencies = ({
   filterSearchResults,
   searchResults,
   clearSearchResults,
-  addFavoriteCrypto
+  addFavoriteCrypto,
+  removeFromFavorites,
+  favorites,
 }) => {
 
   const cryptocurrenciesOnDisplay = () => {
@@ -34,6 +36,8 @@ const Cryptocurrencies = ({
           marketCap={quotes.USD["market_cap"]}
           percentChange={quotes.USD["percent_change_24h"]}
           addFavoriteCrypto={addFavoriteCrypto}
+          removeFromFavorites={removeFromFavorites}
+          favorites={favorites}
         />
       );
     })
@@ -53,8 +57,10 @@ const Cryptocurrencies = ({
           marketCap={quotes.USD["market_cap"]}
           percentChange={quotes.USD["percent_change_24h"]}
           addFavoriteCrypto={addFavoriteCrypto}
+          removeFromFavorites={removeFromFavorites}
+          favorites={favorites}
         />
-      )
+      );
     })
   }
 
