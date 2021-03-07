@@ -29,15 +29,19 @@ class App extends Component {
 
     filterSearchResults = (userInput) => {
       const searchResultsToDisplay = this.state.cryptocurrencies.filter(crypto => {
-        return crypto.name.toLowerCase()=== userInput
+        return crypto.name.toLowerCase()=== userInput || crypto.symbol.toLowerCase() === userInput
       })
       this.setState({
         searchResults: searchResultsToDisplay
       })
     }
 
-    // || crypto.symbol.toLowerCase().includes(userInput)
-
+    clearSearchResults = () => {
+      this.setState({
+        searchResults: []
+      })
+    }
+    
     render() {
       return (
         <main>
