@@ -15,6 +15,13 @@ const CryptocurrenciesCard = ({
     .toFixed(2)
     .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")
   const styleMarketCap = Math.abs(Number(marketCap)) >= 1.0e9
+  const stylePercentChange = () => {
+    if (percentChange > 0) {
+      return <td style={{color: 'green', fontWeight: 'bold'}}>{percentChange}</td>
+    } else {
+      return <td style={{ color: "red", fontWeight: 'bold' }}>{percentChange}</td>;
+    }
+  }
 
   return (
     <tr>
@@ -26,8 +33,8 @@ const CryptocurrenciesCard = ({
       </td>
       <td>{symbol}</td>
       <td>${stylePrice}</td>
+      {stylePercentChange()}
       <td>{marketCap}</td>
-      <td>{percentChange}</td>
     </tr>
   );
 }
