@@ -16,7 +16,8 @@ class App extends Component {
       cryptocurrencies: [],
       error: false,
       isLoading: true,
-      searchResults: []
+      searchResults: [],
+      favorites: []
     }
   }
 
@@ -33,6 +34,12 @@ class App extends Component {
       })
       this.setState({
         searchResults: searchResultsToDisplay
+      })
+    }
+
+    addFavoriteCrypto = (id) => {
+      this.setState({
+        favorites: [...this.state.favorites, id]
       })
     }
 
@@ -69,6 +76,7 @@ class App extends Component {
                 filterSearchResults={this.filterSearchResults}
                 searchResults={this.state.searchResults}
                 clearSearchResults={this.clearSearchResults}
+                addFavoriteCrypto={this.addFavoriteCrypto}
               />
             )}
           />

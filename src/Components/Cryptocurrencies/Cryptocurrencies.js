@@ -13,7 +13,8 @@ const Cryptocurrencies = ({
   isLoading,
   filterSearchResults,
   searchResults,
-  clearSearchResults
+  clearSearchResults,
+  addFavoriteCrypto
 }) => {
 
   const cryptocurrenciesOnDisplay = () => {
@@ -32,10 +33,11 @@ const Cryptocurrencies = ({
           price={quotes.USD.price}
           marketCap={quotes.USD["market_cap"]}
           percentChange={quotes.USD["percent_change_24h"]}
+          addFavoriteCrypto={addFavoriteCrypto}
         />
       );
-    });
-  };
+    })
+  }
 
   const searchResultsOnDisplay = () => {
     return searchResults.map((crypto) => {
@@ -50,10 +52,11 @@ const Cryptocurrencies = ({
           price={quotes.USD.price}
           marketCap={quotes.USD["market_cap"]}
           percentChange={quotes.USD["percent_change_24h"]}
+          addFavoriteCrypto={addFavoriteCrypto}
         />
-      );
-    });
-  };
+      )
+    })
+  }
 
   if (isLoading && !cryptocurrencies.length) {
     return <Loading />

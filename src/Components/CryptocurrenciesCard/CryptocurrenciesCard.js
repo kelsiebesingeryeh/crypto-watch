@@ -11,22 +11,33 @@ const CryptocurrenciesCard = ({
   price,
   marketCap,
   percentChange,
+  addFavoriteCrypto
 }) => {
   const stylePrice = price
     .toFixed(2)
-    .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")
-  const styleMarketCap = Math.abs(Number(marketCap)) >= 1.0e9
+    .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+  const styleMarketCap = Math.abs(Number(marketCap)) >= 1.0e9;
   const stylePercentChange = () => {
     if (percentChange > 0) {
-      return <td style={{color: 'green', fontWeight: 'bold'}}>{percentChange}</td>
+      return (
+        <td style={{ color: "green", fontWeight: "bold" }}>{percentChange}</td>
+      );
     } else {
-      return <td style={{ color: "red", fontWeight: 'bold' }}>{percentChange}</td>;
+      return (
+        <td style={{ color: "red", fontWeight: "bold" }}>{percentChange}</td>
+      );
     }
-  }
+  };
 
   return (
     <tr>
-      <td><img src={star} alt='star'></img></td>
+      <td>
+        <img
+          src={star}
+          alt="star"
+          onClick={() => addFavoriteCrypto(id)}
+        ></img>
+      </td>
       <td>{rank}</td>
       <td id={id}>
         <Link to={`/cryptocurrencies/${id}`} className="cryptoName">
@@ -39,6 +50,6 @@ const CryptocurrenciesCard = ({
       <td>{marketCap}</td>
     </tr>
   );
-}
+};
 
 export default CryptocurrenciesCard
