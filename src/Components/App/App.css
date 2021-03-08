@@ -88,6 +88,11 @@ body {
     font-size: 1rem;
   }
   .aboutSection {
-    height: 15rem;
+    height: 11rem;
   }
+
+  .header {
+    margin: 0;
+  }
+
 }
