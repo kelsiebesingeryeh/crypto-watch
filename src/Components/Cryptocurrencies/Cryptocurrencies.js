@@ -11,9 +11,14 @@ import x from '../../assets/x.png'
 const Cryptocurrencies = ({
   cryptocurrencies,
   isLoading,
+  error,
   filterSearchResults,
   searchResults,
-  clearSearchResults
+  clearSearchResults,
+  addFavoriteCrypto,
+  removeFromFavorites,
+  favorites,
+  isFavorite
 }) => {
   const cryptocurrenciesOnDisplay = () => {
     const top100Coins = cryptocurrencies
@@ -31,6 +36,10 @@ const Cryptocurrencies = ({
           price={quotes.USD.price}
           marketCap={quotes.USD["market_cap"]}
           percentChange={quotes.USD["percent_change_24h"]}
+          addFavoriteCrypto={addFavoriteCrypto}
+          removeFromFavorites={removeFromFavorites}
+          favorites={favorites}
+          isFavorite={isFavorite}
         />
       );
     });
@@ -49,17 +58,20 @@ const Cryptocurrencies = ({
           price={quotes.USD.price}
           marketCap={quotes.USD["market_cap"]}
           percentChange={quotes.USD["percent_change_24h"]}
+          addFavoriteCrypto={addFavoriteCrypto}
+          removeFromFavorites={removeFromFavorites}
+          favorites={favorites}
+          isFavorite={isFavorite}
         />
       );
     });
   };
 
-  if (isLoading && !cryptocurrencies.length) {
-    return <Loading />;
-  } else if (!cryptocurrencies.length) {
-    return <Error />;
-  } else if (cryptocurrencies.length) {
+
     return (
+      <>
+      {isLoading && <Loading />}
+      {error && <Error />}
       <div className="cryptoTableContainer">
         <span className="cryptoStyling">
           <p className="cryptoTableHeading">
@@ -79,6 +91,7 @@ const Cryptocurrencies = ({
         <table className="cryptoTable">
           <thead>
             <tr>
+              <th>Favorites</th>
               <th>Rank</th>
               <th>Cryptocurrency</th>
               <th>Symbol</th>
@@ -94,8 +107,8 @@ const Cryptocurrencies = ({
           </tbody>
         </table>
       </div>
-    );
-  }  
-}
+  </>
+    )
+  }
     
 export default Cryptocurrencies

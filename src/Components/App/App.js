@@ -8,6 +8,8 @@ import CryptocurrencyDetails from '../CryptocurrencyDetails/CryptocurrencyDetail
 import { getAllCoins } from "../../apiCalls"
 import Error from '../Error/Error'
 import Exchanges from '../Exchanges/Exchanges'
+import Cryptopedia from '../Cryptopedia/Cryptopedia'
+import { getCryptoData } from '../../apiCalls'
 
 class App extends Component {
   constructor() {
@@ -16,16 +18,25 @@ class App extends Component {
       cryptocurrencies: [],
       error: false,
       isLoading: true,
-      searchResults: []
+      searchResults: [],
+      favorites: [],
+      isFavorite: false,
+      tags: [],
+      exchanges: []
     }
   }
 
   componentDidMount() {
-      getAllCoins().then((cryptocurrencies) =>
-        this.setState({ cryptocurrencies, isLoading: false})
-      )
-      .catch(error => this.setState({error: true, isLoading: false}))
-    }
+    getCryptoData().then(data => {
+      this.setState({
+        cryptocurrencies: data[0],
+        exchanges: data[1],
+        tags: data[2],
+        isLoading: false
+      })
+    })
+    .catch(error => this.setState({error: true, isLoading: false}))
+  }
 
     filterSearchResults = (userInput) => {
       const searchResultsToDisplay = this.state.cryptocurrencies.filter(crypto => {
@@ -33,6 +44,21 @@ class App extends Component {
       })
       this.setState({
         searchResults: searchResultsToDisplay
+      })
+    }
+
+    addFavoriteCrypto = (coin) => {
+      if (!this.state.isFavorite) {
+        this.setState({
+          favorites: [...this.state.favorites, coin],
+          isFavorite: true
+        })
+     }
+    } 
+
+    removeFromFavorites = () => {
+      this.setState({
+        isFavorite: false
       })
     }
 
@@ -47,7 +73,6 @@ class App extends Component {
         <main>
           <Nav />
           <Route exact path="/error" render={() => <Error />} />
-
           <Route
             exact
             path="/"
@@ -69,6 +94,22 @@ class App extends Component {
                 filterSearchResults={this.filterSearchResults}
                 searchResults={this.state.searchResults}
                 clearSearchResults={this.clearSearchResults}
+                addFavoriteCrypto={this.addFavoriteCrypto}
+                removeFromFavorites={this.removeFromFavorites}
+                favorites={this.state.favorites}
+                isFavorite={this.state.isFavorite}
+                error={this.state.error}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/cryptopedia"
+            render={() => (
+              <Cryptopedia
+                tags={this.state.tags}
+                isLoading={this.state.isLoading}
+                error={this.state.error}
               />
             )}
           />
@@ -87,7 +128,17 @@ class App extends Component {
               );
             }}
           />
-          <Route exact path="/exchanges" component={Exchanges} />
+          <Route
+            exact
+            path="/exchanges"
+            render={() => (
+              <Exchanges
+                exchanges={this.state.exchanges}
+                isLoading={this.state.isLoading}
+                error={this.state.error}
+              />
+            )}
+          />
         </main>
       );
     }

@@ -18,12 +18,11 @@ const Nav = () => {
             <p className="rightNavItems">Cryptopedia</p>
           </Link>
           <Link to="/cryptocurrencies">
-            <p className="rightNavItems">Markets</p>
+            <p className="rightNavItems">Cryptocurrencies</p>
           </Link>
           <Link to="/exchanges">
             <p className="rightNavItems">Exchanges</p>
           </Link>
-          <p className="rightNavItems">My Watch List</p>
         </div>
       </nav>
     );
