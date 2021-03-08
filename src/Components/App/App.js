@@ -18,7 +18,7 @@ class App extends Component {
       isLoading: true,
       searchResults: [],
       favorites: [],
-      isFavorite: false
+      isFavorite: false,
     }
   }
 
@@ -45,8 +45,7 @@ class App extends Component {
           isFavorite: true
         })
      }
-    }
-      
+    } 
 
     removeFromFavorites = () => {
       this.setState({

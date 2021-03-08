@@ -6,7 +6,6 @@ import Loading from '../Loading/Loading'
 import Form from '../Form/Form'
 import search from '../../assets/search.png'
 import x from '../../assets/x.png'
-import Sort from '../Sort/Sort'
 
 
 const Cryptocurrencies = ({
@@ -18,7 +17,7 @@ const Cryptocurrencies = ({
   addFavoriteCrypto,
   removeFromFavorites,
   favorites,
-  isFavorite,
+  isFavorite
 }) => {
   const cryptocurrenciesOnDisplay = () => {
     const top100Coins = cryptocurrencies
@@ -78,7 +77,6 @@ const Cryptocurrencies = ({
           <p className="cryptoTableHeading">
             Cryptocurrency prices for 100 assets
           </p>
-          <Sort />
           <span className="searchStyling">
             <img src={search} alt="search" className="searchIcon"></img>
             <Form filterSearchResults={filterSearchResults} />
