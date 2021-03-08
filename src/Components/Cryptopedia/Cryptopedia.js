@@ -3,7 +3,7 @@ import Loading from '../Loading/Loading'
 import Error from '../Error/Error'
 import CryptopediaTags from '../CryptopediaTags/CryptopediaTags'
 
-const Cryptopedia = ({tags, loading, error}) => {
+const Cryptopedia = ({tags, isLoading, error}) => {
 
 const tagsOnDisplay = () => {
     const sortedTags = tags.sort((a, b) => {  
@@ -24,7 +24,7 @@ const tagsOnDisplay = () => {
     })
    }
 
-    if (loading && !tags.length) {
+    if (isLoading && !tags.length) {
         return <Loading />
     } else if (error && tags.length) {
         return <Error />
