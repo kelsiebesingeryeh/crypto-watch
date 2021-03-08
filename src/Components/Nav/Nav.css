@@ -1,22 +1,22 @@
 nav {
-    display: flex;
-    justify-content: space-between;
     align-items: center;
-    font-family: 'gothamBold', 'sans-serif';
     background: #5642D9;
     color: white;
+    display: flex;
+    font-family: 'gothamBold', 'sans-serif';
+    justify-content: space-between;
 }
 
 .leftNav {
-    padding: 1rem;
     display: flex;
     flex-direction: column;
+    padding: 1rem;
 }
 
 .rightNav {
+    align-self: flex-start;
     display: flex;
     padding-right: 1rem;
-    align-self: flex-start;
 }
 
 .rightNavItems {
