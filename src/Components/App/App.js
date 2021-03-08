@@ -8,8 +8,6 @@ import CryptocurrencyDetails from '../CryptocurrencyDetails/CryptocurrencyDetail
 import { getAllCoins } from "../../apiCalls"
 import Error from '../Error/Error'
 import Exchanges from '../Exchanges/Exchanges'
-import star from "../../assets/star.png";
-import filledStar from "../../assets/filledStar.png";
 
 class App extends Component {
   constructor() {
@@ -20,6 +18,7 @@ class App extends Component {
       isLoading: true,
       searchResults: [],
       favorites: [],
+      isFavorite: false
     }
   }
 
@@ -40,14 +39,18 @@ class App extends Component {
     }
 
     addFavoriteCrypto = (coin) => {
-      this.setState({
-        favorites: [...this.state.favorites, coin],
-      })
+      if (!this.state.isFavorite) {
+        this.setState({
+          favorites: [...this.state.favorites, coin],
+          isFavorite: true
+        })
+     }
     }
+      
 
     removeFromFavorites = () => {
       this.setState({
-        favorites: [],
+        isFavorite: false
       })
     }
 
@@ -87,6 +90,7 @@ class App extends Component {
                 addFavoriteCrypto={this.addFavoriteCrypto}
                 removeFromFavorites={this.removeFromFavorites}
                 favorites={this.state.favorites}
+                isFavorite={this.state.isFavorite}
               />
             )}
           />

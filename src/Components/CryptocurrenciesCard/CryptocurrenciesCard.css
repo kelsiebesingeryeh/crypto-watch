@@ -28,5 +28,17 @@
     display: none;
 }
 
+.star {
+    width: 30%;
+}
+
+svg {
+    pointer-events: none;
+}
+
+.filledStar {
+    background: url('../../assets/filledStar.png');
+}
+
 
 /* shadow color 444C7D */

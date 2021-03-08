@@ -6,6 +6,7 @@ import Loading from '../Loading/Loading'
 import Form from '../Form/Form'
 import search from '../../assets/search.png'
 import x from '../../assets/x.png'
+import Sort from '../Sort/Sort'
 
 
 const Cryptocurrencies = ({
@@ -17,8 +18,8 @@ const Cryptocurrencies = ({
   addFavoriteCrypto,
   removeFromFavorites,
   favorites,
+  isFavorite,
 }) => {
-
   const cryptocurrenciesOnDisplay = () => {
     const top100Coins = cryptocurrencies
       .filter((crypto) => crypto.rank > 0 && crypto.rank <= 100)
@@ -38,10 +39,11 @@ const Cryptocurrencies = ({
           addFavoriteCrypto={addFavoriteCrypto}
           removeFromFavorites={removeFromFavorites}
           favorites={favorites}
+          isFavorite={isFavorite}
         />
       );
-    })
-  }
+    });
+  };
 
   const searchResultsOnDisplay = () => {
     return searchResults.map((crypto) => {
@@ -59,15 +61,16 @@ const Cryptocurrencies = ({
           addFavoriteCrypto={addFavoriteCrypto}
           removeFromFavorites={removeFromFavorites}
           favorites={favorites}
+          isFavorite={isFavorite}
         />
       );
-    })
-  }
+    });
+  };
 
   if (isLoading && !cryptocurrencies.length) {
-    return <Loading />
+    return <Loading />;
   } else if (!cryptocurrencies.length) {
-    return <Error />
+    return <Error />;
   } else if (cryptocurrencies.length) {
     return (
       <div className="cryptoTableContainer">
@@ -75,6 +78,7 @@ const Cryptocurrencies = ({
           <p className="cryptoTableHeading">
             Cryptocurrency prices for 100 assets
           </p>
+          <Sort />
           <span className="searchStyling">
             <img src={search} alt="search" className="searchIcon"></img>
             <Form filterSearchResults={filterSearchResults} />
@@ -105,8 +109,8 @@ const Cryptocurrencies = ({
           </tbody>
         </table>
       </div>
-    )
-  }  
-}
+    );
+  }
+};
     
 export default Cryptocurrencies
