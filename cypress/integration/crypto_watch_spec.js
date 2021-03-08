@@ -1,30 +1,28 @@
-describe.skip('Home', () => {
+describe.only('Home', () => {
+  beforeEach(() => {
     const baseURL = "http://localhost:3000/"
+    cy.visit(baseURL)
+  })
 
 it('Should see a home button in the nav bar when a user visits the homepage', () => {
-    cy.visit(baseURL)
-    .get(".navIcon").should('be.visible')
+    cy.get(".navIcon").should('be.visible')
 })
 
 it('Should see menu items in the nav bar when a user visits the homepage', () => {
-    cy.visit(baseURL)
-    .get(".rightNavItems").should('contain', 'Cryptopedia', 'Markets', 'Exchanges', 'My Watch List')
+    cy.get(".rightNavItems").should('contain', 'Cryptopedia', 'Markets', 'Exchanges', 'My Watch List')
 })
 
 it('Should have a header on the homepage', () => {
-    cy.visit(baseURL)
-    .get('.header, h1').should('contain', 'CryptoWatch')
+    cy.get('.header, h1').should('contain', 'CryptoWatch')
 })
 
 it('Should have a subheading on the homepage', () => {
-    cy.visit(baseURL)
-      .get("h2")
+      cy.get("h2")
       .should("contain", "Your crypto exploration and learning platform.")
 })
 
 it('Should see three cards display with text on the homepage', () => {
-    cy.visit(baseURL)
-      .get(".beginnerSection")
+      cy.get(".beginnerSection")
       .should("be.visible")
       .get(".curiousSection")
       .should("be.visible")
@@ -35,51 +33,45 @@ it('Should see three cards display with text on the homepage', () => {
     })
 
 it('Should be able to click into a section and be taken to another page', () => {
-    cy.visit(baseURL)
-      .get(".curiousSection")
+      cy.get(".curiousSection")
       .click()
       .location("pathname")
       .should("eq", "/cryptocurrencies")
 })
 
 it('Should be able to click into a section and be taken to another page', () => {
-    cy.visit(baseURL)
-    .get('.buySection')
+    cy.get('.buySection')
     .click()
     .location('pathname')
     .should('eq', '/exchanges')
 })
 
 it("Should be able to click into a section and be taken to another page", () => {
-  cy.visit(baseURL)
-    .get(".beginnerSection")
+    cy.get(".beginnerSection")
     .click()
     .location("pathname")
     .should("eq", "/cryptopedia")
 })
 
 it("Should be able to click into a nav bar item and be taken to another page", () => {
-  cy.visit(baseURL)
-    .get(".navCryptocurrencies")
+    cy.get(".navCryptocurrencies")
     .click()
     .location("pathname")
     .should("eq", "/cryptocurrencies")
 })
 
 it("Should be able to click into a nav bar item and be taken to another page", () => {
-  cy.visit(baseURL)
-    .get(".navExchanges")
+    cy.get(".navExchanges")
     .click()
     .location("pathname")
     .should("eq", "/exchanges")
 })
 
 it("Should be able to click into a nav bar item and be taken to another page", () => {
-  cy.visit(baseURL)
-    .get(".navCryptopedia")
+    cy.get(".navCryptopedia")
     .click()
     .location("pathname")
-    .should("eq", "/cryptopedia");
+    .should("eq", "/cryptopedia")
 })
 
 })
