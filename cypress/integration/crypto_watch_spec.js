@@ -205,7 +205,7 @@ describe.skip('Search Bar', () => {
   })
 })
 
-describe('Loading', () => {
+describe.skip('Loading', () => {
   beforeEach(() =>  {
     const baseURL = "http://localhost:3000"
     cy.visit(baseURL)
@@ -246,16 +246,18 @@ describe('Loading', () => {
 })
 
 describe.skip('Error', () => {
-  const baseURL = "http://localhost:3000"
-
-  it('should display an error message if there is no data to display', () => {
+  beforeEach(() => {
+    const baseURL = "http://localhost:3000"
     cy.fixture("testCryptoData.json").then((cryptoData) => {
       cy.intercept("GET", "https://api.coinpaprika.com/v1/tickers", {
         body: []
       })
     })
+  })
+  
+  it('should display an error message if there is no data to display', () => {
     cy.visit(baseURL)
-    .get(".curiousSection")
+    cy.get(".curiousSection")
     .click()
   })
   //this one is passing not sure why
@@ -277,7 +279,7 @@ describe.skip('Error', () => {
   })
 })
 
-describe('Cryptopedia', () => {
+describe.skip('Cryptopedia', () => {
   beforeEach(() => {
     const baseURL = "http://localhost:3000/cryptopedia"
     cy.fixture("testCryptopediaData.json").then((cryptoData) => {
