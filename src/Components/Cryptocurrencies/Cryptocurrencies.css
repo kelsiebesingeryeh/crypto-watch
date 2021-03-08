@@ -76,7 +76,9 @@ td {
     object-fit: contain;
 }
 
-@media screen and (max-width: 500px) {
+
+
+@media screen and (max-width: 550px) {
     .cryptoStyling {
         flex-direction: column;
         align-items: flex-start;

@@ -51,13 +51,24 @@ a {
     background-color: #C96565;
 }
 
-@media screen and (max-width: 500px) {
-
-    body,
-    html {
-        width: 100%;
-        overflow-x: hidden;
+@media screen and (min-width: 551px) and (max-width: 1024px) {
+    .sectionContainer {
+        overflow-x: scroll;
+        overflow-y: hidden;
+        white-space: wrap;
+        justify-content: space-between;
     }
+    .mainSection {
+        display: inline-block;
+        width: 10rem;
+    }
+
+}
+
+
+
+
+@media screen and (max-width: 550px) {
 
     .sectionContainer {
         flex-direction: column;

@@ -8,6 +8,7 @@ body {
   padding: 0;
 }
 
+/* CUSTOM FONTS */
 
 @font-face {
   font-family: 'gothamBold';
@@ -24,7 +25,19 @@ body {
   src: url('gothamBookRegular.otf');
 }
 
-@media screen and (max-width: 500px) {
+/* TABLET /IPADS */
+
+@media screen and (min-width: 551px) and (max-width: 800px) {
+   body,
+   html {
+     overflow-x: hidden;
+     width: 100%;
+   }
+}
+
+/* SMART PHONES/MOBILE */
+
+@media screen and (max-width: 550px) {
   body, html {
     overflow-x: hidden;
     width: 100%;
