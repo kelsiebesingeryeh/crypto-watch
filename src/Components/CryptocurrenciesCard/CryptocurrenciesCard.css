@@ -1,9 +1,9 @@
 .cryptoCards {
-    display: flex;
-    border-bottom: 1px solid black;
-    padding: 1rem;
     background: white;
+    border-bottom: 1px solid black;
     color: black;
+    display: flex;
+    padding: 1rem;
 }
 
 .cardStyling {
@@ -23,22 +23,3 @@
 .cryptoName {
     color: black;
 }
-
-.hidden {
-    display: none;
-}
-
-.star {
-    width: 30%;
-}
-
-svg {
-    pointer-events: none;
-}
-
-.filledStar {
-    background: url('../../assets/filledStar.png');
-}
-
-
-/* shadow color 444C7D */

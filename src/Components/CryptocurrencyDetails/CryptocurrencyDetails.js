@@ -26,7 +26,14 @@ class CryptocurrencyDetails extends Component {
         return (
           <ul className="itemList">
             <li key={coin}>
-              <a href={coin} target='_blank' className='coinLinks'>{coin}</a>
+              <a
+                href={coin}
+                target="_blank"
+                rel="noreferrer"
+                className="coinLinks"
+              >
+                {coin}
+              </a>
             </li>
           </ul>
         );
