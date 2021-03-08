@@ -71,3 +71,23 @@ body {
   src: url('gothamBookRegular.otf');
 }
 
+@media screen and (max-width: 500px) {
+  body, html {
+    width: 100%;
+    overflow-x: hidden;
+  }
+  .sectionContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+  .mainSection {
+    margin-left: 0;
+    margin-bottom: 10%;
+  }
+  .subHeader{
+    font-size: 1rem;
+  }
+  .aboutSection {
+    height: 15rem;
+  }
+}

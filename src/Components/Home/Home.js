@@ -7,10 +7,9 @@ const Home = () => {
       <>
         <article className="aboutSection">
           <h1 className="mainPageText header">CryptoWatch</h1>
-          <h2 className="mainPageText">
+          <h2 className="mainPageText subHeader">
             <strong>Your crypto exploration and learning platform.</strong>
           </h2>
-          <h3 className="mainPageText">Mission Statement</h3>
         </article>
 
         <div className="sectionContainer">
