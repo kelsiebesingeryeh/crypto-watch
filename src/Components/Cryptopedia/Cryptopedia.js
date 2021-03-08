@@ -7,7 +7,13 @@ import CryptopediaTags from '../CryptopediaTags/CryptopediaTags'
 const Cryptopedia = ({tags, isLoading, error}) => {
 
 const tagsOnDisplay = () => {
-    return tags.map(tag => {
+    const sortedTags = tags.sort((a, b) => {  
+          if (a.name < b.name) {
+              return -1
+          }
+    })
+
+    return sortedTags.map(tag => {
         return (
             <CryptopediaTags 
             id={tag.id}
@@ -18,8 +24,6 @@ const tagsOnDisplay = () => {
         )
     })
    }
-
-  
         return (
             <>
             <h1>Crypto 101</h1>

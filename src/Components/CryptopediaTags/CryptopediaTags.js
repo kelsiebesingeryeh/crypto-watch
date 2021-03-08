@@ -1,8 +1,11 @@
 import React from 'react'
 
-const CryptopediaTags = () => {
+const CryptopediaTags = ({name, description}) => {
     return (
-        <h2>tags</h2>
+        <section className='cryptopediaSection'>
+            <h2>{name}</h2>
+            <p>{description}</p>
+        </section>
     )
 }
 
