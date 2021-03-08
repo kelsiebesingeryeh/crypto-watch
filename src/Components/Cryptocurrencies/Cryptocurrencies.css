@@ -13,9 +13,9 @@ table {
 th,
 td {
     border: 1px solid grey;
+    line-height: 2rem;
     padding: 1rem;
     text-align: left;
-    line-height: 2rem;
 }
 
 .cryptoTableHeading {
@@ -29,9 +29,9 @@ td {
 }
 
 .cryptoStyling {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
 }
 
 .searchStyling {
@@ -51,10 +51,10 @@ td {
 /* TABLETS/IPAD */
 @media screen and (min-width: 551px) and (max-width: 1024px) {
     .cryptoTableContainer {
+        justify-content: space-between;
         overflow-x: scroll;
         overflow-y: hidden;
         white-space: wrap;
-        justify-content: space-between;
     }
     .cryptoTableHeading {
         font-size: 1rem;
@@ -65,8 +65,8 @@ td {
 
 @media screen and (max-width: 550px) {
     .cryptoStyling {
-        flex-direction: column;
         align-items: flex-start;
+        flex-direction: column;
         margin-bottom: 2rem;
     }
 
