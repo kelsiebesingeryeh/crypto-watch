@@ -101,7 +101,7 @@ class App extends Component {
               />
             )}
           />
-          <Route exact path="/cryptopedia" component={Cryptopedia} />
+          <Route exact path="/cryptopedia" render={() => <Cryptopedia tags={this.state.tags} loading={this.state.isLoading} error={this.state.error}/>} />
           <Route
             exact
             path={"/cryptocurrencies/:id"}
