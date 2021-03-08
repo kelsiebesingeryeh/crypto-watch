@@ -38,6 +38,7 @@ svg {
 
 .filledStar {
     background: url('../../assets/filledStar.png');
+    width: 30%;
 }
 
 

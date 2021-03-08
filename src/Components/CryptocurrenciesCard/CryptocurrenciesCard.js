@@ -3,7 +3,6 @@ import "./CryptocurrenciesCard.css"
 import { Link } from 'react-router-dom'
 import star from '../../assets/star.png'
 import filledStar from '../../assets/filledStar.png'
-import Star from '../Star/Star'
 
 const CryptocurrenciesCard = ({
   id,
@@ -20,8 +19,8 @@ const CryptocurrenciesCard = ({
 }) => {
   const stylePrice = price
     .toFixed(2)
-    .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
-  const styleMarketCap = Math.abs(Number(marketCap)) >= 1.0e9;
+    .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")
+  const styleMarketCap = Math.abs(Number(marketCap)) >= 1.0e9
   const stylePercentChange = () => {
     if (percentChange > 0) {
       return (
@@ -35,12 +34,11 @@ const CryptocurrenciesCard = ({
         >
           {percentChange}
         </td>
-      );
+      )
     }
   }
 
   const handleClick = () => {
-    console.log('favorite', isFavorite)
     if (!isFavorite) {
       addFavoriteCrypto(id)
     } else {
@@ -55,7 +53,7 @@ const CryptocurrenciesCard = ({
           src={favorites.includes(id) ? filledStar : star}
           alt="star"
           onClick={handleClick}
-          // style={{ background: favorites.includes(id) && "red" }}
+          style={{width: "30%"}}
         />
       </td>
       <td data-label="Rank">{rank}</td>

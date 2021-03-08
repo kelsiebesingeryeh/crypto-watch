@@ -79,9 +79,9 @@ class App extends Component {
             path="/"
             render={() => {
               if (!this.state.cryptocurrencies.length && this.state.error) {
-                return <Redirect to="/error" />;
+                return <Redirect to="/error" />
               } else {
-                return <Home />;
+                return <Home />
               }
             }}
           />
@@ -141,7 +141,7 @@ class App extends Component {
             )}
           />
         </main>
-      );
+      )
     }
   }
 
