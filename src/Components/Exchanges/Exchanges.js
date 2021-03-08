@@ -2,20 +2,20 @@ import React from 'react'
 import ExchangeDetails from '../ExchangeDetails/ExchangeDetails'
 import Loading from '../Loading/Loading'
 import Error from '../Error/Error'
+import PropTypes from "prop-types";
 
 const Exchanges = ({ exchanges, isLoading, error }) => {
   const exchangesOnDisplay = () => {
     const sortedExchange = exchanges.sort(
       (a, b) => b["confidence_score"] - a["confidence_score"]
     )
-    
+
     return sortedExchange.map((exchange) => {
       return (
         <ExchangeDetails
           key={exchange.id}
           id={exchange.id}
           name={exchange.name}
-          links={exchange.links}
           currencies={exchange.currencies}
           markets={exchange.markets}
           fiats={exchange.fiats}
@@ -51,3 +51,9 @@ const Exchanges = ({ exchanges, isLoading, error }) => {
 }
 
 export default Exchanges
+
+Exchanges.propTypes = {
+  exchanges: PropTypes.array,
+  isLoading: PropTypes.bool,
+  error: PropTypes.bool
+}

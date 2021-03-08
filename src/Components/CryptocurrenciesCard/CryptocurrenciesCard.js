@@ -3,6 +3,7 @@ import "./CryptocurrenciesCard.css"
 import { Link } from 'react-router-dom'
 import star from '../../Assets/star.png'
 import filledStar from '../../Assets/filledStar.png'
+import PropTypes from "prop-types"
 
 const CryptocurrenciesCard = ({
   id,
@@ -77,3 +78,18 @@ const CryptocurrenciesCard = ({
 }
 
 export default CryptocurrenciesCard
+
+CryptocurrenciesCard.propTypes = {
+  id: PropTypes.string,
+  name: PropTypes.string,
+  symbol: PropTypes.string,
+  rank: PropTypes.number,
+  price: PropTypes.number,
+  marketCap: PropTypes.number,
+  percentChange: PropTypes.number,
+  addFavoriteCrypto: PropTypes.func,
+  removeFromFavorites: PropTypes.func,
+  favorites: PropTypes.array,
+  isFavorite: PropTypes.bool
+}
+  

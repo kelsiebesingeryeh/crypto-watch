@@ -70,7 +70,6 @@ class CryptocurrencyDetails extends Component {
             {this.state.currentCoin && (
               <section className="coinDetails">
                 <h1>{this.state.currentCoin.name}</h1>
-                <h2>Price</h2>
                 <p className="coinDescription">
                   {this.state.currentCoin.description}
                 </p>

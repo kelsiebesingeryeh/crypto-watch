@@ -6,6 +6,7 @@ import Loading from '../Loading/Loading'
 import Form from '../Form/Form'
 import search from '../../Assets/search.png'
 import x from '../../Assets/x.png'
+import PropTypes from 'prop-types'
 
 
 const Cryptocurrencies = ({
@@ -91,3 +92,17 @@ const Cryptocurrencies = ({
   }
     
 export default Cryptocurrencies
+
+Cryptocurrencies.propTypes = {
+    id: PropTypes.string,
+    name: PropTypes.string,
+    symbol: PropTypes.string,
+    rank: PropTypes.number,
+    price: PropTypes.number,
+    marketCap: PropTypes.number,
+    percentChange: PropTypes.number,
+    addFavoriteCrypto: PropTypes.func,
+    removeFromFavorites: PropTypes.func,
+    favorites: PropTypes.array,
+    isFavorite: PropTypes.bool
+}
