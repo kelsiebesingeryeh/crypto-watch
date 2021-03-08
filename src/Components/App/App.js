@@ -8,6 +8,7 @@ import CryptocurrencyDetails from '../CryptocurrencyDetails/CryptocurrencyDetail
 import { getAllCoins } from "../../apiCalls"
 import Error from '../Error/Error'
 import Exchanges from '../Exchanges/Exchanges'
+import Cryptopedia from '../Cryptopedia/Cryptopedia'
 
 class App extends Component {
   constructor() {
@@ -93,6 +94,7 @@ class App extends Component {
               />
             )}
           />
+          <Route exact path="/cryptopedia" component={Cryptopedia} />
           <Route
             exact
             path={"/cryptocurrencies/:id"}
@@ -105,12 +107,12 @@ class App extends Component {
                     isLoading={this.state.isLoading}
                   />
                 </div>
-              );
+              )
             }}
           />
           <Route exact path="/exchanges" component={Exchanges} />
         </main>
-      );
+      )
     }
   }
 
