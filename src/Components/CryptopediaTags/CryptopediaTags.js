@@ -1,4 +1,5 @@
 import React from 'react'
+import './CryptopediaTags.css'
 
 const CryptopediaTags = ({name, description}) => {
     return (

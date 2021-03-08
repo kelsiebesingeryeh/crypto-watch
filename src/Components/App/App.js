@@ -125,7 +125,7 @@ class App extends Component {
                     isLoading={this.state.isLoading}
                   />
                 </div>
-              );
+              )
             }}
           />
           <Route

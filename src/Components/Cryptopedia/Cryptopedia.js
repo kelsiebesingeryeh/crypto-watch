@@ -2,6 +2,7 @@ import React from 'react'
 import Loading from '../Loading/Loading'
 import Error from '../Error/Error'
 import CryptopediaTags from '../CryptopediaTags/CryptopediaTags'
+import './Cryptopedia.css'
 
 const Cryptopedia = ({tags, isLoading, error}) => {
 
@@ -31,7 +32,7 @@ const tagsOnDisplay = () => {
     } else if (tags.length) {
         return (
             <>
-            <h1>Crypto 101</h1>
+            <h1 className='cryptopediaHeading'>Crypto 101</h1>
             {tagsOnDisplay()}
             </>
         )

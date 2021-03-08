@@ -6,14 +6,14 @@ const ExchangeDetails = ({ name, links, currencies, markets, fiats, volume, conf
     const displayFiats = fiats.map(fiat => fiat.symbol).join(', ')
     return (
       <tr>
-        <td>{name}</td>
-        <td>{exchangePercentage.toFixed(2)}</td>
-        <td>${styledVolume}</td>
-        <td>{markets}</td>
-        <td>{currencies}</td>
-        <td>{displayFiats}</td>
+        <td data-label="Exchange Name">{name}</td>
+        <td data-label="Exchange Score">{exchangePercentage.toFixed(2)}</td>
+        <td data-label="Volume(24H)">${styledVolume}</td>
+        <td data-label="# Markets">{markets}</td>
+        <td data-label="# Coins">{currencies}</td>
+        <td data-label="Fiats Supported">{displayFiats}</td>
       </tr>
-    )
+    );
 }
 
 export default ExchangeDetails

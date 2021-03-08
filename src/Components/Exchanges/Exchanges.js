@@ -21,9 +21,10 @@ const Exchanges = ({ exchanges, isLoading, error }) => {
           volume={exchange.quotes.USD["reported_volume_24h"]}
           confidenceScore={exchange["confidence_score"]}
         />
-      );
-    });
-  };
+      )
+    })
+  }
+
   return (
     <>
       {isLoading && <Loading />}
@@ -45,7 +46,7 @@ const Exchanges = ({ exchanges, isLoading, error }) => {
         </table>
       </div>
     </>
-  );
-};
+  )
+}
 
 export default Exchanges

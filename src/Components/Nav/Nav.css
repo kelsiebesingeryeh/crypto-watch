@@ -26,3 +26,10 @@ nav {
 .navIcon {
     margin-bottom: 1rem;
 }
+
+@media screen and (max-width: 550px) {
+    .rightNav {
+        font-size: .6rem;
+    }
+
+}

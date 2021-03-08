@@ -1,0 +1,22 @@
+.cryptopediaHeading {
+    font-size: 2.5rem;
+    margin-left: 1rem;
+}
+
+/* TABLET /IPADS */
+
+@media screen and (min-width: 551px) and (max-width: 1024px) {
+     .cryptopediaHeading {
+         font-size: 2rem;
+         margin-left: 1rem;
+     }
+}
+
+/* SMART PHONES/MOBILE */
+
+@media screen and (max-width: 550px) {
+    .cryptopediaHeading {
+        font-size: 1.5rem;
+        margin-left: 1rem;
+    }
+}

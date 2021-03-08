@@ -2,3 +2,96 @@ a {
     text-decoration: none;
     color: white;
 }
+
+.mainPageText {
+    padding-left: 2.5rem;
+    color: white;
+}
+
+.header {
+    color: white;
+    font-size: 2rem;
+    font-family: 'gothamBold', 'sans-serif';
+}
+
+.aboutSection {
+    background: #5642D9;
+    display: flex;
+    height: 20rem;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+.sectionContainer {
+    display: flex;
+    justify-content: center;
+    padding-top: 1rem;
+    padding-top: 5%;
+}
+
+.mainSection {
+    width: 215px;
+    height: 270px;
+    border-radius: 10px;
+    display: flex;
+    font-weight: bold;
+    padding: 1rem;
+    background: #0D0C52;
+    font-size: 1.25rem;
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+    margin-left: 2rem;
+}
+
+.curiousSection {
+    background-color: #530CC8;
+}
+
+.buySection {
+    background-color: #C96565;
+}
+
+/* TABLETS AND IPAD */
+
+@media screen and (min-width: 551px) and (max-width: 1024px) {
+    .sectionContainer {
+        overflow-x: scroll;
+        overflow-y: hidden;
+        white-space: wrap;
+        justify-content: space-between;
+    }
+    .mainSection {
+        display: inline-block;
+        width: 10rem;
+    }
+
+}
+
+
+/* SMART PHONES AND MOBILE */
+
+@media screen and (max-width: 550px) {
+
+    .sectionContainer {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .mainSection {
+        margin-left: 0;
+        margin-bottom: 10%;
+    }
+
+    .subHeader {
+        font-size: 1rem;
+    }
+
+    .aboutSection {
+        height: 11rem;
+    }
+
+    .header {
+        margin: 0;
+    }
+
+}

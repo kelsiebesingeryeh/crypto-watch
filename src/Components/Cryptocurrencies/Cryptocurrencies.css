@@ -1,32 +1,4 @@
-.cryptocurrencyContainer {
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-}
-
-.crytpoHeadingsLeft {
-    color: black;
-    display: flex;
-    padding: 1rem;
-}
-
-.marketHeadingLeft {
-    margin-right: 1rem;
-}
-
-.crytpoHeadingsRight {
-    color: black;
-    display: flex;
-    padding: 1rem;
-}
-
-.marketHeadingRight {
-    margin-left: 1rem;
-}
-
-.headingContainer {
-    display: flex;
-}
+/* TABLE STYLING */
 
 .cryptoTable {
     color: black;
@@ -38,7 +10,6 @@ table {
     width: 100%;
 }
 
-table,
 th,
 td {
     border: 1px solid grey;
@@ -75,4 +46,60 @@ td {
 
 .xIcon{
     object-fit: contain;
+}
+
+/* TABLETS/IPAD */
+@media screen and (min-width: 551px) and (max-width: 1024px) {
+    .cryptoTableContainer {
+        overflow-x: scroll;
+        overflow-y: hidden;
+        white-space: wrap;
+        justify-content: space-between;
+    }
+    .cryptoTableHeading {
+        font-size: 1rem;
+    }
+}
+
+/* SMART PHONES/MOBILE */
+
+@media screen and (max-width: 550px) {
+    .cryptoStyling {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 2rem;
+    }
+
+    .cryptoTableHeading {
+        font-size: 1rem;
+    }
+
+    table thead {
+        border: none;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+
+    table tr {
+        border-bottom: 3px solid grey;
+        display: block;
+        margin-bottom: 1rem;
+    }
+
+    table td {
+        border-bottom: 1px solid grey;
+        display: block;
+        text-align: right;
+    }
+
+    table td::before {
+        content: attr(data-label);
+        float: left;
+    }
+
 }
