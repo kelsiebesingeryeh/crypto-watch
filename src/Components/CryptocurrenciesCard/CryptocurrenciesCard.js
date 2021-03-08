@@ -17,10 +17,14 @@ const CryptocurrenciesCard = ({
   favorites,
   isFavorite
 }) => {
-  const stylePrice = price
-    .toFixed(2)
-    .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")
-  const styleMarketCap = Math.abs(Number(marketCap)) >= 1.0e9
+  const formatPrice = new Intl.NumberFormat('en-US').format(price)
+  const formatMarketCap = (num) => {
+      if (num < 1e3) return 
+      if (num >= 1e3 && num < 1e6) return +(num / 1e3).toFixed(1) + "K"
+      if (num >= 1e6 && num < 1e9) return +(num / 1e6).toFixed(1) + "M"
+      if (num >= 1e9 && num < 1e12) return +(num / 1e9).toFixed(1) + "B"
+      if (num >= 1e12) return +(num / 1e12).toFixed(1) + "T"
+  }
   const stylePercentChange = () => {
     if (percentChange > 0) {
       return (
@@ -30,8 +34,7 @@ const CryptocurrenciesCard = ({
       return (
         <td
           style={{ color: "red", fontWeight: "bold" }}
-          data-label="Percent Change"
-        >
+          data-label="Percent Change">
           {percentChange}
         </td>
       )
@@ -53,7 +56,7 @@ const CryptocurrenciesCard = ({
           src={favorites.includes(id) ? filledStar : star}
           alt="star"
           onClick={handleClick}
-          style={{width: "30%"}}
+          style={{ width: "30%" }}
         />
       </td>
       <td data-label="Rank">{rank}</td>
@@ -63,9 +66,9 @@ const CryptocurrenciesCard = ({
         </Link>
       </td>
       <td data-label="Symbol">{symbol}</td>
-      <td data-label="Price">${stylePrice}</td>
+      <td data-label="Price">${formatPrice}</td>
       {stylePercentChange()}
-      <td data-label="Market Cap">{marketCap}</td>
+      <td data-label="Market Cap">{formatMarketCap(marketCap)}</td>
     </tr>
   );
 }
