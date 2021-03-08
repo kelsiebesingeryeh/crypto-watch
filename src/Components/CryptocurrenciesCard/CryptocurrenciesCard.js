@@ -1,8 +1,8 @@
 import React from 'react'
 import "./CryptocurrenciesCard.css"
 import { Link } from 'react-router-dom'
-import star from '../../assets/star.png'
-import filledStar from '../../assets/filledStar.png'
+import star from '../../Assets/star.png'
+import filledStar from '../../Assets/filledStar.png'
 
 const CryptocurrenciesCard = ({
   id,
@@ -18,6 +18,7 @@ const CryptocurrenciesCard = ({
   isFavorite
 }) => {
   const formatPrice = new Intl.NumberFormat('en-US').format(price)
+  
   const formatMarketCap = (num) => {
       if (num < 1e3) return 
       if (num >= 1e3 && num < 1e6) return +(num / 1e3).toFixed(1) + "K"
@@ -25,6 +26,7 @@ const CryptocurrenciesCard = ({
       if (num >= 1e9 && num < 1e12) return +(num / 1e9).toFixed(1) + "B"
       if (num >= 1e12) return +(num / 1e12).toFixed(1) + "T"
   }
+  
   const stylePercentChange = () => {
     if (percentChange > 0) {
       return (
