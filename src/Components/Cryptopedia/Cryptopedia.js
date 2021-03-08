@@ -25,18 +25,16 @@ const tagsOnDisplay = () => {
     })
    }
 
-    if (isLoading && !tags.length) {
-        return <Loading />
-    } else if (error && tags.length) {
-        return <Error />
-    } else if (tags.length) {
         return (
-            <>
-            <h1 className='cryptopediaHeading'>Crypto 101</h1>
-            {tagsOnDisplay()}
-            </>
-        )
-    }
+          <>
+            {isLoading && <Loading />}
+            {error && <Error />}
+            <h1 className="cryptopediaHeading">Crypto 101</h1>
+            <section className="cryptopediaSection">
+                {tagsOnDisplay()}
+            </section>
+          </>
+        );
 }
 
 export default Cryptopedia

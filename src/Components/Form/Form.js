@@ -24,7 +24,8 @@ class Form extends Component {
     render() {
         return (
         <form className='searchResultForm'>
-            <input 
+            <input
+            className='searchInput' 
             type='text'
             name='searchInput'
             value={this.state.searchInput}

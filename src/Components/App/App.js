@@ -56,7 +56,10 @@ class App extends Component {
      }
     } 
 
-    removeFromFavorites = () => {
+    removeFromFavorites = (id) => {
+      console.log('id', id)
+      // map through array and find the string that matches the id and remove that
+      // filter function filter out everything equal to ID
       this.setState({
         isFavorite: false
       })
