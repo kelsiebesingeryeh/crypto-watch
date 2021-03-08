@@ -12,17 +12,17 @@ body {
 
 @font-face {
   font-family: 'gothamBold';
-  src: url('gothamBold.otf');
+  src: url('../../Assets/gothamBold.otf');
 }
 
 @font-face {
   font-family: 'gothamMedium';
-  src: url('gothamMedium.otf');
+  src: url('../../Assets/gothamMedium.otf');
 }
 
 @font-face {
   font-family: 'gothamBookRegular';
-  src: url('gothamBookRegular.otf');
+  src: url('../../Assets/gothamBookRegular.otf');
 }
 
 /* TABLET /IPADS */

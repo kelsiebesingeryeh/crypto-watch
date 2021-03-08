@@ -7,7 +7,8 @@ const Exchanges = ({ exchanges, isLoading, error }) => {
   const exchangesOnDisplay = () => {
     const sortedExchange = exchanges.sort(
       (a, b) => b["confidence_score"] - a["confidence_score"]
-    );
+    )
+    
     return sortedExchange.map((exchange) => {
       return (
         <ExchangeDetails

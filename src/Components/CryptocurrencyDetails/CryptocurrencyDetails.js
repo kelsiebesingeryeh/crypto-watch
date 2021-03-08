@@ -36,7 +36,7 @@ class CryptocurrencyDetails extends Component {
               </a>
             </li>
           </ul>
-        );
+        )
       })
     }
 
@@ -91,7 +91,7 @@ class CryptocurrencyDetails extends Component {
               </section>
             )}
           </>
-        );
+        )
 
     }
 }
