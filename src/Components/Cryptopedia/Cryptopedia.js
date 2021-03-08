@@ -7,11 +7,7 @@ import './Cryptopedia.css'
 const Cryptopedia = ({tags, isLoading, error}) => {
 
 const tagsOnDisplay = () => {
-    const sortedTags = tags.sort((a, b) => {  
-          if (a.name < b.name) {
-              return -1
-          }
-    })
+    const sortedTags = tags.sort((a, b) => a.name < b.name && -1)
 
     return sortedTags.map(tag => {
         return (
