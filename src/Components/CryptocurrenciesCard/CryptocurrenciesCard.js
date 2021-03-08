@@ -57,6 +57,7 @@ const CryptocurrenciesCard = ({
           alt="star"
           onClick={handleClick}
           style={{ width: "30%" }}
+          className='favorites'
         />
       </td>
       <td data-label="Rank">{rank}</td>
@@ -70,9 +71,7 @@ const CryptocurrenciesCard = ({
       {stylePercentChange()}
       <td data-label="Market Cap">{formatMarketCap(marketCap)}</td>
     </tr>
-  );
+  )
 }
 
 export default CryptocurrenciesCard
-
-{/* <img src={star} alt="star" onClick={handleClick} style={{background: (favorites.includes(id) && 'red')}}></img> */}

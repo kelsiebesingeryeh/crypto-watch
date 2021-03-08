@@ -34,7 +34,7 @@ const tagsOnDisplay = () => {
                 {tagsOnDisplay()}
             </section>
           </>
-        );
+        )
 }
 
 export default Cryptopedia

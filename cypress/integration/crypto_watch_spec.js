@@ -76,7 +76,7 @@ it("Should be able to click into a nav bar item and be taken to another page", (
 
 })
 
-describe.skip('Cryptocurrencies', () => {
+describe.only('Cryptocurrencies', () => {
   beforeEach(() => {
     const baseURL = "http://localhost:3000/cryptocurrencies"
     cy.fixture("testCryptoData.json").then((cryptoData) => {
@@ -107,6 +107,14 @@ describe.skip('Cryptocurrencies', () => {
 
     it("should see an search bar ", () => {
       cy.get(".searchInput").should("be.visible")
+    })
+    it('should see a star icon', () => {
+      cy.get('.favorites').should('be.visible')
+    })
+
+    it('should turn red when the star is clicked', () => {
+      cy.get('.favorites').first().click().get('.favorites')
+      .should("be.visible")
     })
 })
 
