@@ -63,10 +63,9 @@ const Cryptocurrencies = ({
           favorites={favorites}
           isFavorite={isFavorite}
         />
-      );
-    });
-  };
-
+      )
+    })
+  }
 
     return (
       <>

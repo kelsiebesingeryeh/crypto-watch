@@ -1,0 +1,6 @@
+@media screen and (max-width: 500px) {
+    .cryptopediaSection {
+        font-size: 0.75rem;
+        margin-left: 1rem;
+    }
+}
