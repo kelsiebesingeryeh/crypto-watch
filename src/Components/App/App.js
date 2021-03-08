@@ -5,7 +5,6 @@ import Nav from '../Nav/Nav'
 import {Route, Redirect} from 'react-router-dom'
 import Home from '../Home/Home'
 import CryptocurrencyDetails from '../CryptocurrencyDetails/CryptocurrencyDetails'
-import { getAllCoins } from "../../apiCalls"
 import Error from '../Error/Error'
 import Exchanges from '../Exchanges/Exchanges'
 import Cryptopedia from '../Cryptopedia/Cryptopedia'
@@ -57,11 +56,10 @@ class App extends Component {
     } 
 
     removeFromFavorites = (id) => {
-      console.log('id', id)
-      // map through array and find the string that matches the id and remove that
-      // filter function filter out everything equal to ID
+      const filteredFavorites = this.state.favorites.filter(fav => fav !== id)
       this.setState({
-        isFavorite: false
+        isFavorite: false,
+        favorites: filteredFavorites,
       })
     }
 
