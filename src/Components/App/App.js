@@ -9,6 +9,7 @@ import { getAllCoins } from "../../apiCalls"
 import Error from '../Error/Error'
 import Exchanges from '../Exchanges/Exchanges'
 import Cryptopedia from '../Cryptopedia/Cryptopedia'
+import { getCryptoData } from '../../apiCalls'
 
 class App extends Component {
   constructor() {
@@ -20,15 +21,27 @@ class App extends Component {
       searchResults: [],
       favorites: [],
       isFavorite: false,
+      tags: [],
+      exchanges: []
     }
   }
 
   componentDidMount() {
-      getAllCoins().then((cryptocurrencies) =>
-        this.setState({ cryptocurrencies, isLoading: false})
-      )
-      .catch(error => this.setState({error: true, isLoading: false}))
-    }
+    getCryptoData().then(data => {
+      this.setState({
+        cryptocurrencies: data[0],
+        exchanges: data[1],
+        tags: data[2],
+        isLoading: false
+      })
+    })
+    .catch(error => this.setState({error: true, isLoading: false}))
+  }
+
+    //   getAllCoins().then((cryptocurrencies) =>
+    //     this.setState({ cryptocurrencies, isLoading: false})
+    //   )
+    // }
 
     filterSearchResults = (userInput) => {
       const searchResultsToDisplay = this.state.cryptocurrencies.filter(crypto => {
