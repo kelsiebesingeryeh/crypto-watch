@@ -278,17 +278,19 @@ describe.skip('Error', () => {
 })
 
 describe('Cryptopedia', () => {
-  const baseURL = "http://localhost:3000/cryptopedia"
-
-  it('should be able to view the Cryptopedia page', () => {
+  beforeEach(() => {
+    const baseURL = "http://localhost:3000/cryptopedia"
     cy.fixture("testCryptopediaData.json").then((cryptoData) => {
       cy.intercept(
         "GET",
         "https://api.coinpaprika.com/v1/tags",
-    ).as("cryptopedia");
+    ).as("cryptopedia")
     })
     cy.visit(baseURL)
-    .get("h1.cryptopediaHeading")
+  })
+
+  it('should be able to view the Cryptopedia page', () => {
+    cy.get("h1.cryptopediaHeading")
     .should("contain", "Crypto 101")
     .get(".loading").should('be.visible')
     cy.wait('@cryptopedia')
