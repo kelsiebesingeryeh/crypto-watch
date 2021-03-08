@@ -205,20 +205,22 @@ describe.skip('Search Bar', () => {
   })
 })
 
-describe.skip('Loading', () => {
-  const baseURL = "http://localhost:3000"
+describe('Loading', () => {
+  beforeEach(() =>  {
+    const baseURL = "http://localhost:3000"
+    cy.visit(baseURL)
+
+  })
   
   it('should contain a loading message on Cryptocurrency page', () => {
-    cy.visit(baseURL)
-      .get(".curiousSection")
+      cy.get(".curiousSection")
       .click()
       .get(".loading")
       .should("be.visible")
   })
 
   it("should contain a loading message on Cryptocurrency Details page", () => {
-    cy.visit(baseURL)
-      .get(".curiousSection")
+      cy.get(".curiousSection")
       .click()
       .get(".cryptoName")
       .first()
@@ -229,16 +231,14 @@ describe.skip('Loading', () => {
   // this one is failing
 
   it("should contain a loading message on Exchange page", () => {
-    cy.visit(baseURL)
-      .get(".buySection")
+      cy.get(".buySection")
       .click()
       .get(".loading")
       .should("be.visible")
   })
 
   it("should contain a loading message on Cryptopedia page", () => {
-    cy.visit(baseURL)
-      .get(".beginnerSection")
+      cy.get(".beginnerSection")
       .click()
       .get(".loading")
       .should("be.visible")
