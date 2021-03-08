@@ -1,4 +1,4 @@
-describe('Home', () => {
+describe.skip('Home', () => {
     const baseURL = "http://localhost:3000/"
 
 it('Should see a home button in the nav bar when a user visits the homepage', () => {
@@ -20,10 +20,6 @@ it('Should have a subheading on the homepage', () => {
     cy.visit(baseURL)
       .get("h2")
       .should("contain", "Your crypto exploration and learning platform.")
-})
-it('Should have a mission statement on the homepage', () => {
-    cy.visit(baseURL)
-    .get('h3').should('be.visible')
 })
 
 it('Should see three cards display with text on the homepage', () => {
@@ -53,10 +49,18 @@ it('Should be able to click into a section and be taken to another page', () => 
     .location('pathname')
     .should('eq', '/exchanges')
 })
-//do one for buy and beginner
+
+it("Should be able to click into a section and be taken to another page", () => {
+  cy.visit(baseURL)
+    .get(".beginnerSection")
+    .click()
+    .location("pathname")
+    .should("eq", "/cryptopedia")
 })
 
-describe('Cryptocurrencies', () => {
+})
+
+describe.skip('Cryptocurrencies', () => {
     const baseURL = "http://localhost:3000"
 
     it ('should see a subheading on the cryptocurrencies page', () => {
@@ -92,7 +96,7 @@ describe('Cryptocurrencies', () => {
     })
 })
 
-describe("CryptocurrencyDetails", () => {
+describe.skip("CryptocurrencyDetails", () => {
   const baseURL = "http://localhost:3000";
 
   it("should be able to click into a cryptocurrency name and be taken to a details page", () => {
@@ -113,7 +117,7 @@ describe("CryptocurrencyDetails", () => {
     cy.visit(baseURL)
       .get(".curiousSection")
       .click()
-      .get("#btc-bitcoin")
+      .get(".cryptoName").first()
       .click()
       .get("h1")
       .should("contain", "Bitcoin")
@@ -121,11 +125,12 @@ describe("CryptocurrencyDetails", () => {
       .should("be.visible")
       .get(".coinDescription")
       .should("be.visible")
-      .get(".listItemWrapper").should('be.visible')
+      .get(".listItemWrapper")
+      .should("be.visible");
   })
 })
 
-describe.only("Exchanges", () => {
+describe.skip("Exchanges", () => {
   const baseURL = "http://localhost:3000"
 
   it("should be able to view a list of all exchanges", () => {
@@ -134,8 +139,8 @@ describe.only("Exchanges", () => {
         "GET",
         "https://api.coinpaprika.com/v1/exchanges",
         exchangeData
-      );
-    });
+      )
+    })
     cy.visit(baseURL)
       .get(".buySection")
       .click()
@@ -158,6 +163,75 @@ describe.only("Exchanges", () => {
   })
 })
 
+describe.skip('Search Bar', () => {
+  const baseURL = "http://localhost:3000"
+  
+  it ('should be able to use the search bar functionality', () => {
+    cy.fixture("testCryptoData.json").then((cryptoData) => {
+      cy.intercept("GET", "https://api.coinpaprika.com/v1/tickers", cryptoData);
+    })
+    cy.visit(baseURL)
+      .get(".curiousSection")
+      .click()
+      .get("form input")
+      .type("btc")
+      .get("form input")
+      .type("{enter}")
+      .get(".cryptoName")
+      //should see the search results displayed
+  })
+
+  it('should clear the inputs after a search', () => {
+    cy.fixture("testCryptoData.json").then((cryptoData) => {
+      cy.intercept("GET", "https://api.coinpaprika.com/v1/tickers", cryptoData);
+    });
+    cy.visit(baseURL)
+      .get(".curiousSection")
+      .click()
+      .get("form input")
+      .type("btc")
+      .get("form input").should('contain', '')
+  })
+})
+
+describe('Loading', () => {
+  const baseURL = "http://localhost:3000"
+  
+  it('should contain a loading message on Cryptocurrency page', () => {
+    cy.visit(baseURL)
+      .get(".curiousSection")
+      .click()
+      .get(".loading")
+      .should("be.visible")
+  })
+
+  it("should contain a loading message on Cryptocurrency Details page", () => {
+    cy.visit(baseURL)
+      .get(".curiousSection")
+      .click()
+      .get(".cryptoName")
+      .first()
+      .click()
+      .get(".loading")
+      .should("be.visible")
+  })
+
+  it("should contain a loading message on Exchange page", () => {
+    cy.visit(baseURL)
+      .get(".buySection")
+      .click()
+      .get(".loading")
+      .should("be.visible")
+  })
+
+  it("should contain a loading message on Cryptopedia page", () => {
+    cy.visit(baseURL)
+      .get(".beginnerSection")
+      .click()
+      .get(".loading")
+      .should("be.visible")
+  })
+})
 
 
 
@@ -166,3 +240,5 @@ describe.only("Exchanges", () => {
 // maybe get a little more detailed with the list items
 // test loading component
 // test error component
+// test cryptopedia page
+// on keypress - shaky with cypress testing
