@@ -1,32 +1,4 @@
-.cryptocurrencyContainer {
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-}
-
-.crytpoHeadingsLeft {
-    color: black;
-    display: flex;
-    padding: 1rem;
-}
-
-.marketHeadingLeft {
-    margin-right: 1rem;
-}
-
-.crytpoHeadingsRight {
-    color: black;
-    display: flex;
-    padding: 1rem;
-}
-
-.marketHeadingRight {
-    margin-left: 1rem;
-}
-
-.headingContainer {
-    display: flex;
-}
+/* TABLE STYLING */
 
 .cryptoTable {
     color: black;
@@ -76,7 +48,20 @@ td {
     object-fit: contain;
 }
 
+/* TABLETS/IPAD */
+@media screen and (min-width: 551px) and (max-width: 1024px) {
+    .cryptoTableContainer {
+        overflow-x: scroll;
+        overflow-y: hidden;
+        white-space: wrap;
+        justify-content: space-between;
+    }
+    .cryptoTableHeading {
+        font-size: 1rem;
+    }
+}
 
+/* SMART PHONES/MOBILE */
 
 @media screen and (max-width: 550px) {
     .cryptoStyling {

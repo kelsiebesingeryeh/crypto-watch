@@ -51,6 +51,8 @@ a {
     background-color: #C96565;
 }
 
+/* TABLETS AND IPAD */
+
 @media screen and (min-width: 551px) and (max-width: 1024px) {
     .sectionContainer {
         overflow-x: scroll;
@@ -66,7 +68,7 @@ a {
 }
 
 
-
+/* SMART PHONES AND MOBILE */
 
 @media screen and (max-width: 550px) {
 
