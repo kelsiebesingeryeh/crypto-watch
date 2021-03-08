@@ -98,10 +98,21 @@ class App extends Component {
                 removeFromFavorites={this.removeFromFavorites}
                 favorites={this.state.favorites}
                 isFavorite={this.state.isFavorite}
+                error={this.state.error}
               />
             )}
           />
-          <Route exact path="/cryptopedia" render={() => <Cryptopedia tags={this.state.tags} loading={this.state.isLoading} error={this.state.error}/>} />
+          <Route
+            exact
+            path="/cryptopedia"
+            render={() => (
+              <Cryptopedia
+                tags={this.state.tags}
+                isLoading={this.state.isLoading}
+                error={this.state.error}
+              />
+            )}
+          />
           <Route
             exact
             path={"/cryptocurrencies/:id"}
@@ -117,7 +128,17 @@ class App extends Component {
               );
             }}
           />
-          <Route exact path="/exchanges" render={() => <Exchanges exchanges={this.state.exchanges} loading={this.state.isLoading} error={this.state.error}/>} />
+          <Route
+            exact
+            path="/exchanges"
+            render={() => (
+              <Exchanges
+                exchanges={this.state.exchanges}
+                isLoading={this.state.isLoading}
+                error={this.state.error}
+              />
+            )}
+          />
         </main>
       );
     }

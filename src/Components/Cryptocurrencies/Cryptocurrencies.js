@@ -11,6 +11,7 @@ import x from '../../assets/x.png'
 const Cryptocurrencies = ({
   cryptocurrencies,
   isLoading,
+  error,
   filterSearchResults,
   searchResults,
   clearSearchResults,
@@ -66,12 +67,11 @@ const Cryptocurrencies = ({
     });
   };
 
-  if (isLoading && !cryptocurrencies.length) {
-    return <Loading />;
-  } else if (!cryptocurrencies.length) {
-    return <Error />;
-  } else if (cryptocurrencies.length) {
+
     return (
+      <>
+      {isLoading && <Loading />}
+      {error && <Error />}
       <div className="cryptoTableContainer">
         <span className="cryptoStyling">
           <p className="cryptoTableHeading">
@@ -107,8 +107,8 @@ const Cryptocurrencies = ({
           </tbody>
         </table>
       </div>
-    );
+  </>
+    )
   }
-};
     
 export default Cryptocurrencies
