@@ -84,7 +84,7 @@ it("Should be able to click into a nav bar item and be taken to another page", (
 
 })
 
-describe('Cryptocurrencies', () => {
+describe.skip('Cryptocurrencies', () => {
     const baseURL = "http://localhost:3000/cryptocurrencies"
 
     it ('should see a subheading on the cryptocurrencies page', () => {
@@ -181,12 +181,12 @@ describe.skip("CryptocurrencyDetails", () => {
       .get(".coinDescription")
       .should("be.visible")
       .get(".listItemWrapper")
-      .should("be.visible");
+      .should("be.visible")
   })
 })
 
 describe.skip("Exchanges", () => {
-  const baseURL = "http://localhost:3000"
+  const baseURL = "http://localhost:3000/exchanges"
 
   it("should be able to view a list of all exchanges", () => {
     cy.fixture("testExchangeData.json").then((exchangeData) => {
@@ -197,8 +197,6 @@ describe.skip("Exchanges", () => {
       )
     })
     cy.visit(baseURL)
-      .get(".buySection")
-      .click()
       .get(".cryptoTableHeading")
       .should("contain", "Cryptocurrency Exchanges")
       .get(".cryptoTable")
@@ -233,8 +231,8 @@ describe.skip('Search Bar', () => {
       .type("{enter}")
       .get(".cryptoName")
       .should("have.length", 1);
-      //should see the search results displayed
-  })
+    })
+    //should see the search results displayed - enter is not workiing
 
   it('should clear the inputs after a search', () => {
     cy.fixture("testCryptoData.json").then((cryptoData) => {
@@ -269,6 +267,7 @@ describe.skip('Loading', () => {
       .get(".loading")
       .should("be.visible")
   })
+  // this one is failing
 
   it("should contain a loading message on Exchange page", () => {
     cy.visit(baseURL)
@@ -300,14 +299,13 @@ describe.skip('Error', () => {
     .get(".curiousSection")
     .click()
   })
+  //this one is passing not sure why
 
   it("should display an error message if the URL is invalid", () => {
     cy.fixture("testCryptoData.json").then((cryptoData) => {
       cy.intercept("GET", "https://api.coinpaprika.com/v1/tickers", cryptoData);
     })
     cy.visit('http://localhost:3000/coin')
-    // .get(".curiousSection")
-    // .click()
   })
 
   it("should display an error message if the data doesn't display", () => {
@@ -317,12 +315,10 @@ describe.skip('Error', () => {
       })
     })
     cy.visit("http://localhost:3000/coin")
-    // .get(".curiousSection")
-    // .click()
   })
 })
 
-describe.skip('Cryptopedia', () => {
+describe('Cryptopedia', () => {
   const baseURL = "http://localhost:3000/cryptopedia"
 
   it('should be able to view the Cryptopedia page', () => {
@@ -341,13 +337,3 @@ describe.skip('Cryptopedia', () => {
     .get(".cryptopediaSection").should('be.visible')
   })
 })
-
-
-
-
-// maybe get a little more detailed with the list items
-// test cryptopedia page
-// search icon and x icon
-
-// on keypress - shaky with cypress testing
-// error handling - not getting my error message to display
