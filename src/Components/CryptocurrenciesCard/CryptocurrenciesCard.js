@@ -49,13 +49,13 @@ const CryptocurrenciesCard = ({
 
   return (
     <tr>
-      <td data-label='Favorites'>
+      <td data-label="Favorites">
         <img
-          src={star}
+          src={favorites.includes(id) ? filledStar : star}
           alt="star"
           onClick={handleClick}
           // style={{ background: favorites.includes(id) && "red" }}
-        ></img>
+        />
       </td>
       <td data-label="Rank">{rank}</td>
       <td id={id} data-label="Cryptocurrency">

@@ -1,0 +1,26 @@
+[
+    {
+        "id": "cryptocurrency",
+        "name": "Cryptocurrency",
+        "description": "Digital asset designed to work as a medium of exchange that uses cryptography to secure financial transactions, control the creation of additional units, and verify the transfer of assets.",
+        "type": "functional",
+        "coin_counter": 809,
+        "ico_counter": 39
+    },
+    {
+        "id": "platform",
+        "name": "Platform",
+        "description": "A platform is a group of technologies that are used as a base upon which other applications, processes or technologies are developed.",
+        "type": "functional",
+        "coin_counter": 366,
+        "ico_counter": 247
+    },
+    {
+        "id": "smart-contracts",
+        "name": "Smart Contracts",
+        "description": "Smart contract is a computer protocol intended to digitally facilitate, verify, or enforce the negotiation or performance of a contract. Smart contracts allow the performance of credible transactions without third parties. These transactions are trackable and irreversible.",
+        "type": "functional",
+        "coin_counter": 475,
+        "ico_counter": 306
+    }
+]

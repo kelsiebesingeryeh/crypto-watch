@@ -159,7 +159,7 @@ describe.skip("Exchanges", () => {
         "Fiats Supported"
       )
       .get(".cryptoTable, tbody, td")
-      .should("be.visible");
+      .should("be.visible")
   })
 })
 
@@ -183,8 +183,8 @@ describe.skip('Search Bar', () => {
 
   it('should clear the inputs after a search', () => {
     cy.fixture("testCryptoData.json").then((cryptoData) => {
-      cy.intercept("GET", "https://api.coinpaprika.com/v1/tickers", cryptoData);
-    });
+      cy.intercept("GET", "https://api.coinpaprika.com/v1/tickers", cryptoData)
+    })
     cy.visit(baseURL)
       .get(".curiousSection")
       .click()
@@ -194,7 +194,7 @@ describe.skip('Search Bar', () => {
   })
 })
 
-describe('Loading', () => {
+describe.skip('Loading', () => {
   const baseURL = "http://localhost:3000"
   
   it('should contain a loading message on Cryptocurrency page', () => {
@@ -233,12 +233,68 @@ describe('Loading', () => {
   })
 })
 
+describe.skip('Error', () => {
+  const baseURL = "http://localhost:3000"
+
+  it.skip('should display an error message if there is no data to display', () => {
+    cy.fixture("testCryptoData.json").then((cryptoData) => {
+      cy.intercept("GET", "https://api.coinpaprika.com/v1/tickers", {
+        body: []
+      })
+    })
+    cy.visit(baseURL)
+    .get(".curiousSection")
+    .click()
+  })
+
+  it("should display an error message if the URL is invalid", () => {
+    cy.fixture("testCryptoData.json").then((cryptoData) => {
+      cy.intercept("GET", "https://api.coinpaprika.com/v1/tickers", cryptoData);
+    })
+    cy.visit('http://localhost:3000/coin')
+    // .get(".curiousSection")
+    // .click()
+  })
+
+  it("should display an error message if the data doesn't display", () => {
+    cy.fixture("testCryptoData.json").then((cryptoData) => {
+      cy.intercept("GET", "https://api.coinpaprika.com/v1/tickers", {
+        'forceNetworkError': true,
+      })
+    })
+    cy.visit("http://localhost:3000/coin")
+    // .get(".curiousSection")
+    // .click()
+  });
+})
+
+describe('Cryptopedia', () => {
+  const baseURL = "http://localhost:3000/cryptopedia"
+
+  it('should be able to view the Cryptopedia page', () => {
+    cy.fixture("testCryptopediaData.json").then((cryptoData) => {
+      cy.intercept(
+        "GET",
+        "https://api.coinpaprika.com/v1/tags",
+        {fixture: "testCryptopediaData.json"}
+    ).as("cryptopedia");
+    })
+    cy.visit(baseURL)
+    .get("h1.cryptopediaHeading")
+    .should("contain", "Crypto 101")
+    .get(".loading").should('be.visible')
+    .get(".cryptopediaSection")
+    cy.wait('@cryptopedia')
+  })
+})
+
 
 
 
 // add clickable elements in nav bar
 // maybe get a little more detailed with the list items
-// test loading component
-// test error component
 // test cryptopedia page
+// search icon and x icon
+
 // on keypress - shaky with cypress testing
+// error handling - not getting my error message to display
