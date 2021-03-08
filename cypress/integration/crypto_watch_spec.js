@@ -143,9 +143,8 @@ describe.skip("CryptocurrencyDetails", () => {
 })
 
 describe.skip("Exchanges", () => {
-  const baseURL = "http://localhost:3000/exchanges"
-
-  it("should be able to view a list of all exchanges", () => {
+  beforeEach(() => {
+    const baseURL = "http://localhost:3000/exchanges"
     cy.fixture("testExchangeData.json").then((exchangeData) => {
       cy.intercept(
         "GET",
@@ -154,7 +153,10 @@ describe.skip("Exchanges", () => {
       )
     })
     cy.visit(baseURL)
-      .get(".cryptoTableHeading")
+  })
+
+  it("should be able to view a list of all exchanges", () => {
+      cy.get(".cryptoTableHeading")
       .should("contain", "Cryptocurrency Exchanges")
       .get(".cryptoTable")
       .should("be.visible")
