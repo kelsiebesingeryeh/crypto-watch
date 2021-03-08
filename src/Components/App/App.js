@@ -38,11 +38,6 @@ class App extends Component {
     .catch(error => this.setState({error: true, isLoading: false}))
   }
 
-    //   getAllCoins().then((cryptocurrencies) =>
-    //     this.setState({ cryptocurrencies, isLoading: false})
-    //   )
-    // }
-
     filterSearchResults = (userInput) => {
       const searchResultsToDisplay = this.state.cryptocurrencies.filter(crypto => {
         return crypto.name.toLowerCase()=== userInput || crypto.symbol.toLowerCase() === userInput
@@ -78,7 +73,6 @@ class App extends Component {
         <main>
           <Nav />
           <Route exact path="/error" render={() => <Error />} />
-
           <Route
             exact
             path="/"
@@ -120,12 +114,12 @@ class App extends Component {
                     isLoading={this.state.isLoading}
                   />
                 </div>
-              )
+              );
             }}
           />
-          <Route exact path="/exchanges" component={Exchanges} />
+          <Route exact path="/exchanges" render={() => <Exchanges exchanges={this.state.exchanges} loading={this.state.isLoading} error={this.state.error}/>} />
         </main>
-      )
+      );
     }
   }
 

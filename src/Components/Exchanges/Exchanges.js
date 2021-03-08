@@ -1,29 +1,12 @@
-import React, { Component } from 'react'
-import { getAllExchanges } from '../../apiCalls'
+import React from 'react'
 import ExchangeDetails from '../ExchangeDetails/ExchangeDetails'
 import Loading from '../Loading/Loading'
 import Error from '../Error/Error'
 
-class Exchanges extends Component {
-  constructor() {
-    super();
-    this.state = {
-      exchanges: [],
-      isLoading: true,
-      error: false,
-    };
-  }
+const Exchanges = ({ exchanges, isLoading, error }) => {
 
-  componentDidMount() {
-    getAllExchanges()
-    .then((exchanges) =>
-      this.setState({ exchanges, isLoading: false })
-    )
-    .catch((error) =>this.setState({ error: true }))
-  }
-
-exchangesOnDisplay() {
-     const sortedExchange = this.state.exchanges.sort((a, b) => b['confidence_score'] - a['confidence_score'])
+const exchangesOnDisplay = () => {
+     const sortedExchange = exchanges.sort((a, b) => b['confidence_score'] - a['confidence_score'])
     return sortedExchange.map((exchange) => {
       return (
         <ExchangeDetails
@@ -37,15 +20,13 @@ exchangesOnDisplay() {
           volume={exchange.quotes.USD["reported_volume_24h"]}
           confidenceScore={exchange["confidence_score"]}
         />
-      );
-    });
+      )
+    })
   }
-
-  render() {
     return (
       <>
-        {this.state.isLoading && <Loading />}
-        {this.state.error && <Error />}
+        {isLoading && <Loading />}
+        {error && <Error />}
         <div className="cryptoTableContainer">
           <p className="cryptoTableHeading">Cryptocurrency Exchanges</p>
           <table className="cryptoTable">
@@ -60,13 +41,12 @@ exchangesOnDisplay() {
                   </tr>
               </thead>
             <tbody>
-              {this.exchangesOnDisplay()}
+              {exchangesOnDisplay()}
             </tbody>
           </table>
         </div>
       </>
     )
-  }
 }
 
 export default Exchanges
