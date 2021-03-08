@@ -14,13 +14,13 @@ const Nav = () => {
         </div>
         <div className="rightNav">
           <Link to="/cryptopedia">
-            <p className="rightNavItems">Cryptopedia</p>
+            <p className="rightNavItems navCryptopedia">Cryptopedia</p>
           </Link>
           <Link to="/cryptocurrencies">
-            <p className="rightNavItems">Cryptocurrencies</p>
+            <p className="rightNavItems navCryptocurrencies">Cryptocurrencies</p>
           </Link>
           <Link to="/exchanges">
-            <p className="rightNavItems">Exchanges</p>
+            <p className="rightNavItems navExchanges">Exchanges</p>
           </Link>
         </div>
       </nav>

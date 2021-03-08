@@ -40,6 +40,7 @@ const CryptocurrenciesCard = ({
   }
 
   const handleClick = () => {
+    console.log('favorite', isFavorite)
     if (!isFavorite) {
       addFavoriteCrypto(id)
     } else {

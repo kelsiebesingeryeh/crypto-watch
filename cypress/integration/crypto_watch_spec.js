@@ -31,7 +31,7 @@ it('Should see three cards display with text on the homepage', () => {
       .get(".buySection")
       .should("be.visible")
       .get(".cardText")
-      .should("be.visible");
+      .should("be.visible")
     })
 
 it('Should be able to click into a section and be taken to another page', () => {
@@ -39,7 +39,7 @@ it('Should be able to click into a section and be taken to another page', () => 
       .get(".curiousSection")
       .click()
       .location("pathname")
-      .should("eq", "/cryptocurrencies");
+      .should("eq", "/cryptocurrencies")
 })
 
 it('Should be able to click into a section and be taken to another page', () => {
@@ -58,10 +58,34 @@ it("Should be able to click into a section and be taken to another page", () => 
     .should("eq", "/cryptopedia")
 })
 
+it("Should be able to click into a nav bar item and be taken to another page", () => {
+  cy.visit(baseURL)
+    .get(".navCryptocurrencies")
+    .click()
+    .location("pathname")
+    .should("eq", "/cryptocurrencies")
 })
 
-describe.skip('Cryptocurrencies', () => {
-    const baseURL = "http://localhost:3000"
+it("Should be able to click into a nav bar item and be taken to another page", () => {
+  cy.visit(baseURL)
+    .get(".navExchanges")
+    .click()
+    .location("pathname")
+    .should("eq", "/exchanges")
+})
+
+it("Should be able to click into a nav bar item and be taken to another page", () => {
+  cy.visit(baseURL)
+    .get(".navCryptopedia")
+    .click()
+    .location("pathname")
+    .should("eq", "/cryptopedia");
+})
+
+})
+
+describe('Cryptocurrencies', () => {
+    const baseURL = "http://localhost:3000/cryptocurrencies"
 
     it ('should see a subheading on the cryptocurrencies page', () => {
         cy.fixture('testCryptoData.json')
@@ -73,8 +97,6 @@ describe.skip('Cryptocurrencies', () => {
             )
         })
         cy.visit(baseURL)
-          .get(".curiousSection")
-          .click()
           .get(".cryptoTableHeading").should('contain', 'Cryptocurrency prices for 100 assets')
     })
 
@@ -87,12 +109,45 @@ describe.skip('Cryptocurrencies', () => {
         )
       })
       cy.visit(baseURL)
-        .get(".curiousSection")
-        .click()
         .get(".cryptoTable, tbody, th")
         .should("contain", "Rank", "Cryptocurrency", "Symbol", "Price", "24HR%Chg", "Market Cap")
         .get('.cryptoTable, tbody, td')
         .should('be.visible')
+    })
+
+    it("should see a search icon", () => {
+      cy.fixture("testCryptoData.json").then((cryptoData) => {
+        cy.intercept(
+          "GET",
+          "https://api.coinpaprika.com/v1/tickers",
+          cryptoData
+        )
+      })
+      cy.visit(baseURL)
+        .get(".searchIcon")
+        .should("be.visible")
+    })
+
+    it("should see an X icon", () => {
+      cy.fixture("testCryptoData.json").then((cryptoData) => {
+        cy.intercept(
+          "GET",
+          "https://api.coinpaprika.com/v1/tickers",
+          cryptoData
+        )
+      })
+      cy.visit(baseURL).get(".xIcon").should("be.visible")
+    })
+
+    it("should see an search bar ", () => {
+      cy.fixture("testCryptoData.json").then((cryptoData) => {
+        cy.intercept(
+          "GET",
+          "https://api.coinpaprika.com/v1/tickers",
+          cryptoData
+        )
+      })
+      cy.visit(baseURL).get(".searchInput").should("be.visible")
     })
 })
 
@@ -164,20 +219,20 @@ describe.skip("Exchanges", () => {
 })
 
 describe.skip('Search Bar', () => {
-  const baseURL = "http://localhost:3000"
+  const baseURL = "http://localhost:3000/cryptocurrencies"
   
   it ('should be able to use the search bar functionality', () => {
     cy.fixture("testCryptoData.json").then((cryptoData) => {
       cy.intercept("GET", "https://api.coinpaprika.com/v1/tickers", cryptoData);
-    })
+    }).as('search')
     cy.visit(baseURL)
-      .get(".curiousSection")
-      .click()
-      .get("form input")
+      cy.wait("@search", 10000)
+      .get(".searchInput").click()
       .type("btc")
-      .get("form input")
+      .should('have.value', 'btc')
       .type("{enter}")
       .get(".cryptoName")
+      .should("have.length", 1);
       //should see the search results displayed
   })
 
@@ -186,11 +241,10 @@ describe.skip('Search Bar', () => {
       cy.intercept("GET", "https://api.coinpaprika.com/v1/tickers", cryptoData)
     })
     cy.visit(baseURL)
-      .get(".curiousSection")
-      .click()
-      .get("form input")
+      .get(".searchInput")
       .type("btc")
-      .get("form input").should('contain', '')
+      .get(".searchInput")
+      .should("contain", "");
   })
 })
 
@@ -236,7 +290,7 @@ describe.skip('Loading', () => {
 describe.skip('Error', () => {
   const baseURL = "http://localhost:3000"
 
-  it.skip('should display an error message if there is no data to display', () => {
+  it('should display an error message if there is no data to display', () => {
     cy.fixture("testCryptoData.json").then((cryptoData) => {
       cy.intercept("GET", "https://api.coinpaprika.com/v1/tickers", {
         body: []
@@ -265,10 +319,10 @@ describe.skip('Error', () => {
     cy.visit("http://localhost:3000/coin")
     // .get(".curiousSection")
     // .click()
-  });
+  })
 })
 
-describe('Cryptopedia', () => {
+describe.skip('Cryptopedia', () => {
   const baseURL = "http://localhost:3000/cryptopedia"
 
   it('should be able to view the Cryptopedia page', () => {
@@ -276,22 +330,21 @@ describe('Cryptopedia', () => {
       cy.intercept(
         "GET",
         "https://api.coinpaprika.com/v1/tags",
-        {fixture: "testCryptopediaData.json"}
     ).as("cryptopedia");
     })
     cy.visit(baseURL)
     .get("h1.cryptopediaHeading")
     .should("contain", "Crypto 101")
     .get(".loading").should('be.visible')
-    .get(".cryptopediaSection")
     cy.wait('@cryptopedia')
+    .get('.loading').should('not.exist')
+    .get(".cryptopediaSection").should('be.visible')
   })
 })
 
 
 
 
-// add clickable elements in nav bar
 // maybe get a little more detailed with the list items
 // test cryptopedia page
 // search icon and x icon
