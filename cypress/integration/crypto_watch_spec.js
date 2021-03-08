@@ -1,4 +1,4 @@
-describe.only('Home', () => {
+describe.skip('Home', () => {
   beforeEach(() => {
     const baseURL = "http://localhost:3000/"
     cy.visit(baseURL)
@@ -77,92 +77,57 @@ it("Should be able to click into a nav bar item and be taken to another page", (
 })
 
 describe.skip('Cryptocurrencies', () => {
+  beforeEach(() => {
     const baseURL = "http://localhost:3000/cryptocurrencies"
+    cy.fixture("testCryptoData.json").then((cryptoData) => {
+      cy.intercept("GET", "https://api.coinpaprika.com/v1/tickers", cryptoData);
+    })
+    cy.visit(baseURL)
+  })
 
-    it ('should see a subheading on the cryptocurrencies page', () => {
-        cy.fixture('testCryptoData.json')
-        .then((cryptoData) => {
-            cy.intercept(
-              "GET",
-              "https://api.coinpaprika.com/v1/tickers",
-              cryptoData
-            )
-        })
-        cy.visit(baseURL)
-          .get(".cryptoTableHeading").should('contain', 'Cryptocurrency prices for 100 assets')
+    it('should see a subheading on the cryptocurrencies page', () => {
+      cy.get(".cryptoTableHeading").should('contain', 'Cryptocurrency prices for 100 assets')
     })
 
     it("should see a table with data on the cryptocurrencies page", () => {
-      cy.fixture("testCryptoData.json").then((cryptoData) => {
-        cy.intercept(
-          "GET",
-          "https://api.coinpaprika.com/v1/tickers",
-          cryptoData
-        )
-      })
-      cy.visit(baseURL)
-        .get(".cryptoTable, tbody, th")
+        cy.get(".cryptoTable, tbody, th")
         .should("contain", "Rank", "Cryptocurrency", "Symbol", "Price", "24HR%Chg", "Market Cap")
         .get('.cryptoTable, tbody, td')
         .should('be.visible')
     })
 
     it("should see a search icon", () => {
-      cy.fixture("testCryptoData.json").then((cryptoData) => {
-        cy.intercept(
-          "GET",
-          "https://api.coinpaprika.com/v1/tickers",
-          cryptoData
-        )
-      })
-      cy.visit(baseURL)
-        .get(".searchIcon")
+        cy.get(".searchIcon")
         .should("be.visible")
     })
 
     it("should see an X icon", () => {
-      cy.fixture("testCryptoData.json").then((cryptoData) => {
-        cy.intercept(
-          "GET",
-          "https://api.coinpaprika.com/v1/tickers",
-          cryptoData
-        )
-      })
-      cy.visit(baseURL).get(".xIcon").should("be.visible")
+      cy.get(".xIcon").should("be.visible")
     })
 
     it("should see an search bar ", () => {
-      cy.fixture("testCryptoData.json").then((cryptoData) => {
-        cy.intercept(
-          "GET",
-          "https://api.coinpaprika.com/v1/tickers",
-          cryptoData
-        )
-      })
-      cy.visit(baseURL).get(".searchInput").should("be.visible")
+      cy.get(".searchInput").should("be.visible")
     })
 })
 
 describe.skip("CryptocurrencyDetails", () => {
-  const baseURL = "http://localhost:3000";
-
-  it("should be able to click into a cryptocurrency name and be taken to a details page", () => {
+  beforeEach(() => {
+    const baseURL = "http://localhost:3000";
     cy.fixture("testCryptoData.json").then((cryptoData) => {
       cy.intercept("GET", "https://api.coinpaprika.com/v1/tickers", cryptoData)
     })
     cy.visit(baseURL)
-      .get(".curiousSection")
+  })
+
+  it("should be able to click into a cryptocurrency name and be taken to a details page", () => {
+      cy.get(".curiousSection")
       .click()
       .get("#btc-bitcoin")
       .click()
   })
 
   it("should be able to view a coins details", () => {
-    cy.fixture("testCryptoData.json").then((cryptoData) => {
-      cy.intercept("GET", "https://api.coinpaprika.com/v1/tickers", cryptoData)
-    })
-    cy.visit(baseURL)
-      .get(".curiousSection")
+      cy.get(".curiousSection")
       .click()
       .get(".cryptoName").first()
       .click()
