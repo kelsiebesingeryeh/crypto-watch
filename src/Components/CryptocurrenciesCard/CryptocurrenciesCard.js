@@ -25,12 +25,17 @@ const CryptocurrenciesCard = ({
   const stylePercentChange = () => {
     if (percentChange > 0) {
       return (
-        <td style={{ color: "green", fontWeight: "bold" }}>{percentChange}</td>
+        <td style={{ color: "green", fontWeight: "bold" }} data-label='Percent Change'>{percentChange}</td>
       )
     } else {
       return (
-        <td style={{ color: "red", fontWeight: "bold" }}>{percentChange}</td>
-      )
+        <td
+          style={{ color: "red", fontWeight: "bold" }}
+          data-label="Percent Change"
+        >
+          {percentChange}
+        </td>
+      );
     }
   }
 
@@ -44,7 +49,7 @@ const CryptocurrenciesCard = ({
 
   return (
     <tr>
-      <td>
+      <td data-label='Favorites'>
         <img
           src={star}
           alt="star"
@@ -52,16 +57,16 @@ const CryptocurrenciesCard = ({
           // style={{ background: favorites.includes(id) && "red" }}
         ></img>
       </td>
-      <td>{rank}</td>
-      <td id={id}>
+      <td data-label="Rank">{rank}</td>
+      <td id={id} data-label="Cryptocurrency">
         <Link to={`/cryptocurrencies/${id}`} className="cryptoName">
           {name}
         </Link>
       </td>
-      <td>{symbol}</td>
-      <td>${stylePrice}</td>
+      <td data-label="Symbol">{symbol}</td>
+      <td data-label="Price">${stylePrice}</td>
       {stylePercentChange()}
-      <td>{marketCap}</td>
+      <td data-label="Market Cap">{marketCap}</td>
     </tr>
   );
 }
