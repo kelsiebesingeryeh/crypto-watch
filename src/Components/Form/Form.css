@@ -3,4 +3,15 @@ input {
     font-family: 'gothamBookRegular', 'sans-serif';
     padding: .5rem;
     width: 14rem;
+    margin-right: 1rem;
+}
+
+.searchButton {
+    background: #5642D9;
+    border-radius: 8px;
+    color: white;
+    font-family: 'gothamBookRegular', 'sans-serif';
+    font-weight: bold;
+    margin-right: 1rem;
+    padding: 0.5rem;
 }
