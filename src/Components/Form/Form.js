@@ -14,6 +14,12 @@ class Form extends Component {
           [event.target.name]: event.target.value.toLowerCase()
         })
     }
+    
+    handleSubmit = (event) => {
+        event.preventDefault()
+        this.props.filterSearchResults(this.state.searchInput)
+        this.clearInputs()
+    }
 
     clearInputs = () => {
         this.setState({
@@ -31,14 +37,8 @@ class Form extends Component {
             value={this.state.searchInput}
             placeholder='Search by coin name or symbol'
             onChange={this.handleChange}
-            onKeyPress={event => {
-                if (event.key === 'Enter') {
-                    event.preventDefault()
-                    this.props.filterSearchResults(this.state.searchInput)
-                    this.clearInputs()
-                }
-            }}
             />
+        <button className='searchButton' onClick={this.handleSubmit}>Search</button>
         </form>
         )
     }
