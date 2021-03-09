@@ -1,4 +1,4 @@
-describe.skip('Home', () => {
+describe('Home', () => {
   beforeEach(() => {
     const baseURL = "http://localhost:3000/"
     cy.visit(baseURL)
@@ -76,7 +76,7 @@ it("Should be able to click into a nav bar item and be taken to another page", (
 
 })
 
-describe.only('Cryptocurrencies', () => {
+describe('Cryptocurrencies', () => {
   beforeEach(() => {
     const baseURL = "http://localhost:3000/cryptocurrencies"
     cy.fixture("testCryptoData.json").then((cryptoData) => {
@@ -108,6 +108,11 @@ describe.only('Cryptocurrencies', () => {
     it("should see an search bar ", () => {
       cy.get(".searchInput").should("be.visible")
     })
+
+     it("should see an search bar ", () => {
+       cy.get(".searchButton").should("be.visible")
+     })
+
     it('should see a star icon', () => {
       cy.get('.favorites').should('be.visible')
     })
@@ -118,9 +123,9 @@ describe.only('Cryptocurrencies', () => {
     })
 })
 
-describe.skip("CryptocurrencyDetails", () => {
+describe("CryptocurrencyDetails", () => {
   beforeEach(() => {
-    const baseURL = "http://localhost:3000";
+    const baseURL = "http://localhost:3000"
     cy.fixture("testCryptoData.json").then((cryptoData) => {
       cy.intercept("GET", "https://api.coinpaprika.com/v1/tickers", cryptoData)
     })
@@ -141,8 +146,6 @@ describe.skip("CryptocurrencyDetails", () => {
       .click()
       .get("h1")
       .should("contain", "Bitcoin")
-      .get("h2")
-      .should("be.visible")
       .get(".coinDescription")
       .should("be.visible")
       .get(".listItemWrapper")
@@ -150,7 +153,7 @@ describe.skip("CryptocurrencyDetails", () => {
   })
 })
 
-describe.skip("Exchanges", () => {
+describe("Exchanges", () => {
   beforeEach(() => {
     const baseURL = "http://localhost:3000/exchanges"
     cy.fixture("testExchangeData.json").then((exchangeData) => {
@@ -183,37 +186,43 @@ describe.skip("Exchanges", () => {
   })
 })
 
-describe.skip('Search Bar', () => {
-  const baseURL = "http://localhost:3000/cryptocurrencies"
-  
-  it ('should be able to use the search bar functionality', () => {
-    cy.fixture("testCryptoData.json").then((cryptoData) => {
-      cy.intercept("GET", "https://api.coinpaprika.com/v1/tickers", cryptoData);
-    }).as('search')
-    cy.visit(baseURL)
-      cy.wait("@search", 10000)
-      .get(".searchInput").click()
-      .type("btc")
-      .should('have.value', 'btc')
-      .type("{enter}")
-      .get(".cryptoName")
-      .should("have.length", 1);
-    })
-    //should see the search results displayed - enter is not workiing
-
-  it('should clear the inputs after a search', () => {
+describe('Search Bar', () => {
+  beforeEach(() => {
+    const baseURL = "http://localhost:3000/cryptocurrencies"
     cy.fixture("testCryptoData.json").then((cryptoData) => {
       cy.intercept("GET", "https://api.coinpaprika.com/v1/tickers", cryptoData)
-    })
+    }).as('search')
     cy.visit(baseURL)
-      .get(".searchInput")
+  })
+  
+  it("should be able to use the search bar functionality", () => {
+    cy
+    .get('.loading')
+    .should('be.visible')
+    cy.wait("@search")
+    .get('.loading')
+    .should('not.exist')
+    .get(".searchInput")
+    .type("btc")
+    .should("have.value", "btc")
+    .get('.searchButton')
+    .click()
+    .get(".cryptoName")
+    .should("have.length", 1)
+  })
+
+  it('should clear the inputs after a search', () => {
+      cy.get(".searchInput")
       .type("btc")
-      .get(".searchInput")
-      .should("contain", "");
+      .get('.searchButton')
+      .click()
+      .get('.searchInput')
+      .should("contain", "")
   })
 })
 
-describe.skip('Loading', () => {
+
+describe('Loading', () => {
   beforeEach(() =>  {
     const baseURL = "http://localhost:3000"
     cy.visit(baseURL)
@@ -236,7 +245,6 @@ describe.skip('Loading', () => {
       .get(".loading")
       .should("be.visible")
   })
-  // this one is failing
 
   it("should contain a loading message on Exchange page", () => {
       cy.get(".buySection")
@@ -253,7 +261,7 @@ describe.skip('Loading', () => {
   })
 })
 
-describe.skip('Error', () => {
+describe('Error', () => {
   beforeEach(() => {
     const baseURL = "http://localhost:3000"
     cy.fixture("testCryptoData.json").then((cryptoData) => {
@@ -261,14 +269,13 @@ describe.skip('Error', () => {
         body: []
       })
     })
+    cy.visit(baseURL)
   })
   
   it('should display an error message if there is no data to display', () => {
-    cy.visit(baseURL)
     cy.get(".curiousSection")
     .click()
   })
-  //this one is passing not sure why
 
   it("should display an error message if the URL is invalid", () => {
     cy.fixture("testCryptoData.json").then((cryptoData) => {
@@ -287,7 +294,7 @@ describe.skip('Error', () => {
   })
 })
 
-describe.skip('Cryptopedia', () => {
+describe('Cryptopedia', () => {
   beforeEach(() => {
     const baseURL = "http://localhost:3000/cryptopedia"
     cy.fixture("testCryptopediaData.json").then((cryptoData) => {
