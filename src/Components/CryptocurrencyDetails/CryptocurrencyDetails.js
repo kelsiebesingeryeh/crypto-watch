@@ -27,9 +27,9 @@ class CryptocurrencyDetails extends Component {
             <li key={coin}>
               <a
                 href={coin}
-                target="_blank"
-                rel="noreferrer"
-                className="coinLinks"
+                target='_blank'
+                rel='noreferrer'
+                className='coinLinks'
               >
                 {coin}
               </a>
@@ -62,27 +62,27 @@ class CryptocurrencyDetails extends Component {
             {this.state.isLoading && <Loading />}
             {this.state.error && <Error />}
             {this.state.currentCoin && (
-              <section className="coinDetails">
+              <section className='coinDetails'>
                 <h1>{this.state.currentCoin.name}</h1>
-                <p className="coinDescription">
+                <p className='coinDescription'>
                   {this.state.currentCoin.description}
                 </p>
-                <div className="listContainer">
-                  <div className="listItemWrapper">
+                <div className='listContainer'>
+                  <div className='listItemWrapper'>
                     <p>Helpful Links</p>
-                    <ul className="itemList">
+                    <ul className='itemList'>
                       {this.linkItems()} 
                     </ul>
                   </div>
-                  <div className="listItemWrapper">
+                  <div className='listItemWrapper'>
                     <p>Tags</p>
-                    <ul className="itemList">
+                    <ul className='itemList'>
                       {this.tagItems()}
                     </ul>
                   </div>
-                  <div className="listItemWrapper">
+                  <div className='listItemWrapper'>
                     <p>Team</p>
-                    <ul className="itemList">
+                    <ul className='itemList'>
                       {this.teamItems()}
                     </ul>
                   </div>

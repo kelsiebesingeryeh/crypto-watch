@@ -2,12 +2,12 @@ import React from 'react'
 import ExchangeDetails from '../ExchangeDetails/ExchangeDetails'
 import Loading from '../Loading/Loading'
 import Error from '../Error/Error'
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 const Exchanges = ({ exchanges, isLoading, error }) => {
   const exchangesOnDisplay = () => {
     const sortedExchange = exchanges.sort(
-      (a, b) => b["confidence_score"] - a["confidence_score"]
+      (a, b) => b['confidence_score'] - a['confidence_score']
     )
 
     return sortedExchange.map((exchange) => {
@@ -19,8 +19,8 @@ const Exchanges = ({ exchanges, isLoading, error }) => {
           currencies={exchange.currencies}
           markets={exchange.markets}
           fiats={exchange.fiats}
-          volume={exchange.quotes.USD["reported_volume_24h"]}
-          confidenceScore={exchange["confidence_score"]}
+          volume={exchange.quotes.USD['reported_volume_24h']}
+          confidenceScore={exchange['confidence_score']}
         />
       )
     })
@@ -30,9 +30,9 @@ const Exchanges = ({ exchanges, isLoading, error }) => {
     <>
       {isLoading && <Loading />}
       {error && <Error />}
-      <div className="cryptoTableContainer">
-        <p className="cryptoTableHeading">Cryptocurrency Exchanges</p>
-        <table className="cryptoTable">
+      <div className='cryptoTableContainer'>
+        <p className='cryptoTableHeading'>Cryptocurrency Exchanges</p>
+        <table className='cryptoTable'>
           <thead>
             <tr>
               <th>Exchange Name</th>

@@ -1,5 +1,5 @@
 import React from 'react'
-import CryptocurrenciesCard from "../CryptocurrenciesCard/CryptocurrenciesCard"
+import CryptocurrenciesCard from '../CryptocurrenciesCard/CryptocurrenciesCard'
 import './Cryptocurrencies.css'
 import Error from '../Error/Error'
 import Loading from '../Loading/Loading'
@@ -37,8 +37,8 @@ const Cryptocurrencies = ({
           symbol={symbol}
           rank={rank}
           price={quotes.USD.price}
-          marketCap={quotes.USD["market_cap"]}
-          percentChange={quotes.USD["percent_change_24h"]}
+          marketCap={quotes.USD['market_cap']}
+          percentChange={quotes.USD['percent_change_24h']}
           addFavoriteCrypto={addFavoriteCrypto}
           removeFromFavorites={removeFromFavorites}
           favorites={favorites}
@@ -52,23 +52,23 @@ const Cryptocurrencies = ({
       <>
         {isLoading && <Loading />}
         {error && <Error />}
-        <div className="cryptoTableContainer">
-          <span className="cryptoStyling">
-            <p className="cryptoTableHeading">
+        <div className='cryptoTableContainer'>
+          <span className='cryptoStyling'>
+            <p className='cryptoTableHeading'>
               Cryptocurrency prices for 100 assets
             </p>
-            <span className="searchStyling">
-              <img src={search} alt="search" className="searchIcon"></img>
+            <span className='searchStyling'>
+              <img src={search} alt='search' className='searchIcon'></img>
               <Form filterSearchResults={filterSearchResults} />
               <img
                 src={x}
-                alt="x"
-                className="xIcon"
+                alt='x'
+                className='xIcon'
                 onClick={() => clearSearchResults()}
               ></img>
             </span>
           </span>
-          <table className="cryptoTable">
+          <table className='cryptoTable'>
             <thead>
               <tr>
                 <th>Favorites</th>

@@ -73,13 +73,13 @@ class App extends Component {
       return (
         <main>
           <Nav />
-          <Route exact path="/error" render={() => <Error />} />
+          <Route exact path='/error' render={() => <Error />} />
           <Route
             exact
-            path="/"
+            path='/'
             render={() => {
               if (!this.state.cryptocurrencies.length && this.state.error) {
-                return <Redirect to="/error" />
+                return <Redirect to='/error' />
               } else {
                 return <Home />
               }
@@ -87,7 +87,7 @@ class App extends Component {
           />
           <Route
             exact
-            path="/cryptocurrencies"
+            path='/cryptocurrencies'
             component={() => (
               <Cryptocurrencies
                 cryptocurrencies={this.state.cryptocurrencies}
@@ -105,7 +105,7 @@ class App extends Component {
           />
           <Route
             exact
-            path="/cryptopedia"
+            path='/cryptopedia'
             render={() => (
               <Cryptopedia
                 tags={this.state.tags}
@@ -116,11 +116,11 @@ class App extends Component {
           />
           <Route
             exact
-            path={"/cryptocurrencies/:id"}
+            path={'/cryptocurrencies/:id'}
             render={({ match }) => {
               const id = match.params.id;
               return (
-                <div className="cryptocurrencyDetailsContainer">
+                <div className='cryptocurrencyDetailsContainer'>
                   <CryptocurrencyDetails
                     id={id}
                     isLoading={this.state.isLoading}
@@ -131,7 +131,7 @@ class App extends Component {
           />
           <Route
             exact
-            path="/exchanges"
+            path='/exchanges'
             render={() => (
               <Exchanges
                 exchanges={this.state.exchanges}
