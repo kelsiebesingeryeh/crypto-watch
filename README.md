@@ -1,70 +1,83 @@
-# Getting Started with Create React App
+# CryptoWatch
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+View the deployed site [here].
 
-## Available Scripts
+### Table of Contents
+- [Introduction](#introduction)
+- [Instructions](#set-up-instructions)
+- [Project Planning](#project-planning)
+- [Features](#features)
+- [Challenges and Wins](#challenges-and-wins)
+- [Tech Stack](#tech-stack)
 
-In the project directory, you can run:
+## Introduction
+We were tasked to build an application that serves the need of a very small, very niche audience using an open API. I started my career producing FinTech events, some of which included Cryptocurrency and Bitcoin. I have always been fascinated by the idea of alternative currency and the power behind Blockchain technology to help with financial inclusion for the underbanked and underserved. I created this application for three different types of users - a skeptic, someone who may not know what cryptocurrency is and needs some more guidance, a curious user - someone who knows about crypto and just wants to follow the markets, a interested user -someone who is going to buy crypto and needs some information on where to go.
 
-### `npm start`
+## Set-Up Instructions
+1. Clone the respository
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```git@github.com:kelsiebesingeryeh/crypto-watch.git```
 
+2. Install dependencies
+
+```npm install```
+
+3. Start the app in development mode
+
+```npm start```
+
+4. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-### `npm test`
+5. Start the test suites
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```npx cypress open```
 
-### `npm run build`
+6. To Run the testing suite hit 'run integration tests'
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+7. Cypress will open a new window to run all the tests. Watch the magic happen in real time!
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Project-Planning
+Before I wrote any code, I laid out exactly how I wanted everything to look from code architecting, to wireframing to creating milestones, iterations and issues in my project board.
+- [Code Architecture Planning Document](https://docs.google.com/spreadsheets/d/1SW2n_IZGMDNepVv4uPsDmclpP6XuVnBtv2_5lyqu8-0/edit?usp=sharing)
+- [Wireframes](https://kelsielbesinger81110.invisionapp.com/freehand/cryptopedia-XyQLeHM2u)
+- [Project Board](https://github.com/kelsiebesingeryeh/crypto-watch/projects/1)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Features
+When a user goes to the website, they are greeted on a homepage with three options to chose from.
+![homepage](https://i.imgur.com/1k9T6bw.png)
+![demo-video](https://media.giphy.com/media/fB7DjuTJerp03OYMJo/giphy.gif)
 
-### `npm run eject`
+A user can select - Cryptopedia, Cryptocurrencies or Exchanges. Each category will route a user to a specific page based on their needs.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+#### Cryptopedia
+If a user is new to cryptocurrency, they can select "I'm new' and will be taken to a "Cryptopedia" page which is essentially a dicionary for all things crypto.
+![cryptopedia](https://i.imgur.com/plTByvj.png)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### Cryptocurrencies
+If a user is curious about cryptocurrency, they can select "I'm curious" and will be taken to a Cryptocurrencies page which displays the top 100 cryptocurrencies currently trending along with live data on the coin. They can view market information. The user can also search for a coin by name or symbol. The user can also add a coin to their "favorites"
+![cryptocurrencies](https://i.imgur.com/e92XMd4.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+#### CryptocurrencyDetails
+If a user is interested in a particular coin, they can click on the coin name and will be taken to a details page. This page gives more details on the coin including descriptions, team, tag and website links.
+![cryptocurrencyDetails](https://i.imgur.com/CF3gQwZ.png)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+#### Exchanges
+If a user is looking to buy cryptocurrency, they can select "I'm looking to buy crypto" and will be taken to the 'Exchanges" page where they will be shown a list of live exchange data and information around where they can buy crypto.
+![exchanges](https://i.imgur.com/le1Pv4y.png)
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Challenges and Wins
+* **Challenges**: I would say my biggest challenge in this project was Cypress testing. I had made a plan and was implementing testing along the way with each iteration which was really helpful, however I hit a wall when it came to stubbing network requests and getting everything to test properly. I spent several hours researching stubbing and intercepting to ensure I was mocking the network request. I reached out to my mentor for support and ended up finding a good way to test the mocked data by adding some assertions. I felt that I had a good amount of test coverage during this process as well.
+* **Wins**: My biggest win in this project would be the UI and how clean the data came out. I struggled a lot in the beginning with how to display the data in a meaningful way without it looking too boring. I love the colors, fonts, etc.. and feel of the site. It is very clean and minimal, but provides a lot of information. I'm proud of implementing not only the search feature but also adding in favorites. I also am proud that I used 4 API endpoints in this application to display all the information.  
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Tech Stack
+Technologies used: 
+* React, React Router
+* REST API - multiple
+* JavaScript
+* CSS
+* Cypress
+* GitHub Projects
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
