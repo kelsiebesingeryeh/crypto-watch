@@ -18,34 +18,30 @@ class CryptocurrencyDetails extends Component {
     componentDidMount() {
      getACoin(this.state.id)
        .then((currentCoin) => this.setState({ currentCoin, isLoading: false }))
-       .catch((error) => this.setState({ error: true, isLoading: false }));
+       .catch((error) => this.setState({ error: true, isLoading: false }))
     }
 
     linkItems() {
       return this.state.currentCoin.links.explorer.map(coin => {  
         return (
-          <ul className="itemList">
             <li key={coin}>
               <a
                 href={coin}
-                target="_blank"
-                rel="noreferrer"
-                className="coinLinks"
+                target='_blank'
+                rel='noreferrer'
+                className='coinLinks'
               >
                 {coin}
               </a>
             </li>
-          </ul>
-        );
+        )
       })
     }
 
     tagItems() {
         return this.state.currentCoin.tags.map(coin => {
             return (
-              <ul className='itemList'>
-                <li key={coin.name}>{coin.name}</li>
-              </ul>
+                <li key={coin.id}>{coin.name}</li>
             )
         })
     }
@@ -53,11 +49,9 @@ class CryptocurrencyDetails extends Component {
     teamItems() {
         return this.state.currentCoin.team.map(coin => {
             return (
-              <ul className='itemList'>
-                <li key={coin.name}>
+                <li key={coin.id}>
                   {coin.name}, {coin.position}
                 </li>
-              </ul>
             )
         })
     }
@@ -68,31 +62,35 @@ class CryptocurrencyDetails extends Component {
             {this.state.isLoading && <Loading />}
             {this.state.error && <Error />}
             {this.state.currentCoin && (
-              <section className="coinDetails">
+              <section className='coinDetails'>
                 <h1>{this.state.currentCoin.name}</h1>
-                <h2>Price</h2>
-                <p className="coinDescription">
+                <p className='coinDescription'>
                   {this.state.currentCoin.description}
                 </p>
-                <div className="listContainer">
-                  <div className="listItemWrapper">
+                <div className='listContainer'>
+                  <div className='listItemWrapper'>
                     <p>Helpful Links</p>
-                    {this.linkItems()}
+                    <ul className='itemList'>
+                      {this.linkItems()} 
+                    </ul>
                   </div>
-                  <div className="listItemWrapper">
+                  <div className='listItemWrapper'>
                     <p>Tags</p>
-                    {this.tagItems()}
+                    <ul className='itemList'>
+                      {this.tagItems()}
+                    </ul>
                   </div>
-                  <div className="listItemWrapper">
+                  <div className='listItemWrapper'>
                     <p>Team</p>
-                    {this.teamItems()}
+                    <ul className='itemList'>
+                      {this.teamItems()}
+                    </ul>
                   </div>
                 </div>
               </section>
             )}
           </>
-        );
-
+        )
     }
 }
 

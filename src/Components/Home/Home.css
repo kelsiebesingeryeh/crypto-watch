@@ -1,11 +1,11 @@
 a {
-    text-decoration: none;
     color: white;
+    text-decoration: none;
 }
 
 .mainPageText {
-    padding-left: 2.5rem;
     color: white;
+    padding-left: 2.5rem;
 }
 
 .header {
@@ -31,16 +31,16 @@ a {
 }
 
 .mainSection {
-    width: 215px;
-    height: 270px;
-    border-radius: 10px;
-    display: flex;
-    font-weight: bold;
-    padding: 1rem;
     background: #0D0C52;
-    font-size: 1.25rem;
+    border-radius: 10px;
     box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+    display: flex;
+    font-size: 1.25rem;
+    font-weight: bold;
+    height: 16.8rem;
     margin-left: 2rem;
+    padding: 1rem;
+    width: 13.5rem;
 }
 
 .curiousSection {

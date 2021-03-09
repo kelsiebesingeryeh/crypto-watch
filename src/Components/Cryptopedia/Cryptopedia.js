@@ -3,15 +3,12 @@ import Loading from '../Loading/Loading'
 import Error from '../Error/Error'
 import CryptopediaTags from '../CryptopediaTags/CryptopediaTags'
 import './Cryptopedia.css'
+import PropTypes from 'prop-types';
 
 const Cryptopedia = ({tags, isLoading, error}) => {
 
 const tagsOnDisplay = () => {
-    const sortedTags = tags.sort((a, b) => {  
-          if (a.name < b.name) {
-              return -1
-          }
-    })
+    const sortedTags = tags.sort((a, b) => a.name < b.name && -1)
 
     return sortedTags.map(tag => {
         return (
@@ -29,8 +26,8 @@ const tagsOnDisplay = () => {
           <>
             {isLoading && <Loading />}
             {error && <Error />}
-            <h1 className="cryptopediaHeading">Crypto 101</h1>
-            <section className="cryptopediaSection">
+            <h1 className='cryptopediaHeading'>Crypto 101</h1>
+            <section className='cryptopediaSection'>
                 {tagsOnDisplay()}
             </section>
           </>
@@ -38,3 +35,9 @@ const tagsOnDisplay = () => {
 }
 
 export default Cryptopedia
+
+Cryptopedia.propTypes = {
+  tags: PropTypes.array,
+  isLoading: PropTypes.bool,
+  error: PropTypes.bool,
+}

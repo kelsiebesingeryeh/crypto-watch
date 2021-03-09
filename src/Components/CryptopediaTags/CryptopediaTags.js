@@ -1,5 +1,6 @@
 import React from 'react'
 import './CryptopediaTags.css'
+import PropTypes from 'prop-types'
 
 const CryptopediaTags = ({name, description}) => {
     return (
@@ -11,3 +12,8 @@ const CryptopediaTags = ({name, description}) => {
 }
 
 export default CryptopediaTags
+
+CryptopediaTags.propTypes = {
+  name: PropTypes.string,
+  description: PropTypes.string
+}
