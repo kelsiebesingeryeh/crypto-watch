@@ -2,7 +2,7 @@ import React from 'react'
 import ExchangeDetails from '../ExchangeDetails/ExchangeDetails'
 import Loading from '../Loading/Loading'
 import Error from '../Error/Error'
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 
 const Exchanges = ({ exchanges, isLoading, error }) => {
   const exchangesOnDisplay = () => {

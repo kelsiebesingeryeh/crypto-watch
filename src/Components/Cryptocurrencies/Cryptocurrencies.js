@@ -4,8 +4,8 @@ import './Cryptocurrencies.css'
 import Error from '../Error/Error'
 import Loading from '../Loading/Loading'
 import Form from '../Form/Form'
-import search from '../../Assets/search.png'
-import x from '../../Assets/x.png'
+import search from '../../assets/search.png'
+import x from '../../assets/x.png'
 import PropTypes from 'prop-types'
 
 

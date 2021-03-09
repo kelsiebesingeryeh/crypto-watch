@@ -1,8 +1,8 @@
 import React from 'react'
 import './CryptocurrenciesCard.css'
 import { Link } from 'react-router-dom'
-import star from '../../Assets/star.png'
-import filledStar from '../../Assets/filledStar.png'
+import star from '../../assets/star.png'
+import filledStar from '../../assets/filledStar.png'
 import PropTypes from 'prop-types'
 
 const CryptocurrenciesCard = ({

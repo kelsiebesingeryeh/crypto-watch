@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 
 const ExchangeDetails = ({ name, currencies, markets, fiats, volume, confidenceScore }) => {
     const exchangePercentage = confidenceScore * 10
