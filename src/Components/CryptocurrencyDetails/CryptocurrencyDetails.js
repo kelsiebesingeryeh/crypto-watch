@@ -24,7 +24,6 @@ class CryptocurrencyDetails extends Component {
     linkItems() {
       return this.state.currentCoin.links.explorer.map(coin => {  
         return (
-          <ul className="itemList">
             <li key={coin}>
               <a
                 href={coin}
@@ -35,7 +34,6 @@ class CryptocurrencyDetails extends Component {
                 {coin}
               </a>
             </li>
-          </ul>
         )
       })
     }
@@ -43,9 +41,7 @@ class CryptocurrencyDetails extends Component {
     tagItems() {
         return this.state.currentCoin.tags.map(coin => {
             return (
-              <ul className='itemList'>
-                <li key={coin.name}>{coin.name}</li>
-              </ul>
+                <li key={coin.id}>{coin.name}</li>
             )
         })
     }
@@ -53,11 +49,9 @@ class CryptocurrencyDetails extends Component {
     teamItems() {
         return this.state.currentCoin.team.map(coin => {
             return (
-              <ul className='itemList'>
-                <li key={coin.name}>
+                <li key={coin.id}>
                   {coin.name}, {coin.position}
                 </li>
-              </ul>
             )
         })
     }
@@ -76,22 +70,27 @@ class CryptocurrencyDetails extends Component {
                 <div className="listContainer">
                   <div className="listItemWrapper">
                     <p>Helpful Links</p>
-                    {this.linkItems()}
+                    <ul className="itemList">
+                      {this.linkItems()} 
+                    </ul>
                   </div>
                   <div className="listItemWrapper">
                     <p>Tags</p>
-                    {this.tagItems()}
+                    <ul className="itemList">
+                      {this.tagItems()}
+                    </ul>
                   </div>
                   <div className="listItemWrapper">
                     <p>Team</p>
-                    {this.teamItems()}
+                    <ul className="itemList">
+                      {this.teamItems()}
+                    </ul>
                   </div>
                 </div>
               </section>
             )}
           </>
         )
-
     }
 }
 
