@@ -14,4 +14,4 @@ install:
 before_script:
   - npm start -- --silent &
 script: 
-  - $(npm bin)/cypress run --record
+  - $(npm bin)/cypress run
