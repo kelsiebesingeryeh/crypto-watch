@@ -236,7 +236,7 @@ describe('Loading', () => {
       .should("be.visible")
   })
 
-  it("should contain a loading message on Cryptocurrency Details page", () => {
+  it.skip("should contain a loading message on Cryptocurrency Details page", () => {
       cy.get(".curiousSection")
       .click()
       .get(".cryptoName")
