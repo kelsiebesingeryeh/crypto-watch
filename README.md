@@ -1,6 +1,6 @@
 # CryptoWatch
 
-View the deployed site [here].
+View the deployed site [here](https://crypto-watch-alpha.vercel.app/).
 
 ### Table of Contents
 - [Introduction](#introduction)
