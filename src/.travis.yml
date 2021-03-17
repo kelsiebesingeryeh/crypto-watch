@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - "node"
+  - node
 notifications:
   email: false
 cache:
@@ -14,3 +14,5 @@ before_script:
   - npm start -- --silent &
 script: 
   - $(npm bin)/cypress open
+
+  //testing travis CI
