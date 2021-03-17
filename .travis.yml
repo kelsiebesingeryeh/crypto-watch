@@ -12,6 +12,6 @@ install:
   - npm run build
   - cypress install
 before_script:
-  - npm start -- --silent & wait-on http://localhost:3000
+  - npm start -- --silent &
 script: 
   - $(npm bin)/cypress run --record
