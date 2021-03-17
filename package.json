@@ -12,6 +12,7 @@
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.8.1",
+    "latest-version": "^5.1.0",
     "material-table": "^1.69.2",
     "mui-datatables": "^3.7.6",
     "npm": "^6.14.11",
