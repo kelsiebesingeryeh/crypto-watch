@@ -1,5 +1,5 @@
 describe('Home', () => {
-  beforeEach(() => {
+  before(() => {
     const baseURL = "http://localhost:3000/"
     cy.visit(baseURL)
   })
