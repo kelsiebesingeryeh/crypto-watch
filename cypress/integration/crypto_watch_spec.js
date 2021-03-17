@@ -1,7 +1,6 @@
 describe('Home', () => {
   beforeEach(() => {
-    const baseURL = "http://localhost:3000/"
-    cy.visit(baseURL)
+    cy.visit("http://localhost:3000/")
   })
 
 it('Should see a home button in the nav bar when a user visits the homepage', () => {
