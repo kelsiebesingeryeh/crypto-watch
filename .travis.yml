@@ -16,3 +16,4 @@ script:
   - $(npm bin)/cypress open
 
   //testing travis CI
+  //adding a comment to test travis
