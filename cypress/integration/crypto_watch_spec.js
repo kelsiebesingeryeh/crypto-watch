@@ -1,5 +1,5 @@
 describe('Home', () => {
-  beforeEach(() => {
+  before(() => {
     const baseURL = "http://localhost:3000/"
     cy.visit(baseURL)
   })
@@ -77,7 +77,7 @@ it("Should be able to click into a nav bar item and be taken to another page", (
 })
 
 describe('Cryptocurrencies', () => {
-  beforeEach(() => {
+  before(() => {
     const baseURL = "http://localhost:3000/cryptocurrencies"
     cy.fixture("testCryptoData.json").then((cryptoData) => {
       cy.intercept("GET", "https://api.coinpaprika.com/v1/tickers", cryptoData);
@@ -124,7 +124,7 @@ describe('Cryptocurrencies', () => {
 })
 
 describe("CryptocurrencyDetails", () => {
-  beforeEach(() => {
+  before(() => {
     const baseURL = "http://localhost:3000"
     cy.fixture("testCryptoData.json").then((cryptoData) => {
       cy.intercept("GET", "https://api.coinpaprika.com/v1/tickers", cryptoData)
@@ -154,7 +154,7 @@ describe("CryptocurrencyDetails", () => {
 })
 
 describe("Exchanges", () => {
-  beforeEach(() => {
+  before(() => {
     const baseURL = "http://localhost:3000/exchanges"
     cy.fixture("testExchangeData.json").then((exchangeData) => {
       cy.intercept(
@@ -187,7 +187,7 @@ describe("Exchanges", () => {
 })
 
 describe('Search Bar', () => {
-  beforeEach(() => {
+  before(() => {
     const baseURL = "http://localhost:3000/cryptocurrencies"
     cy.fixture("testCryptoData.json").then((cryptoData) => {
       cy.intercept("GET", "https://api.coinpaprika.com/v1/tickers", cryptoData)
@@ -223,7 +223,7 @@ describe('Search Bar', () => {
 
 
 describe('Loading', () => {
-  beforeEach(() =>  {
+  before(() =>  {
     const baseURL = "http://localhost:3000"
     cy.visit(baseURL)
 
@@ -262,7 +262,7 @@ describe('Loading', () => {
 })
 
 describe('Error', () => {
-  beforeEach(() => {
+  before(() => {
     const baseURL = "http://localhost:3000"
     cy.fixture("testCryptoData.json").then((cryptoData) => {
       cy.intercept("GET", "https://api.coinpaprika.com/v1/tickers", {
@@ -295,7 +295,7 @@ describe('Error', () => {
 })
 
 describe('Cryptopedia', () => {
-  beforeEach(() => {
+  before(() => {
     const baseURL = "http://localhost:3000/cryptopedia"
     cy.fixture("testCryptopediaData.json").then((cryptoData) => {
       cy.intercept(
