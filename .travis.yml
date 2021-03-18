@@ -17,3 +17,5 @@ deploy:
   provider: vercel
   app: crypto-watch
   skip_cleanup: true
+
+  //test
