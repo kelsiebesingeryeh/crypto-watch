@@ -4,6 +4,8 @@ node_js:
 cache:
   npm: true
   directories:
+    - ~/.npm
+    - ./node_modules
     - ~/.cache
 install:
   - npm ci
