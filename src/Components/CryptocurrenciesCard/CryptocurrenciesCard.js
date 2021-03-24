@@ -71,7 +71,7 @@ const CryptocurrenciesCard = ({
       <td data-label='Symbol'>{symbol}</td>
       <td data-label='Price'>${formatPrice}</td>
       {stylePercentChange()}
-      <td data-label='Market Cap'>{formatMarketCap(marketCap)}</td>
+      <td data-label='Market Cap'>${formatMarketCap(marketCap)}</td>
     </tr>
   )
 }
