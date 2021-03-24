@@ -53,7 +53,7 @@ const CryptocurrenciesCard = ({
   }
 
   return (
-    <tr>
+    <tr className='dataRows'>
       <td data-label='Favorites'>
         <img
           src={favorites.includes(id) ? filledStar : star}
@@ -63,7 +63,7 @@ const CryptocurrenciesCard = ({
         />
       </td>
       <td data-label='Rank'>{rank}</td>
-      <td id={id} data-label='Cryptocurrency'>
+      <td id={id} data-label='Cryptocurrency' className='cryptoNameCell'>
         <Link to={`/cryptocurrencies/${id}`} className='cryptoName'>
           {name}
         </Link>

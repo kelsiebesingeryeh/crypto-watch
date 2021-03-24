@@ -24,9 +24,13 @@
     color: black;
 }
 
-tr:hover {
-    background-color: #e6e6ed;
+.cryptoNameCell:hover {
     cursor: pointer;
+    text-decoration: underline;
+}
+
+.dataRows:hover {
+    background-color: #EEECFB;
 }
 
 .favorites {
