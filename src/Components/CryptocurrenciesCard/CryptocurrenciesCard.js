@@ -31,14 +31,14 @@ const CryptocurrenciesCard = ({
   const stylePercentChange = () => {
     if (percentChange > 0) {
       return (
-        <td style={{ color: 'green', fontWeight: 'bold' }} data-label='Percent Change'>{percentChange}</td>
+        <td style={{ color: 'green', fontWeight: 'bold' }} data-label='Percent Change'>{percentChange}%</td>
       )
     } else {
       return (
         <td
           style={{ color: 'red', fontWeight: 'bold' }}
           data-label='Percent Change'>
-          {percentChange}
+          {percentChange}%
         </td>
       )
     }
