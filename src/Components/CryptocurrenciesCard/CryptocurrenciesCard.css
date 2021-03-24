@@ -28,3 +28,7 @@ tr:hover {
     background-color: #e6e6ed;
     cursor: pointer;
 }
+
+.favorites {
+    width: 15%;
+}

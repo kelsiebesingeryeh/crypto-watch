@@ -59,7 +59,6 @@ const CryptocurrenciesCard = ({
           src={favorites.includes(id) ? filledStar : star}
           alt='star'
           onClick={handleClick}
-          style={{ width: '30%' }}
           className='favorites'
         />
       </td>
