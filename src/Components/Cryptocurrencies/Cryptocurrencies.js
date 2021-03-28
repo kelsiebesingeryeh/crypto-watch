@@ -17,7 +17,8 @@ const Cryptocurrencies = ({
   addFavoriteCrypto,
   removeFromFavorites,
   favorites,
-  isFavorite
+  isFavorite,
+  isSearching
 }) => {
 
   const top100Coins = cryptocurrencies
@@ -50,14 +51,18 @@ const Cryptocurrencies = ({
       <>
         {isLoading && <Loading />}
         {error && <Error />}
-        <div className='cryptoTableContainer'>
-          <span className='cryptoStyling'>
-            <p className='cryptoTableHeading'>
+        <div className="cryptoTableContainer">
+          <span className="cryptoStyling">
+            <p className="cryptoTableHeading">
               Cryptocurrency prices for 100 assets
             </p>
-              <Form filterSearchResults={filterSearchResults} />
+            <Form
+              filterSearchResults={filterSearchResults}
+              clearSearchResults={clearSearchResults}
+              isSearching={isSearching}
+            />
           </span>
-          <table className='cryptoTable'>
+          <table className="cryptoTable">
             <thead>
               <tr>
                 <th>Favorites</th>

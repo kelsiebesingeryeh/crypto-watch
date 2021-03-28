@@ -7,7 +7,7 @@ class Form extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            searchInput: ''
+            searchInput: '',
         }
     }
 
@@ -25,29 +25,38 @@ class Form extends Component {
 
     clearInputs = () => {
         this.setState({
-            searchInput: ''
+            searchInput: '',
         })
     }
 
     render() {
         return (
           <form className="searchResultForm">
-            <div className='inputContainer'>
-                <img src={search} alt="search" className="searchIcon"></img>
-                <input
+            <div className="inputContainer">
+              <img src={search} alt="search" className="searchIcon" />
+              <input
                 className="searchInput"
                 type="text"
                 name="searchInput"
                 value={this.state.searchInput}
                 placeholder="Search by coin name or symbol"
                 onChange={this.handleChange}
-                />
+              />
             </div>
             <button className="searchButton" onClick={this.handleSubmit}>
               Search
             </button>
+
+            {this.props.isSearching && (
+              <img
+                src={x}
+                alt="x"
+                className="xIcon"
+                onClick={() => this.props.clearSearchResults()}
+              />
+            )}
           </form>
-        )
+        );
     }
 }
 

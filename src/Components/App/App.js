@@ -21,7 +21,8 @@ class App extends Component {
       favorites: [],
       isFavorite: false,
       tags: [],
-      exchanges: []
+      exchanges: [],
+      isSearching: false
     }
   }
 
@@ -42,7 +43,8 @@ class App extends Component {
         return crypto.name.toLowerCase()=== userInput || crypto.symbol.toLowerCase() === userInput
       })
       this.setState({
-        searchResults: searchResultsToDisplay
+        searchResults: searchResultsToDisplay,
+        isSearching: true
       })
     }
 
@@ -65,29 +67,30 @@ class App extends Component {
 
     clearSearchResults = () => {
       this.setState({
-        searchResults: []
-      })
+        searchResults: [],
+        isSearching: false
+      });
     }
 
     render() {
       return (
         <main>
           <Nav />
-          <Route exact path='/error' render={() => <Error />} />
+          <Route exact path="/error" render={() => <Error />} />
           <Route
             exact
-            path='/'
+            path="/"
             render={() => {
               if (!this.state.cryptocurrencies.length && this.state.error) {
-                return <Redirect to='/error' />
+                return <Redirect to="/error" />;
               } else {
-                return <Home />
+                return <Home />;
               }
             }}
           />
           <Route
             exact
-            path='/cryptocurrencies'
+            path="/cryptocurrencies"
             component={() => (
               <Cryptocurrencies
                 cryptocurrencies={this.state.cryptocurrencies}
@@ -100,12 +103,13 @@ class App extends Component {
                 favorites={this.state.favorites}
                 isFavorite={this.state.isFavorite}
                 error={this.state.error}
+                isSearching={this.state.isSearching}
               />
             )}
           />
           <Route
             exact
-            path='/cryptopedia'
+            path="/cryptopedia"
             render={() => (
               <Cryptopedia
                 tags={this.state.tags}
@@ -116,22 +120,22 @@ class App extends Component {
           />
           <Route
             exact
-            path={'/cryptocurrencies/:id'}
+            path={"/cryptocurrencies/:id"}
             render={({ match }) => {
               const id = match.params.id;
               return (
-                <div className='cryptocurrencyDetailsContainer'>
+                <div className="cryptocurrencyDetailsContainer">
                   <CryptocurrencyDetails
                     id={id}
                     isLoading={this.state.isLoading}
                   />
                 </div>
-              )
+              );
             }}
           />
           <Route
             exact
-            path='/exchanges'
+            path="/exchanges"
             render={() => (
               <Exchanges
                 exchanges={this.state.exchanges}
@@ -141,7 +145,7 @@ class App extends Component {
             )}
           />
         </main>
-      )
+      );
     }
   }
 

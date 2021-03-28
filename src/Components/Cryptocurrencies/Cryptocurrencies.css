@@ -39,10 +39,6 @@ td {
     justify-content: space-evenly;
 }
 
-.xIcon{
-    object-fit: contain;
-}
-
 /* TABLETS/IPAD */
 @media screen and (min-width: 551px) and (max-width: 1024px) {
     .cryptoTableContainer {

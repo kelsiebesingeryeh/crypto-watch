@@ -32,8 +32,14 @@ input {
     font-weight: bold;
     margin-right: 1rem;
     padding: 0.5rem;
+    cursor: pointer;
 }
 
 .searchIcon {
     padding: 0.35rem;
+}
+
+.xIcon {
+    object-fit: contain;
+    cursor: pointer;
 }
