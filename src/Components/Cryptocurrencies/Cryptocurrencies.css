@@ -39,11 +39,6 @@ td {
     justify-content: space-evenly;
 }
 
-.searchIcon {
-    object-fit: contain;
-    margin-right: 0.5rem;
-}
-
 .xIcon{
     object-fit: contain;
 }

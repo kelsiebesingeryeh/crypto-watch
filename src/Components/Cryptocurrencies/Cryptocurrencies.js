@@ -4,8 +4,6 @@ import './Cryptocurrencies.css'
 import Error from '../Error/Error'
 import Loading from '../Loading/Loading'
 import Form from '../Form/Form'
-import search from '../../assets/search.png'
-import x from '../../assets/x.png'
 import PropTypes from 'prop-types'
 
 
@@ -57,16 +55,7 @@ const Cryptocurrencies = ({
             <p className='cryptoTableHeading'>
               Cryptocurrency prices for 100 assets
             </p>
-            <span className='searchStyling'>
-              <img src={search} alt='search' className='searchIcon'></img>
               <Form filterSearchResults={filterSearchResults} />
-              <img
-                src={x}
-                alt='x'
-                className='xIcon'
-                onClick={() => clearSearchResults()}
-              ></img>
-            </span>
           </span>
           <table className='cryptoTable'>
             <thead>

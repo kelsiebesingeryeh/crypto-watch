@@ -1,9 +1,27 @@
+.searchResultForm {
+    display: flex;
+}
+
 input {
-    border-radius: 5px;
     font-family: 'gothamBookRegular', 'sans-serif';
     padding: .5rem;
-    width: 14rem;
     margin-right: 1rem;
+    width: 15rem;
+    border-radius: 6.25rem;
+    height: 1.5rem;
+    line-height: 2.5rem;
+    font-size: .6875rem;
+    text-align: center;
+}
+
+.inputContainer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.inputContainer .searchIcon {
+    position: absolute;
 }
 
 .searchButton {
@@ -14,4 +32,8 @@ input {
     font-weight: bold;
     margin-right: 1rem;
     padding: 0.5rem;
+}
+
+.searchIcon {
+    padding: 0.35rem;
 }
