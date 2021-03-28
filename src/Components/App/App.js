@@ -42,10 +42,11 @@ class App extends Component {
       const searchResultsToDisplay = this.state.cryptocurrencies.filter(crypto => {
         return crypto.name.toLowerCase()=== userInput || crypto.symbol.toLowerCase() === userInput
       })
-      this.setState({
-        searchResults: searchResultsToDisplay,
-        isSearching: true
-      })
+    
+        this.setState({
+          searchResults: searchResultsToDisplay,
+          isSearching: true
+        })
     }
 
     addFavoriteCrypto = (coin) => {

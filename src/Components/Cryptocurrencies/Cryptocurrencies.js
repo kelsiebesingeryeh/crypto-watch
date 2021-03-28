@@ -5,6 +5,7 @@ import Error from '../Error/Error'
 import Loading from '../Loading/Loading'
 import Form from '../Form/Form'
 import PropTypes from 'prop-types'
+import SearchError from '../SearchError/SearchError'
 
 
 const Cryptocurrencies = ({
@@ -62,6 +63,10 @@ const Cryptocurrencies = ({
               isSearching={isSearching}
             />
           </span>
+          {searchResults.length === 0 && isSearching && (
+            <SearchError clearSearchResults={clearSearchResults} />
+          )}
+
           <table className="cryptoTable">
             <thead>
               <tr>

@@ -24,6 +24,10 @@ input {
     position: absolute;
 }
 
+input:focus {
+    box-shadow: 2px 3px 23px rgb(0 0 40% / 30%);
+}
+
 .searchButton {
     background: #5642D9;
     border-radius: 8px;
@@ -37,6 +41,11 @@ input {
 
 .searchIcon {
     padding: 0.35rem;
+}
+
+.inputContainer .xIcon {
+    position: absolute;
+    right: 8.5rem;
 }
 
 .xIcon {

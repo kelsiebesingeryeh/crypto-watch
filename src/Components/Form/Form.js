@@ -40,13 +40,9 @@ class Form extends Component {
                 name="searchInput"
                 value={this.state.searchInput}
                 placeholder="Search by coin name or symbol"
+                tabIndex="0"
                 onChange={this.handleChange}
               />
-            </div>
-            <button className="searchButton" onClick={this.handleSubmit}>
-              Search
-            </button>
-
             {this.props.isSearching && (
               <img
                 src={x}
@@ -55,6 +51,11 @@ class Form extends Component {
                 onClick={() => this.props.clearSearchResults()}
               />
             )}
+            </div>
+            <button className="searchButton" onClick={this.handleSubmit}>
+              Search
+            </button>
+
           </form>
         );
     }
