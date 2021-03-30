@@ -7,7 +7,6 @@ import Form from '../Form/Form'
 import PropTypes from 'prop-types'
 import SearchError from '../SearchError/SearchError'
 
-
 const Cryptocurrencies = ({
   cryptocurrencies,
   isLoading,
@@ -80,6 +79,9 @@ const Cryptocurrencies = ({
               </tr>
             </thead>
             <tbody>
+              {/* {searchResults.length === 0 && isSearching && (
+                <SearchError clearSearchResults={clearSearchResults} />
+              )} */}
               {searchResults.length > 0
                 ? cryptocurrenciesOnDisplay(searchResults)
                 : cryptocurrenciesOnDisplay(top100Coins)}
