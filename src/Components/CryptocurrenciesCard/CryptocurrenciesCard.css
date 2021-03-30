@@ -23,3 +23,16 @@
 .cryptoName {
     color: black;
 }
+
+.cryptoNameCell:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.dataRows:hover {
+    background-color: #EEECFB;
+}
+
+.favorites {
+    width: 15%;
+}

@@ -31,14 +31,14 @@ const CryptocurrenciesCard = ({
   const stylePercentChange = () => {
     if (percentChange > 0) {
       return (
-        <td style={{ color: 'green', fontWeight: 'bold' }} data-label='Percent Change'>{percentChange}</td>
+        <td style={{ color: 'green', fontWeight: 'bold' }} data-label='Percent Change'>{percentChange}%</td>
       )
     } else {
       return (
         <td
           style={{ color: 'red', fontWeight: 'bold' }}
           data-label='Percent Change'>
-          {percentChange}
+          {percentChange}%
         </td>
       )
     }
@@ -53,18 +53,17 @@ const CryptocurrenciesCard = ({
   }
 
   return (
-    <tr>
+    <tr className='dataRows'>
       <td data-label='Favorites'>
         <img
           src={favorites.includes(id) ? filledStar : star}
           alt='star'
           onClick={handleClick}
-          style={{ width: '30%' }}
           className='favorites'
         />
       </td>
       <td data-label='Rank'>{rank}</td>
-      <td id={id} data-label='Cryptocurrency'>
+      <td id={id} data-label='Cryptocurrency' className='cryptoNameCell'>
         <Link to={`/cryptocurrencies/${id}`} className='cryptoName'>
           {name}
         </Link>
@@ -72,7 +71,7 @@ const CryptocurrenciesCard = ({
       <td data-label='Symbol'>{symbol}</td>
       <td data-label='Price'>${formatPrice}</td>
       {stylePercentChange()}
-      <td data-label='Market Cap'>{formatMarketCap(marketCap)}</td>
+      <td data-label='Market Cap'>${formatMarketCap(marketCap)}</td>
     </tr>
   )
 }

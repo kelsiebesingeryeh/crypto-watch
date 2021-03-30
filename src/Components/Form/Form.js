@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import './Form.css'
+import search from "../../assets/search.png";
+import x from "../../assets/x.png";
 
 class Form extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            searchInput: ''
+            searchInput: '',
         }
     }
 
@@ -23,24 +25,39 @@ class Form extends Component {
 
     clearInputs = () => {
         this.setState({
-            searchInput: ''
+            searchInput: '',
         })
     }
 
     render() {
         return (
-        <form className='searchResultForm'>
-            <input
-            className='searchInput' 
-            type='text'
-            name='searchInput'
-            value={this.state.searchInput}
-            placeholder='Search by coin name or symbol'
-            onChange={this.handleChange}
-            />
-        <button className='searchButton' onClick={this.handleSubmit}>Search</button>
-        </form>
-        )
+          <form className="searchResultForm">
+            <div className="inputContainer">
+              <img src={search} alt="search" className="searchIcon" />
+              <input
+                className="searchInput"
+                type="text"
+                name="searchInput"
+                value={this.state.searchInput}
+                placeholder="Search by coin name or symbol"
+                tabIndex="0"
+                onChange={this.handleChange}
+              />
+            {this.props.isSearching && (
+              <img
+                src={x}
+                alt="x"
+                className="xIcon"
+                onClick={() => this.props.clearSearchResults()}
+              />
+            )}
+            </div>
+            <button className="searchButton" onClick={this.handleSubmit}>
+              Search
+            </button>
+
+          </form>
+        );
     }
 }
 

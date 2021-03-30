@@ -4,10 +4,8 @@ import './Cryptocurrencies.css'
 import Error from '../Error/Error'
 import Loading from '../Loading/Loading'
 import Form from '../Form/Form'
-import search from '../../assets/search.png'
-import x from '../../assets/x.png'
 import PropTypes from 'prop-types'
-
+import SearchError from '../SearchError/SearchError'
 
 const Cryptocurrencies = ({
   cryptocurrencies,
@@ -19,7 +17,8 @@ const Cryptocurrencies = ({
   addFavoriteCrypto,
   removeFromFavorites,
   favorites,
-  isFavorite
+  isFavorite,
+  isSearching
 }) => {
 
   const top100Coins = cryptocurrencies
@@ -52,23 +51,22 @@ const Cryptocurrencies = ({
       <>
         {isLoading && <Loading />}
         {error && <Error />}
-        <div className='cryptoTableContainer'>
-          <span className='cryptoStyling'>
-            <p className='cryptoTableHeading'>
+        <div className="cryptoTableContainer">
+          <span className="cryptoStyling">
+            <p className="cryptoTableHeading">
               Cryptocurrency prices for 100 assets
             </p>
-            <span className='searchStyling'>
-              <img src={search} alt='search' className='searchIcon'></img>
-              <Form filterSearchResults={filterSearchResults} />
-              <img
-                src={x}
-                alt='x'
-                className='xIcon'
-                onClick={() => clearSearchResults()}
-              ></img>
-            </span>
+            <Form
+              filterSearchResults={filterSearchResults}
+              clearSearchResults={clearSearchResults}
+              isSearching={isSearching}
+            />
           </span>
-          <table className='cryptoTable'>
+          {searchResults.length === 0 && isSearching && (
+            <SearchError clearSearchResults={clearSearchResults} />
+          )}
+
+          <table className="cryptoTable">
             <thead>
               <tr>
                 <th>Favorites</th>
@@ -81,6 +79,9 @@ const Cryptocurrencies = ({
               </tr>
             </thead>
             <tbody>
+              {/* {searchResults.length === 0 && isSearching && (
+                <SearchError clearSearchResults={clearSearchResults} />
+              )} */}
               {searchResults.length > 0
                 ? cryptocurrenciesOnDisplay(searchResults)
                 : cryptocurrenciesOnDisplay(top100Coins)}
