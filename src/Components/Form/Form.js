@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import './Form.css'
+import React, { Component } from 'react';
+import './Form.css';
 import search from "../../assets/search.png";
 import x from "../../assets/x.png";
 
@@ -61,4 +61,4 @@ class Form extends Component {
     }
 }
 
-export default Form
+export default Form;

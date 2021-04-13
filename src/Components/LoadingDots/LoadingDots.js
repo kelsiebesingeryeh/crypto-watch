@@ -1,5 +1,5 @@
-import React from 'react'
-import './LoadingDots.css'
+import React from 'react';
+import './LoadingDots.css';
 
 const LoadingDots = () => {
    return (
@@ -8,7 +8,7 @@ const LoadingDots = () => {
        <span>.</span>
        <span>.</span>
      </p>
-   )
-}
+   );
+};
 
-export default LoadingDots
+export default LoadingDots;
