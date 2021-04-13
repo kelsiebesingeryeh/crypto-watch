@@ -26,4 +26,4 @@ ExchangeDetails.propTypes = {
     fiats: PropTypes.array,
     volume: PropTypes.number,
     confidenceScore: PropTypes.number
-}
+};
