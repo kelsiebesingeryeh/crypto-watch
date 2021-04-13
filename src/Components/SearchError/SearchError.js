@@ -1,5 +1,6 @@
 import React from 'react'; 
 import './SearchError.css';
+import PropTypes from 'prop-types';
  
 const SearchError = ({ clearSearchResults }) => {
     return (
@@ -11,4 +12,10 @@ const SearchError = ({ clearSearchResults }) => {
     );
 };
 
+
+
 export default SearchError;
+
+SearchError.propTypes = {
+    clearSearchResults: PropTypes.func
+};

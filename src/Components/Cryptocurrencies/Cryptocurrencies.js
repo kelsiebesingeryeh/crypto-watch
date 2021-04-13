@@ -29,68 +29,65 @@ const Cryptocurrencies = ({
         return cryptoList.map((crypto) => {
             const { id, name, symbol, rank, quotes } = crypto;
             return (
-            <CryptocurrenciesCard
-              id={id}
-              key={id}
-              name={name}
-              symbol={symbol}
-              rank={rank}
-              price={quotes.USD.price}
-              marketCap={quotes.USD['market_cap']}
-              percentChange={quotes.USD['percent_change_24h']}
-              addFavoriteCrypto={addFavoriteCrypto}
-              removeFromFavorites={removeFromFavorites}
-              favorites={favorites}
-              isFavorite={isFavorite}
-            />
-      );
-    });
-  };
+                <CryptocurrenciesCard
+                    id={id}
+                    key={id}
+                    name={name}
+                    symbol={symbol}
+                    rank={rank}
+                    price={quotes.USD.price}
+                    marketCap={quotes.USD['market_cap']}
+                    percentChange={quotes.USD['percent_change_24h']}
+                    addFavoriteCrypto={addFavoriteCrypto}
+                    removeFromFavorites={removeFromFavorites}
+                    favorites={favorites}
+                    isFavorite={isFavorite}
+                />
+            );
+        });
+    };
 
     return (
-      <>
-        {isLoading && <Loading />}
-        {error && <Error />}
-        <div className="cryptoTableContainer">
-          <span className="cryptoStyling">
-            <p className="cryptoTableHeading">
+        <>
+            {isLoading && <Loading />}
+            {error && <Error />}
+            <div className="cryptoTableContainer">
+                <span className="cryptoStyling">
+                    <p className="cryptoTableHeading">
               Cryptocurrency prices for 100 assets
-            </p>
-            <Form
-              filterSearchResults={filterSearchResults}
-              clearSearchResults={clearSearchResults}
-              isSearching={isSearching}
-            />
-          </span>
-          {searchResults.length === 0 && isSearching && (
-            <SearchError clearSearchResults={clearSearchResults} />
-          )}
+                    </p>
+                    <Form
+                        filterSearchResults={filterSearchResults}
+                        clearSearchResults={clearSearchResults}
+                        isSearching={isSearching}
+                    />
+                </span>
+                {searchResults.length === 0 && isSearching && (
+                    <SearchError clearSearchResults={clearSearchResults} />
+                )}
 
-          <table className="cryptoTable">
-            <thead>
-              <tr>
-                <th>Favorites</th>
-                <th>Rank</th>
-                <th>Cryptocurrency</th>
-                <th>Symbol</th>
-                <th>Price</th>
-                <th>24HR%Chg</th>
-                <th>Market Cap</th>
-              </tr>
-            </thead>
-            <tbody>
-              {/* {searchResults.length === 0 && isSearching && (
-                <SearchError clearSearchResults={clearSearchResults} />
-              )} */}
-              {searchResults.length > 0
-                ? cryptocurrenciesOnDisplay(searchResults)
-                : cryptocurrenciesOnDisplay(top100Coins)}
-            </tbody>
-          </table>
-        </div>
-      </>
+                <table className="cryptoTable">
+                    <thead>
+                        <tr>
+                            <th>Favorites</th>
+                            <th>Rank</th>
+                            <th>Cryptocurrency</th>
+                            <th>Symbol</th>
+                            <th>Price</th>
+                            <th>24HR%Chg</th>
+                            <th>Market Cap</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {searchResults.length > 0
+                            ? cryptocurrenciesOnDisplay(searchResults)
+                            : cryptocurrenciesOnDisplay(top100Coins)}
+                    </tbody>
+                </table>
+            </div>
+        </>
     );
-  };
+};
     
 export default Cryptocurrencies;
 
@@ -105,5 +102,12 @@ Cryptocurrencies.propTypes = {
     addFavoriteCrypto: PropTypes.func,
     removeFromFavorites: PropTypes.func,
     favorites: PropTypes.array,
-    isFavorite: PropTypes.bool
+    isFavorite: PropTypes.bool,
+    isSearching: PropTypes.bool,
+    isLoading: PropTypes.bool,
+    error: PropTypes.bool,
+    searchResults: PropTypes.array,
+    filterSearchResults: PropTypes.func,
+    clearSearchResults: PropTypes.func,
+    cryptocurrencies: PropTypes.array
 };
