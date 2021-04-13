@@ -35,7 +35,9 @@ class App extends Component {
                 isLoading: false
             });
         })
+        /*eslint-disable */
             .catch(error => this.setState({error: true, isLoading: false}));
+        /*eslint-enable */
     }
 
     filterSearchResults(userInput){

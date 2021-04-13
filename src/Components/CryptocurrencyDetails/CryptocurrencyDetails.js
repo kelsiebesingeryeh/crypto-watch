@@ -19,7 +19,9 @@ class CryptocurrencyDetails extends Component {
     componentDidMount() {
         getACoin(this.state.id)
             .then((currentCoin) => this.setState({ currentCoin, isLoading: false }))
-            .catch((error) => this.setState({ error: true, isLoading: false }));
+        /*eslint-disable */
+        .catch((error) => this.setState({ error: true, isLoading: false }));
+      /*eslint-enable */
     }
 
     linkItems() {
