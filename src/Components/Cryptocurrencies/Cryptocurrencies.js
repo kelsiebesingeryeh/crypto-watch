@@ -1,51 +1,51 @@
-import React from 'react'
-import CryptocurrenciesCard from '../CryptocurrenciesCard/CryptocurrenciesCard'
-import './Cryptocurrencies.css'
-import Error from '../Error/Error'
-import Loading from '../Loading/Loading'
-import Form from '../Form/Form'
-import PropTypes from 'prop-types'
-import SearchError from '../SearchError/SearchError'
+import React from 'react';
+import CryptocurrenciesCard from '../CryptocurrenciesCard/CryptocurrenciesCard';
+import './Cryptocurrencies.css';
+import Error from '../Error/Error';
+import Loading from '../Loading/Loading';
+import Form from '../Form/Form';
+import PropTypes from 'prop-types';
+import SearchError from '../SearchError/SearchError';
 
 const Cryptocurrencies = ({
-  cryptocurrencies,
-  isLoading,
-  error,
-  filterSearchResults,
-  searchResults,
-  clearSearchResults,
-  addFavoriteCrypto,
-  removeFromFavorites,
-  favorites,
-  isFavorite,
-  isSearching
+    cryptocurrencies,
+    isLoading,
+    error,
+    filterSearchResults,
+    searchResults,
+    clearSearchResults,
+    addFavoriteCrypto,
+    removeFromFavorites,
+    favorites,
+    isFavorite,
+    isSearching
 }) => {
 
-  const top100Coins = cryptocurrencies
-    .filter((crypto) => crypto.rank > 0 && crypto.rank <= 100)
-    .sort((a, b) => a.rank - b.rank)
+    const top100Coins = cryptocurrencies
+        .filter((crypto) => crypto.rank > 0 && crypto.rank <= 100)
+        .sort((a, b) => a.rank - b.rank);
   
     const cryptocurrenciesOnDisplay = (cryptoList) => {
-    return cryptoList.map((crypto) => {
-      const { id, name, symbol, rank, quotes } = crypto
-      return (
-        <CryptocurrenciesCard
-          id={id}
-          key={id}
-          name={name}
-          symbol={symbol}
-          rank={rank}
-          price={quotes.USD.price}
-          marketCap={quotes.USD['market_cap']}
-          percentChange={quotes.USD['percent_change_24h']}
-          addFavoriteCrypto={addFavoriteCrypto}
-          removeFromFavorites={removeFromFavorites}
-          favorites={favorites}
-          isFavorite={isFavorite}
-        />
-      )
-    })
-  }
+        return cryptoList.map((crypto) => {
+            const { id, name, symbol, rank, quotes } = crypto;
+            return (
+            <CryptocurrenciesCard
+              id={id}
+              key={id}
+              name={name}
+              symbol={symbol}
+              rank={rank}
+              price={quotes.USD.price}
+              marketCap={quotes.USD['market_cap']}
+              percentChange={quotes.USD['percent_change_24h']}
+              addFavoriteCrypto={addFavoriteCrypto}
+              removeFromFavorites={removeFromFavorites}
+              favorites={favorites}
+              isFavorite={isFavorite}
+            />
+      );
+    });
+  };
 
     return (
       <>
@@ -90,9 +90,9 @@ const Cryptocurrencies = ({
         </div>
       </>
     );
-  }
+  };
     
-export default Cryptocurrencies
+export default Cryptocurrencies;
 
 Cryptocurrencies.propTypes = {
     id: PropTypes.string,
@@ -106,4 +106,4 @@ Cryptocurrencies.propTypes = {
     removeFromFavorites: PropTypes.func,
     favorites: PropTypes.array,
     isFavorite: PropTypes.bool
-}
+};

@@ -55,6 +55,7 @@ class App extends Component {
           favorites: [...this.state.favorites, coin],
           isFavorite: true
         })
+        localStorage.setItem('coin', coin)
      }
     } 
 
