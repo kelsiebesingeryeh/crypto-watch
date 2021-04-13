@@ -1,5 +1,5 @@
-import React from 'react'
-import './Error.css'
+import React from 'react';
+import './Error.css';
 
 const Error = () => {
     return (
@@ -9,7 +9,7 @@ const Error = () => {
                 <p><em>Please refresh or revisit at a later time.</em></p>
             </article>
         </section>
-    )
-}
+    );
+};
 
-export default Error
+export default Error;
