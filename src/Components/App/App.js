@@ -40,7 +40,7 @@ class App extends Component {
         /*eslint-enable */
     }
 
-    filterSearchResults(userInput){
+    filterSearchResults = (userInput) => {
         const searchResultsToDisplay = this.state.cryptocurrencies.filter(crypto => {
             return crypto.name.toLowerCase()=== userInput || crypto.symbol.toLowerCase() === userInput;
         });
@@ -51,7 +51,7 @@ class App extends Component {
         });
     }
 
-    addFavoriteCrypto(coin){
+    addFavoriteCrypto = (coin) => {
         if (!this.state.isFavorite) {
             this.setState({
                 favorites: [...this.state.favorites, coin],
@@ -61,7 +61,7 @@ class App extends Component {
         }
     } 
 
-    removeFromFavorites(id){
+    removeFromFavorites = (id) => {
         const filteredFavorites = this.state.favorites.filter(fav => fav !== id);
         this.setState({
             isFavorite: false,
@@ -69,7 +69,7 @@ class App extends Component {
         });
     }
 
-    clearSearchResults(){
+    clearSearchResults = () => {
         this.setState({
             searchResults: [],
             isSearching: false
