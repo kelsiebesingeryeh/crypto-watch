@@ -24,7 +24,7 @@ class CryptocurrencyDetails extends Component {
       /*eslint-enable */
     }
 
-    linkItems() {
+    linkItems = () => {
         return this.state.currentCoin.links.explorer.map(coin => {  
             return (
                 <li key={coin}>
@@ -41,7 +41,7 @@ class CryptocurrencyDetails extends Component {
         });
     }
 
-    tagItems() {
+    tagItems = () => {
         return this.state.currentCoin.tags.map(coin => {
             return (
                 <li key={coin.id}>{coin.name}</li>
@@ -49,7 +49,7 @@ class CryptocurrencyDetails extends Component {
         });
     }
 
-    teamItems() {
+    teamItems = () => {
         return this.state.currentCoin.team.map(coin => {
             return (
                 <li key={coin.id}>

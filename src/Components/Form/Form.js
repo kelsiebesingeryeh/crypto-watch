@@ -12,19 +12,19 @@ class Form extends Component {
         };
     }
 
-    handleChange(event){
+    handleChange = (event) => {
         this.setState({
             [event.target.name]: event.target.value.toLowerCase()
         });
     }
     
-    handleSubmit(event){
+    handleSubmit = (event) => {
         event.preventDefault();
         this.props.filterSearchResults(this.state.searchInput);
         this.clearInputs();
     }
 
-    clearInputs(){
+    clearInputs= () => {
         this.setState({
             searchInput: '',
         });
