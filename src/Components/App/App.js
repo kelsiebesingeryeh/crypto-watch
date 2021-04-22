@@ -57,7 +57,12 @@ class App extends Component {
                 favorites: [...this.state.favorites, coin],
                 isFavorite: true
             });
-            JSON.parse(localStorage.getItem('coin'));
+            localStorage.setItem('favorites', JSON.stringify(coin));
+            JSON.parse(localStorage.getItem('favorites'));
+            // const storage = localStorage.getItem('coin');
+            // if (storage == null) {
+            //     localStorage.setItem('coin', JSON.stringify(coin));
+            // }
         }
     } 
 
@@ -67,7 +72,6 @@ class App extends Component {
             isFavorite: false,
             favorites: filteredFavorites,
         });
-        localStorage.clear();
     }
 
     clearSearchResults = () => {

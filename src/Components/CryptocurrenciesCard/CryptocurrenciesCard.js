@@ -49,6 +49,7 @@ const CryptocurrenciesCard = ({
             addFavoriteCrypto(id);
         } else {
             removeFromFavorites(id);
+            localStorage.removeItem('favorites');
         }
     };
 
