@@ -57,7 +57,7 @@ class App extends Component {
                 favorites: [...this.state.favorites, coin],
                 isFavorite: true
             });
-            localStorage.setItem('coin', coin);
+            JSON.parse(localStorage.getItem('coin'));
         }
     } 
 
@@ -67,6 +67,7 @@ class App extends Component {
             isFavorite: false,
             favorites: filteredFavorites,
         });
+        localStorage.clear();
     }
 
     clearSearchResults = () => {
