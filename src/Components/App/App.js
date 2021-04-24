@@ -1,8 +1,8 @@
 import './App.css';
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import Cryptocurrencies from '../Cryptocurrencies/Cryptocurrencies';
 import Nav from '../Nav/Nav';
-import {Route, Redirect} from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import Home from '../Home/Home';
 import CryptocurrencyDetails from '../CryptocurrencyDetails/CryptocurrencyDetails';
 import Error from '../Error/Error';
@@ -10,147 +10,147 @@ import Exchanges from '../Exchanges/Exchanges';
 import Cryptopedia from '../Cryptopedia/Cryptopedia';
 import { getCryptoData } from '../../apiCalls';
 
-class App extends Component {
-    constructor() {
-        super();
-        this.state = {
-            cryptocurrencies: [],
-            error: false,
-            isLoading: true,
-            searchResults: [],
-            favorites: [],
-            isFavorite: false,
-            tags: [],
-            exchanges: [],
-            isSearching: false
-        };
-    }
+const App = () => {
+    const [cryptocurrencies, setCryptocurrencies] = useState([]);
+    const [error, setError] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
+    const [searchResults, setSearchResults] = useState([]);
+    const [favorites, setFavorites] = useState([]);
+    const [tags, setTags] = useState([]);
+    const [exchanges, setExchanges] = useState([]);
+    const [isSearching, setIsSearching] = useState(false);
 
-    componentDidMount() {
-        getCryptoData().then(data => {
-            this.setState({
-                cryptocurrencies: data[0],
-                exchanges: data[1],
-                tags: data[2],
-                isLoading: false
-            });
+    useEffect(() => {
+        /*eslint-disable */
+      getCryptoData()
+        .then((data) => {
+          setCryptocurrencies(data[0]);
+          setExchanges(data[1]);
+          setTags(data[2]);
+          setIsLoading(false);
         })
         /*eslint-disable */
-            .catch(error => this.setState({error: true, isLoading: false}));
-        /*eslint-enable */
-    }
-
-    filterSearchResults = (userInput) => {
-        const searchResultsToDisplay = this.state.cryptocurrencies.filter(crypto => {
-            return crypto.name.toLowerCase()=== userInput || crypto.symbol.toLowerCase() === userInput;
+        .catch((error) => {
+            setIsLoading(false);
+            setError(true);
         });
+      /*eslint-enable */
+    }, []);
+
+    useEffect(() => {
+        retrieveFromStorage();
+    }, [localStorage]);
+
+    useEffect(() => {
+        saveToStorage();
+    }, [favorites]);
     
-        this.setState({
-            searchResults: searchResultsToDisplay,
-            isSearching: true
-        });
-    }
-
-    addFavoriteCrypto = (coin) => {
-        if (!this.state.isFavorite) {
-            this.setState({
-                favorites: [...this.state.favorites, coin],
-                isFavorite: true
-            });
-            localStorage.setItem('coin', coin);
+    const retrieveFromStorage = () => {
+        const storedFavorites = localStorage.getItem('favorites');
+        const parsedFavorites = JSON.parse(storedFavorites);
+        if (parsedFavorites) {
+            setFavorites(parsedFavorites);
+            saveToStorage();
         }
+    };
+
+    const saveToStorage = () => {
+        localStorage.clear();
+        let stringifiedFavs = JSON.stringify(favorites);
+        localStorage.setItem('favorites', stringifiedFavs);
+    };
+
+
+    const filterSearchResults = (userInput) => {
+        const searchResultsToDisplay = cryptocurrencies.filter((crypto) => {
+            return (
+                crypto.name.toLowerCase() === userInput ||
+                crypto.symbol.toLowerCase() === userInput
+            );
+        });
+        setSearchResults(searchResultsToDisplay);
+        setIsSearching(true);
+    };
+
+    const addFavoriteCrypto = (coin) => {
+        setFavorites([...favorites, coin]);
+        saveToStorage();
+        /*eslint-disable */
     } 
 
-    removeFromFavorites = (id) => {
-        const filteredFavorites = this.state.favorites.filter(fav => fav !== id);
-        this.setState({
-            isFavorite: false,
-            favorites: filteredFavorites,
-        });
+    const removeFromFavorites = (id) => {
+        const filteredFavorites = favorites.filter((fav) => fav !== id);
+        setFavorites(filteredFavorites);
+        saveToStorage();
     }
 
-    clearSearchResults = () => {
-        this.setState({
-            searchResults: [],
-            isSearching: false
-        });
+    const clearSearchResults = () => {
+        setFavorites([]);
+        setIsSearching(false);
     }
 
-    render() {
         return (
-            <main>
-                <Nav />
-                <Route exact path="/error" render={() => <Error />} />
-                <Route
-                    exact
-                    path="/"
-                    render={() => {
-                        if (!this.state.cryptocurrencies.length && this.state.error) {
-                            return <Redirect to="/error" />;
-                        } else {
-                            return <Home />;
-                        }
-                    }}
-                />
-                <Route
-                    exact
-                    path="/cryptocurrencies"
-                    component={() => (
-                        <Cryptocurrencies
-                            cryptocurrencies={this.state.cryptocurrencies}
-                            isLoading={this.state.isLoading}
-                            filterSearchResults={this.filterSearchResults}
-                            searchResults={this.state.searchResults}
-                            clearSearchResults={this.clearSearchResults}
-                            addFavoriteCrypto={this.addFavoriteCrypto}
-                            removeFromFavorites={this.removeFromFavorites}
-                            favorites={this.state.favorites}
-                            isFavorite={this.state.isFavorite}
-                            error={this.state.error}
-                            isSearching={this.state.isSearching}
-                        />
-                    )}
-                />
-                <Route
-                    exact
-                    path="/cryptopedia"
-                    render={() => (
-                        <Cryptopedia
-                            tags={this.state.tags}
-                            isLoading={this.state.isLoading}
-                            error={this.state.error}
-                        />
-                    )}
-                />
-                <Route
-                    exact
-                    path={'/cryptocurrencies/:id'}
-                    render={({ match }) => {
-                        const id = match.params.id;
-                        return (
-                            <div className="cryptocurrencyDetailsContainer">
-                                <CryptocurrencyDetails
-                                    id={id}
-                                    isLoading={this.state.isLoading}
-                                />
-                            </div>
-                        );
-                    }}
-                />
-                <Route
-                    exact
-                    path="/exchanges"
-                    render={() => (
-                        <Exchanges
-                            exchanges={this.state.exchanges}
-                            isLoading={this.state.isLoading}
-                            error={this.state.error}
-                        />
-                    )}
-                />
-            </main>
+          <main>
+            <Nav />
+            <Route
+              exact
+              path="/"
+              render={() =><Home />}
+            />
+            <Route
+              exact
+              path="/cryptocurrencies"
+              component={() => (
+                  <Cryptocurrencies
+                  cryptocurrencies={cryptocurrencies}
+                  isLoading={isLoading}
+                  filterSearchResults={filterSearchResults}
+                  searchResults={searchResults}
+                  clearSearchResults={clearSearchResults}
+                  addFavoriteCrypto={addFavoriteCrypto}
+                  removeFromFavorites={removeFromFavorites}
+                  favorites={favorites}
+                  error={error}
+                  isSearching={isSearching}
+                  />
+                  )}
+            />
+            <Route
+              exact
+              path="/cryptopedia"
+              render={() => (
+                  <Cryptopedia tags={tags} isLoading={isLoading} error={error} />
+                  )}
+            />
+            <Route
+              exact
+              path={"/cryptocurrencies/:id"}
+              render={({ match }) => {
+                  const id = match.params.id;
+                  return (
+                      <div className="cryptocurrencyDetailsContainer">
+                    <CryptocurrencyDetails id={id} isLoading={isLoading} />
+                  </div>
+                );
+            }}
+            />
+            <Route
+              exact
+              path="/exchanges"
+              render={() => (
+                  <Exchanges
+                  exchanges={exchanges}
+                  isLoading={isLoading}
+                  error={error}
+                  />
+                  )}
+            />
+            <Route 
+              exact path="/error" 
+              render={() => <Error />} 
+            />
+          </main>
         );
-    }
 }
 
 export default App;
