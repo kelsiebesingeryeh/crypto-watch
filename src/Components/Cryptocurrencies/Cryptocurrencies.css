@@ -52,9 +52,64 @@ td {
     }
 }
 
+/* MEDIUM/LARGE TABLET */
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+}
+
+/* MEDIUM DEVICES SMART PHONES/MOBILE/TABLET */
+
+@media screen and (min-width: 376px) and (max-width: 768px) {
+    .searchResultForm {
+        flex-direction: column;
+    }
+
+    .searchButton {
+        margin-top: 1rem;
+    }
+
+    .cryptoStyling {
+        flex-direction: column;
+        margin-bottom: 2rem;
+    }
+
+    .cryptoTableHeading {
+        font-size: 1rem;
+    }
+
+    table thead {
+        border: none;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+
+    table tr {
+        border-bottom: 3px solid grey;
+        display: block;
+        margin-bottom: 1rem;
+    }
+
+    table td {
+        border-bottom: 1px solid grey;
+        display: block;
+        padding: 0.5rem;
+        text-align: right;
+    }
+
+    table td::before {
+        content: attr(data-label);
+        float: left;
+    }
+}
+
 /* SMART PHONES/MOBILE */
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 375px) {
     .searchResultForm {
         flex-direction: column;
     }

@@ -10,7 +10,6 @@ const CryptocurrencyDetails = ({ id }) => {
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(false);
 
-
     useEffect(() => {
         getACoin(id)
             .then((currentCoin) => {
