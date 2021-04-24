@@ -41,16 +41,15 @@ const App = () => {
     useEffect(() => {
         saveToStorage();
     }, [favorites]);
-
-    const saveToStorage = () => {
-        localStorage.clear();
-        let stringifiedFavs = JSON.stringify(favorites);
-        localStorage.setItem('favorites', stringifiedFavs);
-    };
-
+    
     useEffect(() => {
         retrieveFromStorage;
     }, [localStorage]);
+
+    const saveToStorage = () => {
+        let stringifiedFavs = JSON.stringify(favorites);
+        localStorage.setItem('favorites', stringifiedFavs);
+    };
 
     const retrieveFromStorage = () => {
         const storedFavorites = localStorage.getItem('favorites');
@@ -73,11 +72,9 @@ const App = () => {
     };
 
     const addFavoriteCrypto = (coin) => {
-        if (!favorites) {
-            setFavorites([...favorites, coin]);
-            setIsFavorite(true);
-            saveToStorage();
-        }
+        setFavorites([...favorites, coin]);
+        setIsFavorite(true);
+        saveToStorage();
         /*eslint-disable */
     } 
 
@@ -85,7 +82,6 @@ const App = () => {
         const filteredFavorites = favorites.filter((fav) => fav !== id);
         setFavorites(filteredFavorites);
         setIsFavorite(false);
-        saveToStorage();
     }
 
     const clearSearchResults = () => {
