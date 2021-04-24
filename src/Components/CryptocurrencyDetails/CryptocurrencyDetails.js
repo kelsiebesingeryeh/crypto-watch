@@ -101,7 +101,7 @@ export default CryptocurrencyDetails;
 
 CryptocurrencyDetails.propTypes = {
     currentCoin: PropTypes.string,
-    id: PropTypes.number,
+    id: PropTypes.string,
     isLoading: PropTypes.bool,
     error: PropTypes.bool,
 };
