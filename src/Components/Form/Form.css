@@ -8,7 +8,6 @@ input {
     font-size: .6875rem;
     height: 1.5rem;
     line-height: 2.5rem;
-    margin-right: 1rem;
     padding: .5rem;
     text-align: center;
     width: 15rem;
@@ -43,28 +42,7 @@ input:focus {
     padding: 0.35rem;
 }
 
-.inputContainer .xIcon {
-    /* position: absolute;
-    right: 8.5rem; */
-}
-
 .xIcon {
     cursor: pointer;
     object-fit: contain;
-}
-
-@media screen and (min-width: 769px) and (max-width: 1024px) {
-
-}
-
-/* MEDIUM DEVICES SMART PHONES/MOBILE/TABLET */
-
-@media screen and (min-width: 376px) and (max-width: 768px) {
-    
-}
-
-/* SMART PHONES/MOBILE */
-
-@media screen and (max-width: 375px) {
-
 }

@@ -51,27 +51,48 @@ a {
     background-color: #C96565;
 }
 
-/* TABLETS AND IPAD */
+/* MEDIUM DEVICES SMART PHONES/MOBILE/TABLET */
 
-@media screen and (min-width: 551px) and (max-width: 1024px) {
+@media screen and (min-width: 769px) and (max-width: 1024px) {
     .sectionContainer {
-        overflow-x: scroll;
-        overflow-y: hidden;
-        white-space: wrap;
-        justify-content: space-between;
-    }
+        justify-content: space-evenly;
+     }
     .mainSection {
-        display: inline-block;
-        width: 10rem;
+        margin-left: 0;
+        width: 12rem;
+     }
+    .cardText {
+        margin-left: 1rem;
     }
-
 }
 
+@media screen and (min-width: 376px) and (max-width: 768px) {
+    .sectionContainer {
+        flex-direction: column;
+        align-items: center;
+    }
 
-/* SMART PHONES AND MOBILE */
+    .mainSection {
+        margin-left: 0;
+        margin-bottom: 10%;
+    }
 
-@media screen and (max-width: 550px) {
+    .subHeader {
+        font-size: 1rem;
+    }
 
+    .aboutSection {
+        height: 11rem;
+    }
+
+    .header {
+        margin: 0;
+    }
+}
+
+/* SMART PHONES/MOBILE */
+
+@media screen and (max-width: 375px) {
     .sectionContainer {
         flex-direction: column;
         align-items: center;
