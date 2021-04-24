@@ -17,7 +17,6 @@ const Cryptocurrencies = ({
     addFavoriteCrypto,
     removeFromFavorites,
     favorites,
-    isFavorite,
     isSearching
 }) => {
 
@@ -41,7 +40,6 @@ const Cryptocurrencies = ({
                     addFavoriteCrypto={addFavoriteCrypto}
                     removeFromFavorites={removeFromFavorites}
                     favorites={favorites}
-                    isFavorite={isFavorite}
                 />
             );
         });
@@ -102,7 +100,6 @@ Cryptocurrencies.propTypes = {
     addFavoriteCrypto: PropTypes.func,
     removeFromFavorites: PropTypes.func,
     favorites: PropTypes.array,
-    isFavorite: PropTypes.bool,
     isSearching: PropTypes.bool,
     isLoading: PropTypes.bool,
     error: PropTypes.bool,

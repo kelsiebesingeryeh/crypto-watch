@@ -16,7 +16,6 @@ const CryptocurrenciesCard = ({
     addFavoriteCrypto,
     removeFromFavorites,
     favorites,
-    isFavorite
 }) => {
     const formatPrice = new Intl.NumberFormat('en-US').format(price);
   
@@ -45,7 +44,7 @@ const CryptocurrenciesCard = ({
     };
 
     const handleClick = () => {
-        if (!isFavorite) {
+        if (!favorites.includes(id)) {
             addFavoriteCrypto(id);
         } else {
             removeFromFavorites(id);

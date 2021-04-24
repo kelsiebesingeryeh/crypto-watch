@@ -16,7 +16,6 @@ const App = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [searchResults, setSearchResults] = useState([]);
     const [favorites, setFavorites] = useState([]);
-    const [isFavorite, setIsFavorite] = useState(false);
     const [tags, setTags] = useState([]);
     const [exchanges, setExchanges] = useState([]);
     const [isSearching, setIsSearching] = useState(false);
@@ -73,7 +72,6 @@ const App = () => {
 
     const addFavoriteCrypto = (coin) => {
         setFavorites([...favorites, coin]);
-        setIsFavorite(true);
         saveToStorage();
         /*eslint-disable */
     } 
@@ -81,7 +79,6 @@ const App = () => {
     const removeFromFavorites = (id) => {
         const filteredFavorites = favorites.filter((fav) => fav !== id);
         setFavorites(filteredFavorites);
-        setIsFavorite(false);
     }
 
     const clearSearchResults = () => {
@@ -110,7 +107,6 @@ const App = () => {
                   addFavoriteCrypto={addFavoriteCrypto}
                   removeFromFavorites={removeFromFavorites}
                   favorites={favorites}
-                  isFavorite={isFavorite}
                   error={error}
                   isSearching={isSearching}
                   />
