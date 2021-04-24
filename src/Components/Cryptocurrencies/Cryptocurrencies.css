@@ -55,8 +55,15 @@ td {
 /* SMART PHONES/MOBILE */
 
 @media screen and (max-width: 550px) {
+    .searchResultForm {
+        flex-direction: column;
+    }
+
+    .searchButton {
+        margin-top: 1rem;
+    }
+
     .cryptoStyling {
-        align-items: flex-start;
         flex-direction: column;
         margin-bottom: 2rem;
     }
@@ -85,6 +92,7 @@ td {
     table td {
         border-bottom: 1px solid grey;
         display: block;
+        padding: 0.5rem;
         text-align: right;
     }
 

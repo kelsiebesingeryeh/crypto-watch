@@ -36,3 +36,11 @@
 .favorites {
     width: 15%;
 }
+
+/* SMART PHONES/MOBILE */
+
+@media screen and (max-width: 550px) {
+    .favorites {
+        width: 10%;
+    }
+}
