@@ -85,7 +85,7 @@ const App = () => {
     }
 
     const clearSearchResults = () => {
-        setFavorites([]);
+        setSearchResults([]);
         setIsSearching(false);
     }
 
