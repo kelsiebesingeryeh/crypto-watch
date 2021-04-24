@@ -46,6 +46,7 @@ const CryptocurrenciesCard = ({
 
     const handleClick = () => {
         if (!isFavorite) {
+            JSON.parse(localStorage.getItem('favorites'));
             addFavoriteCrypto(id);
         } else {
             removeFromFavorites(id);

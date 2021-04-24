@@ -1,5 +1,5 @@
 import './App.css';
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import Cryptocurrencies from '../Cryptocurrencies/Cryptocurrencies';
 import Nav from '../Nav/Nav';
 import {Route, Redirect} from 'react-router-dom';
@@ -10,34 +10,37 @@ import Exchanges from '../Exchanges/Exchanges';
 import Cryptopedia from '../Cryptopedia/Cryptopedia';
 import { getCryptoData } from '../../apiCalls';
 
-class App extends Component {
-    constructor() {
-        super();
-        this.state = {
-            cryptocurrencies: [],
-            error: false,
-            isLoading: true,
-            searchResults: [],
-            favorites: [],
-            isFavorite: false,
-            tags: [],
-            exchanges: [],
-            isSearching: false
-        };
-    }
-
+const App = () => {
+    const [cryptocurrencies, setCryptocurrencies] = useState([]);
+    const [error, setError] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
+    const [searchResults, setSearchResults] = useState([]);
+    const [favorites, setFavorites] = useState([]);
+    const [isFavorite, setIsFavorite] = useState(false);
+    const [tags, setTags] = useState([]);
+    const [exchanges, setExchanges] = useState([]);
+    const [isSearching, setIsSearching] = useState(false);
+    
     componentDidMount() {
-        getCryptoData().then(data => {
-            this.setState({
-                cryptocurrencies: data[0],
-                exchanges: data[1],
-                tags: data[2],
-                isLoading: false
-            });
+        /*eslint-disable */
+        let favorites = JSON.parse(localStorage.getItem("favorites"));
+        if (localStorage.getItem("favorites")) {
+          this.setState({
+            favorites: [favorites],
+          });
+        }
+      getCryptoData()
+        .then((data) => {
+          this.setState({
+            cryptocurrencies: data[0],
+            exchanges: data[1],
+            tags: data[2],
+            isLoading: false,
+          });
         })
         /*eslint-disable */
-            .catch(error => this.setState({error: true, isLoading: false}));
-        /*eslint-enable */
+        .catch((error) => this.setState({ error: true, isLoading: false }));
+      /*eslint-enable */
     }
 
     filterSearchResults = (userInput) => {
@@ -55,15 +58,15 @@ class App extends Component {
         if (!this.state.isFavorite) {
             this.setState({
                 favorites: [...this.state.favorites, coin],
-                isFavorite: true
+                isFavorite: true,
             });
-            localStorage.setItem('favorites', JSON.stringify(coin));
-            JSON.parse(localStorage.getItem('favorites'));
-            // const storage = localStorage.getItem('coin');
-            // if (storage == null) {
-            //     localStorage.setItem('coin', JSON.stringify(coin));
-            // }
         }
+        /*eslint-disable */
+            localStorage.setItem("favorites", JSON.stringify(coin));
+          // const storage = localStorage.getItem('coin');
+          // if (storage == null) {
+          //     localStorage.setItem('coin', JSON.stringify(coin));
+          // }
     } 
 
     removeFromFavorites = (id) => {
@@ -81,7 +84,6 @@ class App extends Component {
         });
     }
 
-    render() {
         return (
             <main>
                 <Nav />
@@ -155,7 +157,6 @@ class App extends Component {
                 />
             </main>
         );
-    }
 }
 
 export default App;
