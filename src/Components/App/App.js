@@ -2,7 +2,7 @@ import './App.css';
 import React, { useState, useEffect } from 'react';
 import Cryptocurrencies from '../Cryptocurrencies/Cryptocurrencies';
 import Nav from '../Nav/Nav';
-import {Route, Redirect} from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import Home from '../Home/Home';
 import CryptocurrencyDetails from '../CryptocurrencyDetails/CryptocurrencyDetails';
 import Error from '../Error/Error';
@@ -20,46 +20,43 @@ const App = () => {
     const [tags, setTags] = useState([]);
     const [exchanges, setExchanges] = useState([]);
     const [isSearching, setIsSearching] = useState(false);
-    
-    componentDidMount() {
+
+    useEffect(() => {
         /*eslint-disable */
         let favorites = JSON.parse(localStorage.getItem("favorites"));
         if (localStorage.getItem("favorites")) {
-          this.setState({
-            favorites: [favorites],
-          });
+            setFavorites([favorites])
         }
       getCryptoData()
         .then((data) => {
-          this.setState({
-            cryptocurrencies: data[0],
-            exchanges: data[1],
-            tags: data[2],
-            isLoading: false,
-          });
+          setCryptocurrencies(data[0]);
+          setExchanges(data[1]);
+          setTags(data[2]);
+          setIsLoading(false);
         })
         /*eslint-disable */
-        .catch((error) => this.setState({ error: true, isLoading: false }));
+        .catch((error) => {
+            setIsLoading(false);
+            setError(true);
+        });
       /*eslint-enable */
-    }
+    }, []);
 
-    filterSearchResults = (userInput) => {
-        const searchResultsToDisplay = this.state.cryptocurrencies.filter(crypto => {
-            return crypto.name.toLowerCase()=== userInput || crypto.symbol.toLowerCase() === userInput;
+    const filterSearchResults = (userInput) => {
+        const searchResultsToDisplay = cryptocurrencies.filter((crypto) => {
+            return (
+                crypto.name.toLowerCase() === userInput ||
+                crypto.symbol.toLowerCase() === userInput
+            );
         });
-    
-        this.setState({
-            searchResults: searchResultsToDisplay,
-            isSearching: true
-        });
-    }
+        setSearchResults(searchResultsToDisplay);
+        setIsSearching(true);
+    };
 
-    addFavoriteCrypto = (coin) => {
-        if (!this.state.isFavorite) {
-            this.setState({
-                favorites: [...this.state.favorites, coin],
-                isFavorite: true,
-            });
+    const addFavoriteCrypto = (coin) => {
+        if (!favorites) {
+            setFavorites([...favorites, coin]);
+            setIsFavorite(true);
         }
         /*eslint-disable */
             localStorage.setItem("favorites", JSON.stringify(coin));
@@ -69,93 +66,79 @@ const App = () => {
           // }
     } 
 
-    removeFromFavorites = (id) => {
-        const filteredFavorites = this.state.favorites.filter(fav => fav !== id);
-        this.setState({
-            isFavorite: false,
-            favorites: filteredFavorites,
-        });
+    const removeFromFavorites = (id) => {
+        const filteredFavorites = favorites.filter((fav) => fav !== id);
+        setFavorites(filteredFavorites);
+        setIsFavorite(false);
     }
 
-    clearSearchResults = () => {
-        this.setState({
-            searchResults: [],
-            isSearching: false
-        });
+    const clearSearchResults = () => {
+        setFavorites([]);
+        setIsSearching(false);
     }
 
         return (
-            <main>
-                <Nav />
-                <Route exact path="/error" render={() => <Error />} />
-                <Route
-                    exact
-                    path="/"
-                    render={() => {
-                        if (!this.state.cryptocurrencies.length && this.state.error) {
-                            return <Redirect to="/error" />;
-                        } else {
-                            return <Home />;
-                        }
-                    }}
-                />
-                <Route
-                    exact
-                    path="/cryptocurrencies"
-                    component={() => (
-                        <Cryptocurrencies
-                            cryptocurrencies={this.state.cryptocurrencies}
-                            isLoading={this.state.isLoading}
-                            filterSearchResults={this.filterSearchResults}
-                            searchResults={this.state.searchResults}
-                            clearSearchResults={this.clearSearchResults}
-                            addFavoriteCrypto={this.addFavoriteCrypto}
-                            removeFromFavorites={this.removeFromFavorites}
-                            favorites={this.state.favorites}
-                            isFavorite={this.state.isFavorite}
-                            error={this.state.error}
-                            isSearching={this.state.isSearching}
-                        />
-                    )}
-                />
-                <Route
-                    exact
-                    path="/cryptopedia"
-                    render={() => (
-                        <Cryptopedia
-                            tags={this.state.tags}
-                            isLoading={this.state.isLoading}
-                            error={this.state.error}
-                        />
-                    )}
-                />
-                <Route
-                    exact
-                    path={'/cryptocurrencies/:id'}
-                    render={({ match }) => {
-                        const id = match.params.id;
-                        return (
-                            <div className="cryptocurrencyDetailsContainer">
-                                <CryptocurrencyDetails
-                                    id={id}
-                                    isLoading={this.state.isLoading}
-                                />
-                            </div>
-                        );
-                    }}
-                />
-                <Route
-                    exact
-                    path="/exchanges"
-                    render={() => (
-                        <Exchanges
-                            exchanges={this.state.exchanges}
-                            isLoading={this.state.isLoading}
-                            error={this.state.error}
-                        />
-                    )}
-                />
-            </main>
+          <main>
+            <Nav />
+            <Route
+              exact
+              path="/"
+              render={() =><Home />}
+            />
+            <Route
+              exact
+              path="/cryptocurrencies"
+              component={() => (
+                  <Cryptocurrencies
+                  cryptocurrencies={cryptocurrencies}
+                  isLoading={isLoading}
+                  filterSearchResults={filterSearchResults}
+                  searchResults={searchResults}
+                  clearSearchResults={clearSearchResults}
+                  addFavoriteCrypto={addFavoriteCrypto}
+                  removeFromFavorites={removeFromFavorites}
+                  favorites={favorites}
+                  isFavorite={isFavorite}
+                  error={error}
+                  isSearching={isSearching}
+                  />
+                  )}
+            />
+            <Route
+              exact
+              path="/cryptopedia"
+              render={() => (
+                  <Cryptopedia tags={tags} isLoading={isLoading} error={error} />
+                  )}
+            />
+            <Route
+              exact
+              path={"/cryptocurrencies/:id"}
+              render={({ match }) => {
+                  const id = match.params.id;
+                  return (
+                      <div className="cryptocurrencyDetailsContainer">
+                    <CryptocurrencyDetails id={id} isLoading={isLoading} />
+                  </div>
+                );
+            }}
+            />
+            <Route
+              exact
+              path="/exchanges"
+              render={() => (
+                  <Exchanges
+                  exchanges={exchanges}
+                  isLoading={isLoading}
+                  error={error}
+                  />
+                  )}
+            />
+            <Route 
+              exact path="/error" 
+              render={() => <Error />} 
+            />
+          </main>
         );
 }
 
