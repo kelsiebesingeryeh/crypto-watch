@@ -1,66 +1,50 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import './Form.css';
 import search from '../../assets/search.png';
 import x from '../../assets/x.png';
 import PropTypes from 'prop-types';
 
-class Form extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            searchInput: '',
-        };
-    }
-
-    handleChange = (event) => {
-        this.setState({
-            [event.target.name]: event.target.value.toLowerCase()
-        });
-    }
+const Form = ({ filterSearchResults, clearSearchResults, isSearching }) => {
+    const [searchInput, setSearchInput] = useState('');
     
-    handleSubmit = (event) => {
+    const handleSubmit = (event) => {
         event.preventDefault();
-        this.props.filterSearchResults(this.state.searchInput);
-        this.clearInputs();
-    }
+        filterSearchResults(searchInput);
+        clearInputs();
+    };
 
-    clearInputs= () => {
-        this.setState({
-            searchInput: '',
-        });
-    }
+    const clearInputs= () => {
+        setSearchInput('');
+    };
 
-    render() {
-        return (
-            <form className="searchResultForm">
-                <div className="inputContainer">
-                    <img src={search} alt="search" className="searchIcon" />
-                    <input
-                        className="searchInput"
-                        type="text"
-                        name="searchInput"
-                        value={this.state.searchInput}
-                        placeholder="Search by coin name or symbol"
-                        tabIndex="0"
-                        onChange={this.handleChange}
+    return (
+        <form className="searchResultForm">
+            <div className="inputContainer">
+                <img src={search} alt="search" className="searchIcon" />
+                <input
+                    className="searchInput"
+                    type="text"
+                    name="searchInput"
+                    value={searchInput}
+                    placeholder="Search by coin name or symbol"
+                    tabIndex="0"
+                    onChange={(event) => setSearchInput(event.target.value.toLowerCase())}
+                />
+                {isSearching && (
+                    <img
+                        src={x}
+                        alt="x"
+                        className="xIcon"
+                        onClick={() => clearSearchResults()}
                     />
-                    {this.props.isSearching && (
-                        <img
-                            src={x}
-                            alt="x"
-                            className="xIcon"
-                            onClick={() => this.props.clearSearchResults()}
-                        />
-                    )}
-                </div>
-                <button className="searchButton" onClick={this.handleSubmit}>
-              Search
-                </button>
-
-            </form>
-        );
-    }
-}
+                )}
+            </div>
+            <button className="searchButton" onClick={handleSubmit}>
+          Search
+            </button>
+        </form>
+    );
+};
 
 export default Form;
 
