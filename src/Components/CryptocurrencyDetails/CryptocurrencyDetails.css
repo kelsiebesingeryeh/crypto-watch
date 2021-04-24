@@ -25,3 +25,49 @@
 .coinLinks {
     color: #5642D9;
 }
+
+/* MEDIUM/LARGE TABLET */
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .coinDetails {
+        font-size: 1.25rem;
+    }
+    
+    .coinDescription {
+        margin: 0;
+        width: 100%;
+    }
+
+    .listContainer {
+        flex-direction: column;
+    }
+}
+
+/* MEDIUM DEVICES SMART PHONES/MOBILE/TABLET */
+
+@media screen and (min-width: 376px) and (max-width: 768px) {
+    .coinDetails {
+        font-size: 1.25rem;
+    }
+
+     .coinDescription {
+         margin: 0;
+         width: 100%;
+     }
+
+     .listContainer {
+         flex-direction: column;
+     }
+}
+
+/* SMALL DEVICES SMART PHONES/MOBILE */
+
+@media screen and (max-width: 375px) {
+    .coinDescription {
+        margin: 0;
+        width: 100%;
+    }
+    .listContainer {
+        flex-direction: column;
+    }
+}

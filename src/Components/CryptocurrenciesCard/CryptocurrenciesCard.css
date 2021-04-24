@@ -36,3 +36,25 @@
 .favorites {
     width: 15%;
 }
+
+/* MEDIUM/LARGE TABLET */
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+
+}
+
+/* MEDIUM DEVICES SMART PHONES/MOBILE/TABLET */
+
+@media screen and (min-width: 376px) and (max-width: 768px) {
+     .favorites {
+         width: 5%;
+     }
+}
+
+/* SMART PHONES/MOBILE */
+
+@media screen and (max-width: 375px) {
+    .favorites {
+        width: 10%;
+    }
+}

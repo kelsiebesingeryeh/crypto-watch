@@ -3,21 +3,20 @@
 }
 
 input {
-    font-family: 'gothamBookRegular', 'sans-serif';
-    padding: .5rem;
-    margin-right: 1rem;
-    width: 15rem;
     border-radius: 6.25rem;
+    font-family: 'gothamBookRegular', 'sans-serif';
+    font-size: .6875rem;
     height: 1.5rem;
     line-height: 2.5rem;
-    font-size: .6875rem;
+    padding: .5rem;
     text-align: center;
+    width: 15rem;
 }
 
 .inputContainer {
+    align-items: center;
     display: flex;
     justify-content: flex-start;
-    align-items: center;
 }
 
 .inputContainer .searchIcon {
@@ -32,23 +31,18 @@ input:focus {
     background: #5642D9;
     border-radius: 8px;
     color: white;
+    cursor: pointer;
     font-family: 'gothamBookRegular', 'sans-serif';
     font-weight: bold;
     margin-right: 1rem;
     padding: 0.5rem;
-    cursor: pointer;
 }
 
 .searchIcon {
     padding: 0.35rem;
 }
 
-.inputContainer .xIcon {
-    position: absolute;
-    right: 8.5rem;
-}
-
 .xIcon {
-    object-fit: contain;
     cursor: pointer;
+    object-fit: contain;
 }
