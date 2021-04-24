@@ -38,18 +38,13 @@ const App = () => {
     }, []);
 
     useEffect(() => {
+        retrieveFromStorage();
+    }, [localStorage]);
+
+    useEffect(() => {
         saveToStorage();
     }, [favorites]);
     
-    useEffect(() => {
-        retrieveFromStorage;
-    }, [localStorage]);
-
-    const saveToStorage = () => {
-        let stringifiedFavs = JSON.stringify(favorites);
-        localStorage.setItem('favorites', stringifiedFavs);
-    };
-
     const retrieveFromStorage = () => {
         const storedFavorites = localStorage.getItem('favorites');
         const parsedFavorites = JSON.parse(storedFavorites);
@@ -58,6 +53,13 @@ const App = () => {
             saveToStorage();
         }
     };
+
+    const saveToStorage = () => {
+        localStorage.clear();
+        let stringifiedFavs = JSON.stringify(favorites);
+        localStorage.setItem('favorites', stringifiedFavs);
+    };
+
 
     const filterSearchResults = (userInput) => {
         const searchResultsToDisplay = cryptocurrencies.filter((crypto) => {
@@ -79,6 +81,7 @@ const App = () => {
     const removeFromFavorites = (id) => {
         const filteredFavorites = favorites.filter((fav) => fav !== id);
         setFavorites(filteredFavorites);
+        saveToStorage();
     }
 
     const clearSearchResults = () => {
