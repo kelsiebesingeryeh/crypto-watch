@@ -23,10 +23,6 @@ const App = () => {
 
     useEffect(() => {
         /*eslint-disable */
-        let favorites = JSON.parse(localStorage.getItem("favorites"));
-        if (localStorage.getItem("favorites")) {
-            setFavorites([favorites])
-        }
       getCryptoData()
         .then((data) => {
           setCryptocurrencies(data[0]);
@@ -41,6 +37,29 @@ const App = () => {
         });
       /*eslint-enable */
     }, []);
+
+    useEffect(() => {
+        saveToStorage();
+    }, [favorites]);
+
+    const saveToStorage = () => {
+        localStorage.clear();
+        let stringifiedFavs = JSON.stringify(favorites);
+        localStorage.setItem('favorites', stringifiedFavs);
+    };
+
+    useEffect(() => {
+        retrieveFromStorage;
+    }, [localStorage]);
+
+    const retrieveFromStorage = () => {
+        const storedFavorites = localStorage.getItem('favorites');
+        const parsedFavorites = JSON.parse(storedFavorites);
+        if (parsedFavorites) {
+            setFavorites(parsedFavorites);
+            saveToStorage();
+        }
+    };
 
     const filterSearchResults = (userInput) => {
         const searchResultsToDisplay = cryptocurrencies.filter((crypto) => {
@@ -57,19 +76,16 @@ const App = () => {
         if (!favorites) {
             setFavorites([...favorites, coin]);
             setIsFavorite(true);
+            saveToStorage();
         }
         /*eslint-disable */
-            localStorage.setItem("favorites", JSON.stringify(coin));
-          // const storage = localStorage.getItem('coin');
-          // if (storage == null) {
-          //     localStorage.setItem('coin', JSON.stringify(coin));
-          // }
     } 
 
     const removeFromFavorites = (id) => {
         const filteredFavorites = favorites.filter((fav) => fav !== id);
         setFavorites(filteredFavorites);
         setIsFavorite(false);
+        saveToStorage();
     }
 
     const clearSearchResults = () => {
