@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getACoin } from '../../apiCalls';
-import './CryptocurrencyDetails.css';
+import './_CryptocurrencyDetails.scss';
 import Loading from '../Loading/Loading';
 import Error from '../Error/Error';
 import PropTypes from 'prop-types';

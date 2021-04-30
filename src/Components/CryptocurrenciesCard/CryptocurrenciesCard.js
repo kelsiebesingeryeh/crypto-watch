@@ -1,5 +1,5 @@
 import React from 'react';
-import './CryptocurrenciesCard.css';
+import './_CryptocurrenciesCard.scss';
 import { Link } from 'react-router-dom';
 import star from '../../assets/star.png';
 import filledStar from '../../assets/filledStar.png';

@@ -1,5 +1,5 @@
 import React from 'react';
-import './LoadingDots.css';
+import './_LoadingDots.scss';
 
 const LoadingDots = () => {
     return (

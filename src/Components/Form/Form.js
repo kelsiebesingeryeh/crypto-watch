@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Form.css';
+import './_Form.scss';
 import search from '../../assets/search.png';
 import x from '../../assets/x.png';
 import PropTypes from 'prop-types';

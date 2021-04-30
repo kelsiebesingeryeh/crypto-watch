@@ -1,15 +1,16 @@
+@import '../../variables';
+
 nav {
     align-items: center;
-    background: #5642D9;
-    color: white;
+    background: $majorelle-blue;
+    color:$white;
     display: flex;
-    font-family: 'gothamBold', 'sans-serif';
+    font-family: $gotham-bold;
     justify-content: space-between;
 }
 
 .leftNav {
-    display: flex;
-    flex-direction: column;
+    @include flexColumn;
     padding: 1rem;
 }
 

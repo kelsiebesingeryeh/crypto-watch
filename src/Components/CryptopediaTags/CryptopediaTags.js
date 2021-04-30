@@ -1,5 +1,5 @@
 import React from 'react';
-import './CryptopediaTags.css';
+import './_CryptopediaTags.scss';
 import PropTypes from 'prop-types';
 
 const CryptopediaTags = ({name, description}) => {

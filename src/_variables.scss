@@ -1,0 +1,38 @@
+$majorelle-blue: #5642D9;
+$midnight-blue: #0D0C52;
+$purple: #530CC8;
+$fuzzy-wuzzy: #C96565;
+$white: #FFFFFF;
+$black: #000000;
+$magnolia: #EEECFB;
+$gainsboro: #E6E6ED;
+$grey: grey;
+
+$gotham-bold: 'gothamBold',
+'sans-serif';
+$gotham-regular: "gothamBookRegular",
+'sans-serif';
+$gotham-medium: "gothamMedium",
+'sans-serif';
+
+/* CUSTOM FONTS */
+
+@font-face {
+    font-family: 'gothamBold';
+    src: url('./assets/gothamBold.otf');
+}
+
+@font-face {
+    font-family: 'gothamMedium';
+    src: url('./assets/gothamMedium.otf');
+}
+
+@font-face {
+    font-family: 'gothamBookRegular';
+    src: url('./assets/gothamBookRegular.otf');
+}
+
+@mixin flexColumn {
+    display: flex;
+    flex-direction: column;
+}
