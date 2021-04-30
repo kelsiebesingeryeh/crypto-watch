@@ -1,0 +1,30 @@
+@import '../../variables';
+
+
+body {
+  background: $white;
+  box-sizing: border-box;
+  color:$black;
+  font-family: $gotham-regular;
+  margin: 0;
+  padding: 0;
+}
+
+/* TABLET /IPADS */
+
+@media screen and (min-width: 551px) and (max-width: 800px) {
+   body,
+   html {
+     overflow-x: hidden;
+     width: 100%;
+   }
+}
+
+/* SMART PHONES/MOBILE */
+
+@media screen and (max-width: 550px) {
+  body, html {
+    overflow-x: hidden;
+    width: 100%;
+  }
+}

@@ -1,4 +1,4 @@
-import './App.css';
+import './_App.scss';
 import React, { useState, useEffect } from 'react';
 import Cryptocurrencies from '../Cryptocurrencies/Cryptocurrencies';
 import Nav from '../Nav/Nav';

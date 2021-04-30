@@ -7,3 +7,27 @@ $black: #000000;
 $magnolia: #EEECFB;
 $gainsboro: #E6E6ED;
 $grey: grey;
+
+$gotham-bold: 'gothamBold',
+'sans-serif';
+$gotham-regular: "gothamBookRegular",
+'sans-serif';
+$gotham-medium: "gothamMedium",
+'sans-serif';
+
+/* CUSTOM FONTS */
+
+@font-face {
+    font-family: 'gothamBold';
+    src: url('./assets/gothamBold.otf');
+}
+
+@font-face {
+    font-family: 'gothamMedium';
+    src: url('./assets/gothamMedium.otf');
+}
+
+@font-face {
+    font-family: 'gothamBookRegular';
+    src: url('./assets/gothamBookRegular.otf');
+}

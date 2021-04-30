@@ -1,3 +1,5 @@
+@import '../../variables';
+
 @keyframes blink {
     0% {
         opacity: .2;
@@ -31,7 +33,7 @@
 .loading {
     color: white;
     font-size: 3rem;
-    font-family: 'gothamBookRegular', 'sans-serif';
+    font-family: $gotham-regular;
     margin: -50px 0px 0px -50px;
     position: absolute;
     left: 50%;

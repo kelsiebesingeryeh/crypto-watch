@@ -6,7 +6,7 @@
 
 input {
     border-radius: 6.25rem;
-    font-family: 'gothamBookRegular', 'sans-serif';
+    font-family: $gotham-regular;
     font-size: .6875rem;
     height: 1.5rem;
     line-height: 2.5rem;
@@ -34,7 +34,7 @@ input:focus {
     border-radius: 8px;
     color: $white;
     cursor: pointer;
-    font-family: 'gothamBookRegular', 'sans-serif';
+    font-family: $gotham-regular;
     font-weight: bold;
     margin-right: 1rem;
     padding: 0.5rem;
