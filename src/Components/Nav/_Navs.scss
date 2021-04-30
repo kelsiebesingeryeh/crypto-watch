@@ -1,7 +1,9 @@
+@import '../../variables';
+
 nav {
     align-items: center;
-    background: #5642D9;
-    color: white;
+    background: $majorelle-blue;
+    color:$white;
     display: flex;
     font-family: 'gothamBold', 'sans-serif';
     justify-content: space-between;
