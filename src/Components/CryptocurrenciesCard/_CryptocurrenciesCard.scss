@@ -1,7 +1,9 @@
+@import '../../variables';
+
 .cryptoCards {
-    background: white;
-    border-bottom: 1px solid black;
-    color: black;
+    background: $white;
+    border-bottom: 1px solid $black;
+    color: $black;
     display: flex;
     padding: 1rem;
 }
@@ -21,7 +23,7 @@
 }
 
 .cryptoName {
-    color: black;
+    color: $black;
 }
 
 .cryptoNameCell:hover {
@@ -30,7 +32,7 @@
 }
 
 .dataRows:hover {
-    background-color: #EEECFB;
+    background-color: $magnolia;
 }
 
 .favorites {
