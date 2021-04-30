@@ -1,5 +1,7 @@
+@import '../../variables';
+
 .errorSection {
-    border: 1px solid #5642D9;
+    border: 1px solid $majorelle-blue;
     padding: 1rem;
     position: absolute;
     right: 50%;
