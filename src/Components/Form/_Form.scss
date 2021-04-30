@@ -1,3 +1,5 @@
+@import '../../variables';
+
 .searchResultForm {
     display: flex;
 }
@@ -28,9 +30,9 @@ input:focus {
 }
 
 .searchButton {
-    background: #5642D9;
+    background: $majorelle-blue;
     border-radius: 8px;
-    color: white;
+    color: $white;
     cursor: pointer;
     font-family: 'gothamBookRegular', 'sans-serif';
     font-weight: bold;
