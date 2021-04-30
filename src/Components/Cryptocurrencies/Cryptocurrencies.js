@@ -1,6 +1,6 @@
 import React from 'react';
 import CryptocurrenciesCard from '../CryptocurrenciesCard/CryptocurrenciesCard';
-import './Cryptocurrencies.css';
+import './_Cryptocurrencies.scss';
 import Error from '../Error/Error';
 import Loading from '../Loading/Loading';
 import Form from '../Form/Form';

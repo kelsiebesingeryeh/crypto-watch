@@ -1,7 +1,9 @@
+@import '../../variables';
+
 /* TABLE STYLING */
 
 .cryptoTable {
-    color: black;
+    color: $black;
     margin: 0;
 }
 
@@ -12,14 +14,14 @@ table {
 
 th,
 td {
-    border-bottom: 1px solid #E6E6ED;
+    border-bottom: 1px solid $gainsboro;
     line-height: 2rem;
     padding: 1rem;
     text-align: left;
 }
 
 .cryptoTableHeading {
-    color: black;
+    color: $black;
     font-weight: bold;
     font-size: 1.5rem;
 }
@@ -89,13 +91,13 @@ td {
     }
 
     table tr {
-        border-bottom: 3px solid grey;
+        border-bottom: 3px solid $grey;
         display: block;
         margin-bottom: 1rem;
     }
 
     table td {
-        border-bottom: 1px solid grey;
+        border-bottom: 1px solid $grey;
         display: block;
         padding: 0.5rem;
         text-align: right;
@@ -139,13 +141,13 @@ td {
     }
 
     table tr {
-        border-bottom: 3px solid grey;
+        border-bottom: 3px solid $grey;
         display: block;
         margin-bottom: 1rem;
     }
 
     table td {
-        border-bottom: 1px solid grey;
+        border-bottom: 1px solid $grey;
         display: block;
         padding: 0.5rem;
         text-align: right;
