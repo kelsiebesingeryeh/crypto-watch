@@ -9,8 +9,7 @@
 }
 
 .listItemWrapper {
-    display: flex;
-    flex-direction: column;
+    @include flexColumn;
 }
 
 .listContainer {

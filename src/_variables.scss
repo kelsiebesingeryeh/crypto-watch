@@ -31,3 +31,8 @@ $gotham-medium: "gothamMedium",
     font-family: 'gothamBookRegular';
     src: url('./assets/gothamBookRegular.otf');
 }
+
+@mixin flexColumn {
+    display: flex;
+    flex-direction: column;
+}

@@ -18,9 +18,8 @@ a {
 
 .aboutSection {
     background: $majorelle-blue;
-    display: flex;
+    @include flexColumn;
     height: 20rem;
-    flex-direction: column;
     justify-content: center;
     width: 100%;
 }

@@ -10,8 +10,7 @@ nav {
 }
 
 .leftNav {
-    display: flex;
-    flex-direction: column;
+    @include flexColumn;
     padding: 1rem;
 }
 
