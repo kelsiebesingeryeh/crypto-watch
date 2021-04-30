@@ -1,21 +1,24 @@
+@import '../../variables';
+
+
 a {
-    color: white;
+    color: $white;
     text-decoration: none;
 }
 
 .mainPageText {
-    color: white;
+    color: $white;
     padding-left: 2.5rem;
 }
 
 .header {
-    color: white;
+    color: $white;
     font-size: 2rem;
     font-family: 'gothamBold', 'sans-serif';
 }
 
 .aboutSection {
-    background: #5642D9;
+    background: $majorelle-blue;
     display: flex;
     height: 20rem;
     flex-direction: column;
@@ -31,7 +34,7 @@ a {
 }
 
 .mainSection {
-    background: #0D0C52;
+    background: $midnight-blue;
     border-radius: 10px;
     box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
     display: flex;
@@ -44,11 +47,11 @@ a {
 }
 
 .curiousSection {
-    background-color: #530CC8;
+    background-color: $purple;
 }
 
 .buySection {
-    background-color: #C96565;
+    background-color: $fuzzy-wuzzy;
 }
 
 /* MEDIUM DEVICES SMART PHONES/MOBILE/TABLET */
