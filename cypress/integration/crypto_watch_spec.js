@@ -101,9 +101,9 @@ describe('Cryptocurrencies', () => {
         .should("be.visible")
     })
 
-    it("should see an X icon", () => {
-      cy.get(".xIcon").should("be.visible")
-    })
+    //it("should see an X icon", () => {
+    //   cy.get(".xIcon").should("be.visible")
+    // })
 
     it("should see an search bar ", () => {
       cy.get(".searchInput").should("be.visible")
