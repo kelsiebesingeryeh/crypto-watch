@@ -308,7 +308,7 @@ describe("Loading", () => {
   });
 });
 
-xdescribe("Error", () => {
+describe("Error", () => {
   beforeEach(() => {
     const baseURL = "http://localhost:3000";
     cy.fixture("testCryptoData.json").then((cryptoData) => {
@@ -340,7 +340,7 @@ xdescribe("Error", () => {
   });
 });
 
-xdescribe("Cryptopedia", () => {
+describe("Cryptopedia", () => {
   beforeEach(() => {
     const baseURL = "http://localhost:3000/cryptopedia";
     cy.fixture("testCryptopediaData.json").then((cryptoData) => {
