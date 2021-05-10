@@ -115,48 +115,6 @@ describe("Cryptocurrencies", () => {
     cy.get(".searchInput").should("be.visible");
   });
 
-  it("should be able to use the search input and display search results", () => {
-    cy.get(".searchInput")
-      .type("btc")
-      .should("have.value", "btc")
-      .get(".searchButton")
-      .click()
-  });
-
-  it("should be able to clear the search results once a user clicks on the x", () => {
-    cy.get(".searchInput")
-      .type("bitcoin")
-      .should("have.value", "bitcoin")
-      .get(".searchButton")
-      .click()
-      .wait(2000)
-      .get(".xIcon").should("be.visible")
-      .click()
-  });
-
-  it("should display an error if search results input cannot be found", () => {
-    cy.get(".searchInput")
-      .type("wtf")
-      .should("have.value", "wtf")
-      .get(".searchButton")
-      .click()
-      .wait(5000)
-      .get(".errorStyling");
-  });
-
-  it("should clear the search results if the user inputs a search that cannot be found", () => {
-    cy.get(".searchInput")
-      .type("wtf")
-      .should("have.value", "wtf")
-      .get(".searchButton")
-      .click()
-      .wait(5000)
-      .get(".clearText")
-      .click()
-      .get(".searchInput")
-      .should("not.have.value", "wtf");
-  });
-
   it("should see an search button ", () => {
     cy.get(".searchButton").should("be.visible");
   });
@@ -181,7 +139,7 @@ describe("Cryptocurrencies", () => {
   })
 });
 
-xdescribe("CryptocurrencyDetails", () => {
+describe("CryptocurrencyDetails", () => {
   beforeEach(() => {
     const baseURL = "http://localhost:3000";
     cy.fixture("testCryptoData.json").then((cryptoData) => {
@@ -209,7 +167,7 @@ xdescribe("CryptocurrencyDetails", () => {
   });
 });
 
-xdescribe("Exchanges", () => {
+describe("Exchanges", () => {
   beforeEach(() => {
     const baseURL = "http://localhost:3000/exchanges";
     cy.fixture("testExchangeData.json").then((exchangeData) => {
@@ -242,7 +200,7 @@ xdescribe("Exchanges", () => {
   });
 });
 
-xdescribe("Search Bar", () => {
+describe("Search Bar", () => {
   beforeEach(() => {
     const baseURL = "http://localhost:3000/cryptocurrencies";
     cy.fixture("testCryptoData.json")
@@ -279,10 +237,47 @@ xdescribe("Search Bar", () => {
       .get(".searchInput")
       .should("contain", "");
   });
+
+  it("should be able to clear the search results once a user clicks on the x", () => {
+    cy.get(".searchInput")
+      .type("bitcoin")
+      .should("have.value", "bitcoin")
+      .get(".searchButton")
+      .click()
+      .wait(2000)
+      .get(".xIcon")
+      .should("be.visible")
+      .click();
+  });
+
+  it("should display an error if search results input cannot be found", () => {
+    cy.get(".searchInput")
+      .type("wtf")
+      .should("have.value", "wtf")
+      .get(".searchButton")
+      .click()
+      .wait(5000)
+      .get(".errorStyling");
+  });
+
+  it("should clear the search results if the user inputs a search that cannot be found", () => {
+    cy.get(".searchInput")
+      .type("wtf")
+      .should("have.value", "wtf")
+      .get(".searchButton")
+      .click()
+      .wait(5000)
+      .get(".clearText")
+      .click()
+      .get(".searchInput")
+      .should("not.have.value", "wtf");
+  });
+
+
 });
 
 
-xdescribe("Loading", () => {
+describe("Loading", () => {
   beforeEach(() => {
     const baseURL = "http://localhost:3000";
     cy.visit(baseURL);
@@ -295,6 +290,8 @@ xdescribe("Loading", () => {
   it("should contain a loading message on Cryptocurrency Details page", () => {
     cy.get(".curiousSection")
       .click()
+      .get(".loading")
+      .wait(5000)
       .get(".cryptoName")
       .first()
       .click()
