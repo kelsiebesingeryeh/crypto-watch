@@ -168,6 +168,17 @@ describe("Cryptocurrencies", () => {
   it("should turn red when the star is clicked", () => {
     cy.get(".favorites").first().click().get(".favorites").should("be.visible");
   });
+
+  it('should add item to local storage once a user clicks on the star', () => {
+    cy.get('.favorites').first().click().should(() => {
+      expect(localStorage.getItem("favorites")).to.eq(["btc-bitcoin"]);
+    })
+  })
+  it('should clear localStorage once a user clicks on the favorited star', () => {
+    cy.get(".favorites").first().click()
+    cy.get(".favorites").first().click()
+    cy.clearLocalStorage();
+  })
 });
 
 xdescribe("CryptocurrencyDetails", () => {
