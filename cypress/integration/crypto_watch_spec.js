@@ -76,7 +76,7 @@ it("Should be able to click into a nav bar item and be taken to another page", (
 
 })
 
-xdescribe("Cryptocurrencies", () => {
+describe("Cryptocurrencies", () => {
   beforeEach(() => {
     const baseURL = "http://localhost:3000/cryptocurrencies";
     cy.fixture("testCryptoData.json").then((cryptoData) => {
@@ -111,15 +111,29 @@ xdescribe("Cryptocurrencies", () => {
     cy.get(".searchIcon").should("be.visible");
   });
 
-  //it("should see an X icon", () => {
-  //   cy.get(".xIcon").should("be.visible")
-  // })
-
   it("should see an search bar ", () => {
     cy.get(".searchInput").should("be.visible");
   });
 
-  it("should see an search bar ", () => {
+  xit("should be able to use the search input and display search results", () => {
+    cy.get(".searchInput").type("bitcoin").should("have.value", "bitcoin").get('.searchButton').click();
+  });
+
+  it('should display an error if search results input cannot be found', () => {
+    cy.get(".searchInput")
+      .type("wtf")
+      .should("have.value", "wtf")
+      .get(".searchButton")
+      .click()
+      .wait(5000)
+      .get('.errorStyling')
+  })
+
+  //it("should see an X icon", () => {
+  //   cy.get(".xIcon").should("be.visible")
+  // })
+
+  it("should see an search button ", () => {
     cy.get(".searchButton").should("be.visible");
   });
 
