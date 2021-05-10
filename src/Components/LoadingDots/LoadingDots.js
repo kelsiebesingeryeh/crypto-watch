@@ -1,12 +1,11 @@
 import React from 'react';
 import './_LoadingDots.scss';
+import dotsLoading from '../../assets/dotsLoading.gif';
 
 const LoadingDots = () => {
     return (
         <p className='loading'>
-       Loading<span>.</span>
-            <span>.</span>
-            <span>.</span>
+            <img src={dotsLoading}/>
         </p>
     );
 };
