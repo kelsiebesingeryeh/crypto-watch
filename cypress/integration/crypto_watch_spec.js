@@ -171,7 +171,7 @@ describe("Cryptocurrencies", () => {
 
   it('should add item to local storage once a user clicks on the star', () => {
     cy.get('.favorites').first().click().should(() => {
-      expect(localStorage.getItem("favorites")).to.eq(["btc-bitcoin"]);
+      expect(localStorage.getItem("favorites")).to.eq('["btc-bitcoin"]');
     })
   })
   it('should clear localStorage once a user clicks on the favorited star', () => {
