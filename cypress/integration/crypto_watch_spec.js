@@ -129,6 +129,18 @@ describe("Cryptocurrencies", () => {
       .get('.errorStyling')
   })
 
+  it("should clear the search results if the user inputs a search that cannot be found", () => {
+    cy.get(".searchInput")
+      .type("wtf")
+      .should("have.value", "wtf")
+      .get(".searchButton")
+      .click()
+      .wait(5000)
+      .get(".clearText")
+      .click()
+      .get(".searchInput").should('not.have.value', 'wtf')
+  });
+
   //it("should see an X icon", () => {
   //   cy.get(".xIcon").should("be.visible")
   // })
