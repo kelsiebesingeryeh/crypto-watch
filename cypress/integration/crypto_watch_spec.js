@@ -115,19 +115,34 @@ describe("Cryptocurrencies", () => {
     cy.get(".searchInput").should("be.visible");
   });
 
-  xit("should be able to use the search input and display search results", () => {
-    cy.get(".searchInput").type("bitcoin").should("have.value", "bitcoin").get('.searchButton').click();
+  it("should be able to use the search input and display search results", () => {
+    cy.get(".searchInput")
+      .type("btc")
+      .should("have.value", "btc")
+      .get(".searchButton")
+      .click()
   });
 
-  it('should display an error if search results input cannot be found', () => {
+  it("should be able to clear the search results once a user clicks on the x", () => {
+    cy.get(".searchInput")
+      .type("bitcoin")
+      .should("have.value", "bitcoin")
+      .get(".searchButton")
+      .click()
+      .wait(2000)
+      .get(".xIcon").should("be.visible")
+      .click()
+  });
+
+  it("should display an error if search results input cannot be found", () => {
     cy.get(".searchInput")
       .type("wtf")
       .should("have.value", "wtf")
       .get(".searchButton")
       .click()
       .wait(5000)
-      .get('.errorStyling')
-  })
+      .get(".errorStyling");
+  });
 
   it("should clear the search results if the user inputs a search that cannot be found", () => {
     cy.get(".searchInput")
@@ -138,12 +153,9 @@ describe("Cryptocurrencies", () => {
       .wait(5000)
       .get(".clearText")
       .click()
-      .get(".searchInput").should('not.have.value', 'wtf')
+      .get(".searchInput")
+      .should("not.have.value", "wtf");
   });
-
-  //it("should see an X icon", () => {
-  //   cy.get(".xIcon").should("be.visible")
-  // })
 
   it("should see an search button ", () => {
     cy.get(".searchButton").should("be.visible");
