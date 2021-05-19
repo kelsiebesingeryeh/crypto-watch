@@ -56,7 +56,7 @@ If a user is new to cryptocurrency, they can select "I'm new' and will be taken 
 ![cryptopedia](https://i.imgur.com/plTByvj.png)
 
 #### Cryptocurrencies
-If a user is curious about cryptocurrency, they can select "I'm curious" and will be taken to a Cryptocurrencies page which displays the top 100 cryptocurrencies currently trending along with live data on the coin. They can view market information. The user can also search for a coin by name or symbol. The user can also add a coin to their "favorites"
+If a user is curious about cryptocurrency, they can select "I'm curious" and will be taken to a Cryptocurrencies page which displays the top 100 cryptocurrencies currently trending along with live data on the coin. They can view market information. The user can also search for a coin by name or symbol. The user can also add a coin to their "favorites" and it will be saved to localStorage, so if they user comes back to the page or refreshes, it saves their favorite selection.
 ![cryptocurrencies](https://i.imgur.com/e92XMd4.png)
 
 #### CryptocurrencyDetails
@@ -74,10 +74,13 @@ If a user is looking to buy cryptocurrency, they can select "I'm looking to buy 
 
 ## Tech Stack
 Technologies used: 
-* React, React Router
-* REST API - multiple
 * JavaScript
-* CSS
+* React, React Hook, React Router
+* REST API - 4 endpoints
+* SASS
 * Cypress
+* Vercel
+* Circle CI
+* InVision
 * GitHub Projects
 
