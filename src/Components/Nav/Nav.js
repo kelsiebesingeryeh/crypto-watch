@@ -25,7 +25,7 @@ const Nav = () => {
                     <p className="rightNavItems navExchanges">Exchanges</p>
                 </Link>
                 <Link to="/favorites">
-                    <p className="rightNavItems navExchanges">My Favorites</p>
+                    <p className="rightNavItems navFavorites">My Favorites</p>
                 </Link>
             </div>
         </nav>
