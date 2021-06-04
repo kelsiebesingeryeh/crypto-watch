@@ -1,10 +1,13 @@
-import React from "react";
+import React from 'react';
 
 
 const Favorites = () => {
+    console.log('work');
     return (
-        <h3>My Favorites</h3>
-    )
-}
+        <>
+            <h3>My Favorites coming soon</h3>
+        </>
+    );
+};
 
-export default Favorites
+export default Favorites;
