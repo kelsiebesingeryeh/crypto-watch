@@ -8,7 +8,7 @@ import CryptocurrencyDetails from '../CryptocurrencyDetails/CryptocurrencyDetail
 import Error from '../Error/Error';
 import Exchanges from '../Exchanges/Exchanges';
 import Cryptopedia from '../Cryptopedia/Cryptopedia';
-import Favorites from '../Favorites/Favorites';
+// import Favorites from '../Favorites/Favorites';
 import { getCryptoData } from '../../apiCalls';
 
 const App = () => {
@@ -62,8 +62,8 @@ const App = () => {
     };
 
 
-    const filterSearchResults = (userInput) => {
-        const searchResultsToDisplay = cryptocurrencies.filter((crypto) => {
+    const filterSearchResults = (userInput, list) => {
+        const searchResultsToDisplay = list.filter((crypto) => {
             return (
                 crypto.name.toLowerCase() === userInput ||
                 crypto.symbol.toLowerCase() === userInput
@@ -145,7 +145,18 @@ const App = () => {
             <Route
               exact
               path="/favorites"
-              render={() => <Favorites />}
+              render={() => <Cryptocurrencies
+                  cryptocurrencies={cryptocurrencies}
+                  isLoading={isLoading}
+                  filterSearchResults={filterSearchResults}
+                  searchResults={searchResults}
+                  clearSearchResults={clearSearchResults}
+                  addFavoriteCrypto={addFavoriteCrypto}
+                  removeFromFavorites={removeFromFavorites}
+                  favorites={favorites}
+                  error={error}
+                  isSearching={isSearching}
+                 />}
             />
             <Route exact path="/error" render={() => <Error />} />
           </main>
