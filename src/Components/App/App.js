@@ -153,6 +153,10 @@ const App = () => {
                 <Favorites
                   cryptocurrencies={cryptocurrencies}
                   favorites={favorites}
+                  isLoading={isLoading}
+                  error={error}
+                  addFavoriteCrypto={addFavoriteCrypto}
+                  removeFromFavorites={removeFromFavorites}
                   // filterFavorites={filterFavorites}
                 />
               )}
