@@ -4,12 +4,12 @@ import search from '../../assets/search.png';
 import x from '../../assets/x.png';
 import PropTypes from 'prop-types';
 
-const Form = ({ filterSearchResults, clearSearchResults, isSearching }) => {
+const Form = ({ filterSearchResults, clearSearchResults, isSearching, top100 }) => {
     const [searchInput, setSearchInput] = useState('');
     
     const handleSubmit = (event) => {
         event.preventDefault();
-        filterSearchResults(searchInput);
+        filterSearchResults(searchInput, top100);
         clearInputs();
     };
 
@@ -51,5 +51,6 @@ export default Form;
 Form.propTypes = {
     clearSearchResults: PropTypes.func,
     filterSearchResults: PropTypes.func,
-    isSearching: PropTypes.bool
+    isSearching: PropTypes.bool,
+    top100: PropTypes.array
 };

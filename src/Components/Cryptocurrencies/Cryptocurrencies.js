@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CryptocurrenciesCard from '../CryptocurrenciesCard/CryptocurrenciesCard';
 import './_Cryptocurrencies.scss';
 import Error from '../Error/Error';
@@ -20,10 +20,10 @@ const Cryptocurrencies = ({
     isSearching
 }) => {
 
-    const top100Coins = cryptocurrencies
+    const [top100] = useState(cryptocurrencies
         .filter((crypto) => crypto.rank > 0 && crypto.rank <= 100)
-        .sort((a, b) => a.rank - b.rank);
-  
+        .sort((a, b) => a.rank - b.rank));
+
     const cryptocurrenciesOnDisplay = (cryptoList) => {
         return cryptoList.map((crypto) => {
             const { id, name, symbol, rank, quotes } = crypto;
@@ -52,12 +52,13 @@ const Cryptocurrencies = ({
             <div className="cryptoTableContainer">
                 <span className="cryptoStyling">
                     <p className="cryptoTableHeading">
-              Cryptocurrency prices for 100 assets
+                    Cryptocurrency prices for 100 assets
                     </p>
                     <Form
                         filterSearchResults={filterSearchResults}
                         clearSearchResults={clearSearchResults}
                         isSearching={isSearching}
+                        top100={top100}
                     />
                 </span>
                 {searchResults.length === 0 && isSearching && (
@@ -79,7 +80,7 @@ const Cryptocurrencies = ({
                     <tbody>
                         {searchResults.length > 0
                             ? cryptocurrenciesOnDisplay(searchResults)
-                            : cryptocurrenciesOnDisplay(top100Coins)}
+                            : cryptocurrenciesOnDisplay(top100)}
                     </tbody>
                 </table>
             </div>
