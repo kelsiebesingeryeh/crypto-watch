@@ -8,7 +8,7 @@ import CryptocurrencyDetails from '../CryptocurrencyDetails/CryptocurrencyDetail
 import Error from '../Error/Error';
 import Exchanges from '../Exchanges/Exchanges';
 import Cryptopedia from '../Cryptopedia/Cryptopedia';
-// import Favorites from '../Favorites/Favorites';
+import Favorites from '../Favorites/Favorites';
 import { getCryptoData } from '../../apiCalls';
 
 const App = () => {
@@ -65,8 +65,8 @@ const App = () => {
     const filterSearchResults = (userInput, list) => {
         const searchResultsToDisplay = list.filter((crypto) => {
             return (
-                crypto.name.toLowerCase() === userInput ||
-                crypto.symbol.toLowerCase() === userInput
+                crypto.name.toLowerCase().includes(userInput) ||
+                crypto.symbol.toLowerCase().includes(userInput)
             );
         });
         setSearchResults(searchResultsToDisplay);
@@ -89,6 +89,10 @@ const App = () => {
         setSearchResults([]);
         setIsSearching(false);
     }
+
+    // const filterFavorites = (cryptocurrencies, favorites) => {
+    //     return cryptocurrencies.filter(())
+    // }
 
         return (
           <main>
@@ -145,18 +149,13 @@ const App = () => {
             <Route
               exact
               path="/favorites"
-              render={() => <Cryptocurrencies
+              render={() => (
+                <Favorites
                   cryptocurrencies={cryptocurrencies}
-                  isLoading={isLoading}
-                  filterSearchResults={filterSearchResults}
-                  searchResults={searchResults}
-                  clearSearchResults={clearSearchResults}
-                  addFavoriteCrypto={addFavoriteCrypto}
-                  removeFromFavorites={removeFromFavorites}
                   favorites={favorites}
-                  error={error}
-                  isSearching={isSearching}
-                 />}
+                  // filterFavorites={filterFavorites}
+                />
+              )}
             />
             <Route exact path="/error" render={() => <Error />} />
           </main>
